@@ -1,0 +1,13 @@
+<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.4">
+  <g transform="scale(.625)">
+    <clipPath id="a">
+      <path d="M0 0h16v16H0z"/>
+    </clipPath>
+    <g clip-path="url(#a)">
+      <use xlink:href="#_Image2" width="10" height="10" transform="scale(1.6)"/>
+    </g>
+  </g>
+  <defs>
+    <image id="_Image2" width="10" height="10" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAo0lEQVQYlX3QsanCUBSA4S/XrPAKC8FexcJXOcBFnCMTWDmCjRu4hvBIK1g9A4E4gYhOYSy8dpofTvOf/zQng105zfCLBUZenPGH/yLWbZ7kCnNccU/uB2scsc125XSWxMVnBtgELHH7Ekm7ZcAEj47wgUlA2xG9aQMa9DqiHpqAPfodYR/7UMS6wgFD5Ahp8uQORayr7H2W3hQxTqpBWcT6BE9jIyWJ8KkoKgAAAABJRU5ErkJggg=="/>
+  </defs>
+</svg>

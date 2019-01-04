@@ -1,0 +1,1 @@
+{"status":{"status_code":0,"status_message":"SUCCESS"},"device_id":14584,"type":"obs_air","source":"cache","summary":{"pressure_trend":"steady","pressure_high_24h":1033.4,"pressure_low_24h":1031.1,"strike_count_3h":3,"strike_last_dist":12,"strike_last_epoch":1545752458},"obs":[[1545761034,1031.4,3.8,95,0,0,3.42,1]]}

@@ -1,0 +1,1 @@
+{"status":"success","data":{"city":"Bournemouth","state":"England","country":"United Kingdom","location":{"type":"Point","coordinates":[-1.826744,50.73957]},"current":{"weather":{"ts":"2018-06-11T03:00:00.000Z","hu":87,"ic":"50n","pr":1013,"tp":16,"wd":70,"ws":1},"pollution":{"ts":"2018-06-11T08:00:00.000Z","aqius":55,"mainus":"p2","aqicn":20,"maincn":"p2"}}}}

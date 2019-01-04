@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<wxdata>
+<bardata>
+OK
+BAR 30349
+ELEVATION 138
+DEW POINT 35
+VIRTUAL TEMP 54
+C 13
+R 1005
+BARCAL 0
+GAIN 0
+OFFSET -38
+</bardata>
+<yearrain_mm>76.4</yearrain_mm>
+<solar_w>0</solar_w>
+<barometer_inhg>30.35</barometer_inhg>
+<monthrain_mm>0.0</monthrain_mm>
+<stormrain_mm>0.0</stormrain_mm>
+<et_year_mm>0.0</et_year_mm>
+<gust10_msec>4.9</gust10_msec>
+<inhum_p>24</inhum_p>
+<wind_msec>3.1</wind_msec>
+<rainfall24h_mm>0.0</rainfall24h_mm>
+<dewpoint_f>35.0</dewpoint_f>
+<dewpoint_c>1.7</dewpoint_c>
+<avgwind2_mph>4.2</avgwind2_mph>
+<stationmodel>Vantage Pro/Vantage Pro2 (16) ID: 6312C</stationmodel>
+<batterystatus>0</batterystatus>
+<commissiondate>01.03.2015</commissiondate>
+<dataerror>False</dataerror>
+<gust10dir>190</gust10dir>
+<outhum_p>31</outhum_p>
+<rxcheck>292 0 0 292 0</rxcheck>
+<et_month_mm>0.0</et_month_mm>
+<avgwind10_mph>5.5</avgwind10_mph>
+<avgwind10_kts>4.8</avgwind10_kts>
+<voltage>4.0</voltage>
+<avgwind10_msec>2.5</avgwind10_msec>
+<thsw_c>123.9</thsw_c>
+<intemp_c>26.9</intemp_c>
+<barotrend>236</barotrend>
+<intemp_f>80.4</intemp_f>
+<rainrate_mmhr>0.0</rainrate_mmhr>
+<crc_pad>2567</crc_pad>
+<ver>Dec 11 2012 </ver>
+<nver>3.12 </nver>
+<timestamp_pc>2015-04-08 14:06:57.550860</timestamp_pc>
+<fctext>Partly cloudy with little temperature change.</fctext>
+<uvindex>0.0</uvindex>
+<avgwind2_msec>1.9</avgwind2_msec>
+<freeze>False</freeze>
+<barotrendtext>Barometric pressure is falling slowly.</barotrendtext>
+<gust10_mph>11</gust10_mph>
+<gust10_kts>9.6</gust10_kts>
+<sunset_lt>18:37</sunset_lt>
+<wind_kts>6.1</wind_kts>
+<thsw_f>255.0</thsw_f>
+<wind_mph>7</wind_mph>
+<rainfall15_mm>0.0</rainfall15_mm>
+<wc_c>18.9</wc_c>
+<fcicon>6</fcicon>
+<condensation>False</condensation>
+<wc_f>66.0</wc_f>
+<timestamp_aprs>Feb 25 2015 22:28</timestamp_aprs>
+<timestamp>25.02.2015 22:28:29</timestamp>
+<timestamp_wx>Received on 25.02.2015 @ 22:28:29 local time</timestamp_wx>
+<winddir>173</winddir>
+<sunrise_lt>07:33</sunrise_lt>
+<dayrain_mm>0.0</dayrain_mm>
+<crc-calc>0</crc-calc>
+<stormstart>01.01.1970</stormstart>
+<rainfall60_mm>0.0</rainfall60_mm>
+<outtemp_f>66.4</outtemp_f>
+<avgwind2_kts>3.6</avgwind2_kts>
+<hindex_c>17.2</hindex_c>
+<hindex_f>63.0</hindex_f>
+<et_day_mm>0.0</et_day_mm>
+<outtemp_c>19.1</outtemp_c>
+<barometer_hpa>1027.8</barometer_hpa>
+<wind_beaufort>
+Vent fluix
+</wind_beaufort>
+<gust10_beaufort>
+Vent fluix
+</gust10_beaufort>
+<avg2_beaufort>
+Vent fluixet
+</avg2_beaufort>
+<avg10_beaufort>
+Vent fluixet
+</avg10_beaufort>
+</wxdata>

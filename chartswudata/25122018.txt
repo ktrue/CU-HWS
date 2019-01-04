@@ -1,0 +1,6 @@
+
+Time,TemperatureC,DewpointC,PressurehPa,WindDirection,WindDirectionDegrees,WindSpeedKMH,WindSpeedGustKMH,Humidity,HourlyPrecipMM,Conditions,Clouds,dailyrainMM,SolarRadiationWatts/m^2,SoftwareType,DateUTC<br>
+2018-12-26 00:03:56,3.5,0.5,1021.9,NE,44,9.7,17.2,81,0.8,,,0.0,0.00,,2018-12-25 21:03:56,
+<br>
+2018-12-26 00:08:56,3.6,0.5,1021.9,NE,43,9.0,18.0,80,0.8,,,0.0,0.00,,2018-12-25 21:08:56,
+<br>
