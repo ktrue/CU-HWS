@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="collection:data">
                                         <h3>Template Download</h3>
-                                        <a href="https://www.linksysinfo.org/weather34/CU.zip" title="weather34 Cumulus Template download" target="_blank">CU.zip</a>
+                                        <a href="https://github.com/ktrue/CU-HWS/archive/master.zip" target="_blank">CU-HWS-master.zip</a>
                                     </div>
                                 </div>
                             </a>
