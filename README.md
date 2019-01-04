@@ -11,15 +11,14 @@ Cumulus MX is supported and maintained by Mark Crossley at https://github.com/mc
 
 # Setup
 
-Setup Cumulus/CumulusMX to upload realtime.txt to your weather website.
-
-Download the .zip of the distribution.
-Unzip to the document root of your website.
-Browse to http://your.website/easyweathersetup.php
-Use inital PW of 12345 when the page prompts.
-CHANGE the PW in the screen for future use.
-Make setting entries in the screen and SAVE.
-Repeat running easyweathersetup.php until the main screen appears as you like it.
+* Setup Cumulus/CumulusMX to upload realtime.txt to your weather website.
+* Download the .zip of the distribution.
+* Unzip to the document root of your website.
+* Browse to http://your.website/easyweathersetup.php
+* Use inital PW of 12345 when the page prompts.
+* CHANGE the PW in the screen for future use.
+* Make setting entries in the screen and SAVE.
+* Repeat running easyweathersetup.php until the main screen appears as you like it.
 
 # License
 
