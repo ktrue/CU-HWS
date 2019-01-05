@@ -15,9 +15,10 @@ Cumulus MX is supported and maintained by Mark Crossley at https://github.com/mc
 * Download the .zip of the distribution.
 * Unzip to the document root of your website.
 * Browse to http://your.website/easyweathersetup.php
-* Use inital PW of 12345 when the page prompts.
-* CHANGE the PW in the screen for future use.
-* Make setting entries in the screen and SAVE.
+* There is no initial password when the page prompts the first time -- just press LOGIN to enter the page.
+* ***IMPORTANT*** set a password in the screen for future use -- your browser can remember it. This will 
+make future updates reasonably secure so only you can do the updates to the configuration.
+* Make setting entries in the easyweathersetup.php page and SAVE.  The next time you run it, use the password you set in the step above.
 * Repeat running easyweathersetup.php until the main screen appears as you like it.
 
 # License
