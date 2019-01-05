@@ -13,7 +13,7 @@ else echo " <grey>in</grey>";?>
 if($weather["rain_units"]=="mm"){echo "&nbsp;<raingrey>".$weather["rain_units"]."</raingrey>";}
 else echo " <grey>in</grey>";?>
 <br>
-<?php echo "Yesterday<br>";echo "<rainblue>",$weatherflow['raintotalyesterday'],"</rainblue>";
+<?php echo "Yesterday<br>";echo "<rainblue>",$weather["rainydmax"],"</rainblue>";
 if($weather["rain_units"]=="mm"){echo "&nbsp;<raingrey>".$weather["rain_units"]."</raingrey>";}
 else echo " <grey>in</grey>";?>
 </div>
