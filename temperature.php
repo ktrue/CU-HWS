@@ -54,14 +54,14 @@ if(anyToC($weather["heat_index"])>=28||($showFeelsLike&&anyToC($weather["temp"])
 
 
 //windchill offline with real feel 
-else if ($weather["temp_units"]=='C' && $weather["windchill"]<0){ echo "Windchill<br><div class=tempconverter1><div class=tempconvertercircleblue1>".$weather["windchill"]."&deg;".$weather["temp_units"];}
+else if ($weather["temp_units"]=='C' && $weather["windchill"]<0){ echo $lang['Windchill']."<br><div class=tempconverter1><div class=tempconvertercircleblue1>".$weather["windchill"]."&deg;".$weather["temp_units"];}
 else if ($weather["temp_units"]=='C' && $weather["temp_feel"]>=28){ echo $lang['Feelslike']."<br><div class=tempconverter1><div class=tempconvertercirclered1>".$weather["temp_feel"]."&deg;".$weather["temp_units"];}
 else if($weather["temp_units"]=='C' && $weather["temp_feel"]>=15){ echo $lang['Feelslike']."<br><div class=tempconverter1><div class=tempconvertercircleorange1>".$weather["temp_feel"]."&deg;".$weather["temp_units"];}
 else if($weather["temp_units"]=='C' && $weather["temp_feel"]>=10){ echo $lang['Feelslike']."<br><div class=tempconverter1><div class=tempconvertercircleyellow1>".$weather["temp_feel"]."&deg;".$weather["temp_units"];}
 else if($weather["temp_units"]=='C' && $weather["temp_feel"]<5 ){ echo $lang['Feelslike']."<br><div class=tempconverter1><div class=tempconvertercircleblue1>".$weather["temp_feel"]."&deg;".$weather["temp_units"];}
 else if($weather["temp_units"]=='C' && $weather["temp_feel"]<10 ){ echo $lang['Feelslike']."<br><div class=tempconverter1><div class=tempconvertercircleblue1>".$weather["temp_feel"]."&deg;".$weather["temp_units"];}
 
-else if ($weather["temp_units"]=='F' && $weather["windchill"]<35){ echo "Windchill<br><div class=tempconverter1><div class=tempconvertercircleblue1>".$weather["windchill"]."&deg;".$weather["temp_units"];}
+else if ($weather["temp_units"]=='F' && $weather["windchill"]<35){ echo $lang['Windchill']."<br><div class=tempconverter1><div class=tempconvertercircleblue1>".$weather["windchill"]."&deg;".$weather["temp_units"];}
 else if ($weather["temp_units"]=='F' && $weather["temp_feel"]>=90){ echo $lang['Feelslike']."<br><div class=tempconverter1><div class=tempconvertercirclered1>".$weather["temp_feel"]."&deg;".$weather["temp_units"];}
 else if($weather["temp_units"]=='F' && $weather["temp_feel"]>=64){ echo $lang['Feelslike']."<br><div class=tempconverter1><div class=tempconvertercircleorange1>".$weather["temp_feel"]."&deg;".$weather["temp_units"];}
 else if($weather["temp_units"]=='F' && $weather["temp_feel"]>=50){ echo $lang['Feelslike']."<br><div class=tempconverter1><div class=tempconvertercircleyellow1>".$weather["temp_feel"]."&deg;".$weather["temp_units"];}
@@ -73,7 +73,7 @@ else if($weather["temp_units"]=='F' && $weather["realfeel"]<40 ){ echo $lang['Fe
 ?></div></div></div>
 
 <div class="heatcircle2">
-<div class="heatcircle-content"><?php echo 'Wetbulb';?><br />
+<div class="heatcircle-content"><?php echo $lang['Wetbulb'];?><br />
 <?php //wetbulb
 if ($weather["temp_units"]=='C' &&  $wetbulbx>=18){echo "<div class=tempconverter1><div class=tempconvertercircleorange1>". $wetbulbx."&deg;".$weather["temp_units"];}
 else if ($weather["temp_units"]=='C' && $wetbulbx<10){echo "<div class=tempconverter1><div class=tempconvertercircleorange1>". $wetbulbx."&deg;".$weather["temp_units"];}

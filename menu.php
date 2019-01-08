@@ -55,7 +55,7 @@ else echo "";?>
    <div class="languages34">    
   <a href="index.php?lang=pl"><img src="img/flags/pl.svg"  title="Polish" width="25px" height="25px"></a>&nbsp;
   <a href="index.php?lang=mi"><img src="img/flags/mi.svg"  title="Moari" width="25px" height="25px"></a>&nbsp; 
-  
+  <a href="index.php?lang=sw"><img src="img/flags/sw.svg"  title="Swedish" width="25px" height="25px"></a>&nbsp;
   <br>
      '?>
      <?php //do not remove this and if so no support is given and your domain will be blacklisted it is not much to ask //?>
