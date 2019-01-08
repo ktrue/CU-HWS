@@ -21,6 +21,16 @@ make future updates reasonably secure so only you can do the updates to the conf
 * Make setting entries in the easyweathersetup.php page and SAVE.  The next time you run it, use the password you set in the step above.
 * Repeat running easyweathersetup.php until the main screen appears as you like it.
 
+# Diagnostics
+
+A new utility diags.php was added to the distribution.  It is useful for checking the installation of the CU-HWS template
+and showing (safely) the current settings.php/settings1.php file contents for debugging.  Note: the entries for
+$password, $db_user, $db_pass are replaced with '********' to avoid unwanted disclosure of private information.
+
+* run ***diags.php?show=info*** on your website to show the key info about the CU-HWS installation and required PHP function status
+* run ***diags.php?show=settings*** on your website to safely show the current settings.php and settings1.php contents
+
+
 # License
 
 Copyright (c) 2016-2018 by Brian Underdown (https://weather34.com)
