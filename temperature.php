@@ -73,7 +73,7 @@ else if($weather["temp_units"]=='F' && $weather["realfeel"]<40 ){ echo $lang['Fe
 ?></div></div></div>
 
 <div class="heatcircle2">
-<div class="heatcircle-content"><?php echo 'Wetbulb';?><br />
+<div class="heatcircle-content"><?php echo $lang['Wetbulb'];?><br />
 <?php //wetbulb
 if ($weather["temp_units"]=='C' &&  $wetbulbx>=18){echo "<div class=tempconverter1><div class=tempconvertercircleorange1>". $wetbulbx."&deg;".$weather["temp_units"];}
 else if ($weather["temp_units"]=='C' && $wetbulbx<10){echo "<div class=tempconverter1><div class=tempconvertercircleorange1>". $wetbulbx."&deg;".$weather["temp_units"];}
