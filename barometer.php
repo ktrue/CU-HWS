@@ -60,7 +60,7 @@ else echo "<weather34-barometerlimitminf>28</barometerlimitminf><weather34-barom
 <?php echo "UV-Index Caution<br>Reduce Sun Exposure <notifyorange>" .$weather["uv"],"</notifyorange>",$uvisvg?>
 <?php ;}?></div></div>
 <?php //WEATHER34 pure css temperature heat index above 30c/84F  pop up alert 
- if(anyToC($notifications=='yes' && $weather["heat_index"])>=30){?><div id="weather34lightningdialog-notify">  <div class="weather34lightningdialog-box">
+ if($notifications=='yes' && anyToC($weather["heat_index"])>=30){?><div id="weather34lightningdialog-notify">  <div class="weather34lightningdialog-box">
 <div class="weather34lightningbackground-alert"></div><div class="header"> <div class="weather34lightningbackground-alert"></div>
 <div class="weather34lightningcontents"><div class="left"><?php echo $notification ?> Notification</div>
 <div class="right"><?php echo date ("D H:i")?></div></div></div>

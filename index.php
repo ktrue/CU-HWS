@@ -170,10 +170,10 @@ include('livedata.php');include('common.php');include('settings1.php');date_defa
   <!--footer area for homeweatherstation template warning dont mess with this below this line unless you really know what you are doing-->
 <div class=weatherfooter-container><div class=weatherfooter-item> 
 <div class=hardwarelogo1><a href="" target="_blank" title=""><img src="img/cumulus.svg" width="125px" height="25px" alt="meteobridge"></a></div><div class=hardwarelogo2><?php 
-if ($davis=="Yes"){echo '<a href="https://www.davisinstruments.com/solution/vantage-pro2/" title="https://www.davisinstruments.com/solution/vantage-pro2/" target="_blank"><img src="img/davisw34.svg" width="95px" height="20px" alt="Davis Instruments&reg;" ></a>';}
+if ($davis=="Yes"){echo '<a href="https://www.davisinstruments.com/solution/vantage-pro2/" title="https://www.davisinstruments.com/solution/vantage-pro2/" target="_blank"><img src="img/designedfor.svg" width="125px" height="125px" alt="Davis Instruments&reg;" ></a>';}
 else if ($weatherhardware=='Weatherflow Air-Sky'){echo '<a href="http://weatherflow.com/" title="http://weatherflow.com/" target="_blank"><img src="img/wflogo.svg" width="100px" alt="http://weatherflow.com/" ></a>';}
 else echo '<a href="https://weather34.com/homeweatherstation/" title="https://weather34.com/homeweatherstation/" target="_blank"><img src="img/weather34logo.svg" width="40px" alt="https://weather34.com/homeweatherstation/" class="homeweatherstationlogo" ></a>';?> </div>
-<div class=designedby><a href="https://weather34.com/homeweatherstation/" title="https://weather34.com/homeweatherstation/"><?php echo $o ;?></a></div>
+
 <div class=footertext>
 <?php echo $info?>Source:<?php echo $mbplatform;?> (<?php echo $weather["swversion"];echo "-",$weather["version"]." Template:<oblue>".$templateversion?></oblue>)&nbsp;
 <?php echo $info;?>Hardware:<?php echo $weatherhardware;?><br><?php echo $info;?><?php echo $stationlocation ;?> Weather Station &nbsp; <img src="img/flags/<?php echo $flag ;?>.svg" width="20px" ></div></div></div>

@@ -21,6 +21,16 @@ make future updates reasonably secure so only you can do the updates to the conf
 * Make setting entries in the easyweathersetup.php page and SAVE.  The next time you run it, use the password you set in the step above.
 * Repeat running easyweathersetup.php until the main screen appears as you like it.
 
+# Diagnostics
+
+A new utility diags.php was added to the distribution.  It is useful for checking the installation of the CU-HWS template
+and showing (safely) the current settings.php/settings1.php file contents for debugging.  Note: the entries for
+$password, $db_user, $db_pass are replaced with '********' to avoid unwanted disclosure of private information.
+
+* run ***diags.php?show=info*** on your website to show the key info about the CU-HWS installation and required PHP function status
+* run ***diags.php?show=settings*** on your website to safely show the current settings.php and settings1.php contents
+
+
 # License
 
 Copyright (c) 2016-2018 by Brian Underdown (https://weather34.com)
@@ -67,3 +77,22 @@ whole array of chart data for those with lots historical data with more to come)
 >The current Meteobridge NANO-SD beta version has lots of historical options and almanac pop ups for various data.
 You will also find a version maintained by Meteobridge developer (Boris) built into the NANO-SD product which doesn't require a web server as it merely runs inside the Meteobridge NANO-SD control panel.
 
+## Updates from Brian (weather34) - 13-Jan-2019
+
+These changes are basically direct from Meteobridge version as both Cumulus and Meteobridge
+use nigh on identical structure and require no major time consuming modifications, just direct file replacement.
+This basically brings the same visual layout up-to date as seen in Meteobridge versions.
+
+- indoortemperature.php
+- homeindoor.php
+- css folder - all (2) .css files updated, multiple .svg icons also
+- index.php (added new logo for Davis option)
+- img folder *new davis svg icon (designedfor.svg designed by weather34 was removed)
+- weather34uvsolar.php
+- solaruvds.php
+- rainfall-year-month.php
+- max-mintemp.php
+- max-minwind.php
+
+Also a .gitignore file was added to the distribution to help prevent clobbering your settings/data from your station on a future 
+'git pull' operation.
