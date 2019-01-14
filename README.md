@@ -77,3 +77,22 @@ whole array of chart data for those with lots historical data with more to come)
 >The current Meteobridge NANO-SD beta version has lots of historical options and almanac pop ups for various data.
 You will also find a version maintained by Meteobridge developer (Boris) built into the NANO-SD product which doesn't require a web server as it merely runs inside the Meteobridge NANO-SD control panel.
 
+## Updates from Brian (weather34) - 13-Jan-2019
+
+These changes are basically direct from Meteobridge version as both Cumulus and Meteobridge
+use nigh on identical structure and require no major time consuming modifications, just direct file replacement.
+This basically brings the same visual layout up-to date as seen in Meteobridge versions.
+
+- indoortemperature.php
+- homeindoor.php
+- css folder - all (2) .css files updated, multiple .svg icons also
+- index.php (added new logo for Davis option)
+- img folder *new davis svg icon (designedfor.svg designed by weather34 was removed)
+- weather34uvsolar.php
+- solaruvds.php
+- rainfall-year-month.php
+- max-mintemp.php
+- max-minwind.php
+
+Also a .gitignore file was added to the distribution to help prevent clobbering your settings/data from your station on a future 
+'git pull' operation.
