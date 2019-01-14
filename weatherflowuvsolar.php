@@ -2,7 +2,7 @@
 //weather34 weatherflow uv module 27th September 2018 //
 
 include_once('livedata.php');header('Content-type: text/html; charset=utf-8');
-include_once('weatherflow.php');
+$section1 = file_get_contents('https://swd.weatherflow.com/swd/rest/observations/station/'.$weatherflowID.'?api_key='.$somethinggoeshere.'');file_put_contents('jsondata/weatherflow.txt',$section1);
 ?>
 
 <div class="updatedtime"><span><?php if(file_exists($file1)&&time()- filemtime($file1)>900)echo '

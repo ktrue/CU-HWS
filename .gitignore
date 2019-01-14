@@ -1,0 +1,15 @@
+#
+# Ignore file for CU-HWS configuration
+#
+# ignore the downloaded json files (but not the wuupdate.php there
+jsondata/*.txt
+
+# ignore the graphics data file downloads
+chartswudata/*
+
+# ignore the demodata files
+demodata/*
+
+# ignore settings1.php as it contains the user's current configuration
+settings1.php
+
