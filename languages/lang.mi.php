@@ -171,7 +171,7 @@ $lang['Belowhorizon'] = 'paewai o te moana<br>i raro';
 $lang['Mintill'] = '<br>meneti noa';
 $lang['Minago'] = ' miniti ki muri';
 $lang['Hrs'] = ' hrs';
-$lang['Min'] = ' min';
+$lang['Mins'] = ' min';
 $lang['TotalDarkness'] = 'Potangotango';
 $lang['TotalDaylight'] = 'Awatea';
 $lang['Below'] = 'ko raro te pae';
@@ -284,7 +284,9 @@ $lang['StrongE'] = 'Strong Earthquake';
 $lang['RegionalE'] = 'Regional';
 
 //extras
-$lang['SunPosition'] = 'Sun Position';
+$lang['SunPosition'] = 'Tuhinga o te Ra';
+$lang['Azimuth'] = 'Azimuth';
+$lang['Elevation'] = 'Elevation';
 $lang['Conditions'] = 'Conditions';
 $lang['Cloudbase Height'] = 'Cloudbase Height';
 $lang['Station'] = 'Station';

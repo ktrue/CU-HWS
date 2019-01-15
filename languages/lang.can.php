@@ -185,7 +185,7 @@ $lang['Belowhorizon'] = 'below<br>horizon';
 $lang['Till'] = 'Till ';
 $lang['Minago'] = ' mins ago';
 $lang['Hrs'] = ' hrs';
-$lang['Min'] = ' min';
+$lang['Mins'] = ' min';
 $lang['TotalDarkness'] = 'Total Darkness';
 $lang['TotalDaylight'] = 'Total Daylight';
 $lang['Below'] = 'is below the horizon';
@@ -304,6 +304,8 @@ $lang['RegionalE'] = 'Regional';
 
  //extras
 $lang['SunPosition'] = 'Sun Position';
+$lang['Azimuth'] = 'Azimuth';
+$lang['Elevation'] = 'Elevation';
 $lang['Conditions'] = 'Conditions';
 $lang['Cloudbase Height'] = 'Cloudbase Height';
 $lang['Station'] = 'Station';

@@ -1394,13 +1394,14 @@ your nearly there :-) keep going<br><br>
          <option><?php echo $sunoption ;?></option>
             <option>sun1.php</option>
             <option>sun2.php</option>
+            <option>sun3.php</option>
             
                  
             
         </select>
        <br>
         <svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(24, 25, 27, 0.8)" stroke="rgba(24, 25, 27, 0.8)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
-     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg> <strong> two options sun1.php works universal at all latitudes less info, sun2.php is for northern hemisphere only and has additional info </strong><br>
+     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg> <strong> Three options:<br>sun1.php works universal at all latitudes with less info,<br>sun2.php is for northern hemisphere only and has additional info<br>sun3.php is a new port from Wim's pwsWD sun_block.php script and should work for either hemisphere. </strong><br>
 
 <p>
         

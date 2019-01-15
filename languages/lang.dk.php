@@ -181,7 +181,7 @@ $lang['Belowhorizon'] = 'under<br>horisonten';
 $lang['Mintill'] = '<br>min. til';
 $lang['Minago'] = ' min. siden';
 $lang['Hrs'] = ' timer';
-$lang['Min'] = ' min.';
+$lang['Mins'] = ' min.';
 $lang['TotalDarkness'] = 'Total Mørke';
 $lang['TotalDaylight'] = 'Total Dagslys';
 $lang['Below'] = 'er under horisonten';
@@ -290,7 +290,7 @@ $lang['uvalert'] = 'Advarsel, høj UVINDEX';
 $lang['Rainbow'] = 'Regnbue';
 $lang['Windy'] = 'Blæsende';
 $lang['Max'] = 'Max';
-$lang['Min'] = 'Min';
+$lang['Mins'] = 'Min';
 
 //earthquake TOP MODULE 10 July 2017
 $lang['ModerateE'] = 'Moderate Earthquake';
@@ -298,7 +298,9 @@ $lang['MinorE'] = 'Minor Earthquake';
 $lang['StrongE'] = 'Strong Earthquake';
 $lang['RegionalE'] = 'Regional';
 //extras
-$lang['SunPosition'] = 'Sun Position';
+$lang['SunPosition'] = 'Solens position';
+$lang['Azimuth'] = 'Azimuth';
+$lang['Elevation'] = 'Forhøjelse';
 $lang['Conditions'] = 'Conditions';
 $lang['Cloudbase Height'] = 'Cloudbase Height';
 $lang['Station'] = 'Station';
