@@ -97,11 +97,11 @@ include('livedata.php');include('common.php');include('settings1.php');date_defa
 <?php if ($purpleairhardware=='yes'){echo''?>
   <span class="yearpopup" style="-webkit-transform:rotate(<?php echo $hemisphere;?>deg);-moz-transform:rotate(<?php echo $hemisphere;?>deg);-ms-transform:rotate(<?php echo $hemisphere;?>deg);-o-transform:rotate(<?php echo $hemisphere;?>deg);transform:rotate(<?php echo $hemisphere;?>deg);"><?php echo $moon=moon_posit($months, $days, $years);?>
 <a alt="current moonphase" title="current moonphase" href=mooninfo.php data-featherlight=iframe><?php $moon = new MoonPhase();$moonage =$moon->age();
-{if ($moonage<1.84566) {echo "New Moon";} elseif ($moonage<5.53699) {echo "Waxing Crescent";} elseif ($moonage<9.22831) {echo "First Quarter";} elseif ($moonage<12.91963) {echo "Waxing Gibbous";
-} elseif ($moonage<16.61096) {echo "Full Moon";} elseif ($moonage<20.302228) {echo "Waning Gibbous";} elseif ($moonage<23.99361) {echo "Last Quarter";} elseif ($moonage<27.68493) {    echo "Waning Crescent";
-} else { echo "New Moon ";}}}
+{if ($moonage<1.84566) {echo $lang['Newmoon'];} elseif ($moonage<5.53699) {echo $lang['Waxingcrescent'];} elseif ($moonage<9.22831) {echo $lang['Firstquarter'];} elseif ($moonage<12.91963) {echo $lang['Waxinggibbous'];
+} elseif ($moonage<16.61096) {echo $lang['Fullmoon'];} elseif ($moonage<20.302228) {echo $lang['Waninggibbous'];} elseif ($moonage<23.99361) {echo $lang['Lastquarter'];} elseif ($moonage<27.68493) {    echo $lang['Waningcrescent'];
+} else { echo $lang['Newmoon'];}}}
 ?></a></span>  
-<span class="monthpopup"><a alt="meteor showers" title="meteor showers" href="meteorshowers.php" data-featherlight="iframe"><?php echo $meteorinfo;?> &nbsp;<?php if ($meteor_default=='No Meteor') {echo "Meteor Showers";} else {	echo $meteor_default;}?></a></span>
+<span class="monthpopup"><a alt="meteor showers" title="meteor showers" href="meteorshowers.php" data-featherlight="iframe"><?php echo $meteorinfo;?> &nbsp;<?php if ($meteor_default=='No Meteor') {echo $lang['Meteor'];} else {	echo $lang['Nometeor'];}?></a></span>
 <span class="todaypopup"><a alt="aurora information" title="aurora information" href=aurora.php data-featherlight=iframe><?php echo $info;?> Aurora <?php if ($kp>=5) {echo '<oorange>Active</oorange>';}else {echo "";}?></a></span></div>
 <span class='moduletitle'><?php echo $lang['SunPosition'];?></span><br />
   <div id="moonphase"></div> </div></div></div>
@@ -153,9 +153,9 @@ include('livedata.php');include('common.php');include('settings1.php');date_defa
   <?php if ($purpleairhardware=='no'){echo''?>
   <span class="yearpopup" style="-webkit-transform:rotate(<?php echo $hemisphere;?>deg);-moz-transform:rotate(<?php echo $hemisphere;?>deg);-ms-transform:rotate(<?php echo $hemisphere;?>deg);-o-transform:rotate(<?php echo $hemisphere;?>deg);transform:rotate(<?php echo $hemisphere;?>deg);"><?php echo $moon=moon_posit($months, $days, $years);?>
 <a alt="current moonphase" title="current moonphase" href=mooninfo.php data-featherlight=iframe><?php $moon = new MoonPhase();$moonage =$moon->age();
-{if ($moonage<1.84566) {echo "New Moon";} elseif ($moonage<5.53699) {echo "Waxing Crescent";} elseif ($moonage<9.22831) {echo "First Quarter";} elseif ($moonage<12.91963) {echo "Waxing Gibbous";
-} elseif ($moonage<16.61096) {echo "Full Moon";} elseif ($moonage<20.302228) {echo "Waning Gibbous";} elseif ($moonage<23.99361) {echo "Last Quarter";} elseif ($moonage<27.68493) {    echo "Waning Crescent";
-} else { echo "New Moon ";}}}
+{if ($moonage<1.84566) {echo $lang['Newmoon'];} elseif ($moonage<5.53699) {echo $lang['Waxingcrescent'];} elseif ($moonage<9.22831) {echo $lang['Firstquarter'];} elseif ($moonage<12.91963) {echo $lang['Waxinggibbous'];
+} elseif ($moonage<16.61096) {echo $lang['Fullmoon'];} elseif ($moonage<20.302228) {echo $lang['Waninggibbous'];} elseif ($moonage<23.99361) {echo $lang['Lastquarter'];} elseif ($moonage<27.68493) {    echo $lang['Waningcrescent'];
+} else { echo $lang['Newmoon'];}}}
 ?></a></span>  
   <span class="monthpopup"><?php if ($purpleairhardware=='yes'){echo ' <a href="purpleair.php" data-featherlight="iframe">'. $chartinfo. "Air Quality </a></span>";}?> 
 </a></span>  
@@ -176,5 +176,7 @@ else echo '<a href="https://weather34.com/homeweatherstation/" title="https://we
 
 <div class=footertext>
 <?php echo $info?>Source:<?php echo $mbplatform;?> (<?php echo $weather["swversion"];echo "-",$weather["version"]." Template:<oblue>".$templateversion?></oblue>)&nbsp;
-<?php echo $info;?>Hardware:<?php echo $weatherhardware;?><br><?php echo $info;?><?php echo $stationlocation ;?> Weather Station &nbsp; <img src="img/flags/<?php echo $flag ;?>.svg" width="20px" ></div></div></div>
+<?php echo $info;?>Hardware:<?php echo $weatherhardware;?><br><?php echo $info;?><?php echo $stationlocation ;?> Weather Station &nbsp; <img src="img/flags/<?php echo $flag ;?>.svg" width="20px" ><?php 
+if (isset($personalmessage) and trim($personalmessage) <> '') {echo '<br />'.$personalmessage;}
+?></div></div></div>
 <div id=lightningalert></div></body><?php include('updater.php');include('menu.php')?></html>

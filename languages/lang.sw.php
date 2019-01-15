@@ -21,7 +21,7 @@ setlocale(LC_TIME, "sv_SE.UTF-8");
 $lang = array();
 
 // Menu
-
+$lang['Till'] = 'Till ';
 $lang['Settings'] = 'Inställningar';
 $lang['Layout'] = 'Byta layout';
 $lang['Lighttheme'] = 'Ljust tema';
@@ -171,7 +171,7 @@ $lang['Belowhorizon'] = 'under<br>horisonten';
 $lang['Mintill'] = '<br>min. till';
 $lang['Minago'] = ' min. sedan';
 $lang['Hrs'] = ' timmar';
-$lang['Min'] = ' min.';
+$lang['Mins'] = ' min.';
 $lang['TotalDarkness'] = 'Totalt mörker';
 $lang['TotalDaylight'] = 'Totalt ljus';
 $lang['Below'] = 'är under horisonten';
@@ -285,7 +285,9 @@ $lang['StrongE'] = 'Stark jordbävning';
 $lang['RegionalE'] = 'Regional';
 
 //extras
-$lang['SunPosition'] = 'Sun Position';
+$lang['SunPosition'] = 'Solens position';
+$lang['Azimuth'] = 'Azimut';
+$lang['Elevation'] = 'Höjning';
 $lang['Conditions'] = 'Förhållande';
 $lang['Cloudbase Height'] = '-------Molnbas';
 $lang['Station'] = 'Station';

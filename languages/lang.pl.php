@@ -185,7 +185,7 @@ $lang['Belowhorizon'] = 'poniżej<br>horyzontu';
 $lang['Mintill'] = '<br>min. dopóki';
 $lang['Minago'] = 'min. temu';
 $lang['Hrs'] = ' godz.';
-$lang['Min'] = ' min.';
+$lang['Mins'] = ' min.';
 $lang['TotalDarkness'] = 'Ogólnie noc';
 $lang['TotalDaylight'] = 'Ogólnie dzień';
 $lang['Below'] = 'jest poniżej horyzontu';
@@ -302,7 +302,9 @@ $lang['StrongE'] = 'Silne Trzęsienie';
 $lang['RegionalE'] = 'Regionalnie';
 
 //extras
-$lang['SunPosition'] = 'Sun Position';
+$lang['SunPosition'] = 'Pozycja Słońca';
+$lang['Azimuth'] = 'Azymut';
+$lang['Elevation'] = 'Elewacja';
 $lang['Conditions'] = 'Warunki';
 $lang['Cloudbase Height'] = 'Podstawa chmurt';
 $lang['Station'] = 'Stacja';

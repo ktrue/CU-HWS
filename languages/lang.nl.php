@@ -188,7 +188,7 @@ $lang['Belowhorizon']			      = 'achter de<br>horizon';
 $lang['Mintill']                              = '<br>min tot';
 $lang['Minago']                               = 'min geleden';
 $lang['Hrs']                                  = ' hrs';
-$lang['Min']                                  = ' min';
+$lang['Mins']                                  = ' min';
 $lang['TotalDarkness']                        = 'Totale Duisternis';
 $lang['TotalDaylight']                        = 'Totale Daglicht';
 $lang['Below']                                = 'is achter de horizon';
@@ -306,7 +306,9 @@ $lang['StrongE'] = 'Strong Earthquake';
 $lang['RegionalE'] = 'Regional';
 
 //extras
-$lang['SunPosition'] = 'Sun Position';
+$lang['SunPosition'] = 'Positie van de zon';
+$lang['Azimuth'] = 'Azimut';
+$lang['Elevation'] = 'Hoogte';
 $lang['Conditions'] = 'Conditions';
 $lang['Cloudbase Height'] = 'Cloudbase Height';
 $lang['Station'] = 'Station';

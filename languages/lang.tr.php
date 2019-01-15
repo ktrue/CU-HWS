@@ -183,7 +183,7 @@ $lang['Belowhorizon'] = 'altında<br>ufuk';
 $lang['Mintill'] = '<br>sonra';
 $lang['Minago'] = 'son';
 $lang['Hrs'] = ' hrs';
-$lang['Min'] = ' min';
+$lang['Mins'] = ' min';
 $lang['TotalDarkness'] = 'Toplam Karanlık';
 $lang['TotalDaylight'] = 'Toplam Aydınlık';
 $lang['Below'] = 'ufuktan aşağıda';
@@ -303,7 +303,9 @@ $lang['StrongE'] = 'Önemli  Depremler';
 $lang['RegionalE'] = 'Bölgesel';
 
 //extras
-$lang['SunPosition'] = 'Güneş';
+$lang['SunPosition'] = 'Güneşin Konumu';
+$lang['Azimuth'] = 'Azimutu';
+$lang['Elevation'] = 'Yükselmesi';
 $lang['Conditions'] = 'Kosullari';
 $lang['Cloudbase Height'] = 'Bulutu';
 $lang['Station'] = 'İstasyon';
