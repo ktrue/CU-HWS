@@ -26,9 +26,9 @@
 ?>
 </div></smalluvunit>
 
-<div class="minword">Wind</div></div>
+<div class="minword"><?php echo $lang['Windspeed'];?></div></div>
 
-<div class="mintimedate">Max
+<div class="mintimedate"><?php echo $lang['Max'];?>
 </div>  
 <div class="yearwordbig">Wind</div>
 
@@ -53,8 +53,8 @@
  else if ($weather["wind_units"]=='m/s' && $weather["wind_gust_speed_max"]>-50){ echo "<topblue1>", $weather["wind_gust_speed_max"]." <smallwindunit>".$weather["wind_units"] ; }
  ?>
 </div></smalluvunit>
-<div class="maxword">Gust</div></div>
-<div class="maxtimedate">Max
+<div class="maxword"><?php echo $lang['Gust'];?></div></div>
+<div class="maxtimedate"><?php echo $lang['Max'];?>
 </div>  
 
  
