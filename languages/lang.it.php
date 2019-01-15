@@ -182,7 +182,7 @@ $lang['Belowhorizon'] = 'sotto<br>orizzonte';
 $lang['Mintill'] = '<br>min fino';
 $lang['Minago'] = ' min fa';
 $lang['Hrs'] = ' ore';
-$lang['Min'] = ' min';
+$lang['Mins'] = ' min';
 $lang['TotalDarkness'] = 'Ore notte';
 $lang['TotalDaylight'] = 'Ore giorno';
 $lang['Below'] = '&egrave; sotto orizzonte';
@@ -290,7 +290,9 @@ $lang['Rainbow'] = 'Rainbow';
 $lang['Windy'] = 'Windy';
 
 //extras
-$lang['SunPosition'] = 'Sun Position';
+$lang['SunPosition'] = 'Posizione del sole';
+$lang['Azimuth'] = 'Azimuth';
+$lang['Elevation'] = 'Elevazione';
 $lang['Conditions'] = 'Condizioni';
 $lang['Cloudbase Height'] = 'Altezza Nuvole';
 $lang['Station'] = 'Stazione';

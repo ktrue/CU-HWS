@@ -185,7 +185,7 @@ $lang['Belowhorizon'] = 'Sous l horizon';
 $lang['Mintill'] = '<br>Jusqu à min:';
 $lang['Minago'] = ' Il y a min:';
 $lang['Hrs'] = ' Hrs';
-$lang['Min'] = ' Min';
+$lang['Mins'] = ' Min';
 $lang['TotalDarkness'] = 'Obscurité totale';
 $lang['TotalDaylight'] = 'Journée très ensoleillée';
 
@@ -308,7 +308,9 @@ $lang['StrongE'] = 'Tremblement de terre fort';
 $lang['RegionalE'] = 'Regionale';
 
 //extras
-$lang['SunPosition'] = 'Sun Position';
+$lang['SunPosition'] = 'Position du soleil';
+$lang['Azimuth'] = 'Azimut';
+$lang['Elevation'] = 'Élévation';
 $lang['Conditions'] = 'Conditions';
 $lang['Cloudbase Height'] = 'Base des nuages';
 $lang['Station'] = 'Station';

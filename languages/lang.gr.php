@@ -205,7 +205,7 @@ $lang['Belowhorizon'] = 'κάτω από ορίζοντα';
 $lang['Mintill'] = '<br>λεπτά ακόμα';
 $lang['Minago'] = ' λεπτά πριν';
 $lang['Hrs'] = ' ώρες';
-$lang['Min'] = ' λεπτά';
+$lang['Mins'] = ' λεπτά';
 $lang['TotalDarkness'] = 'Διάρκεια Ημέρας';
 $lang['TotalDaylight'] = 'Διάρκεια Νύχτας';
 $lang['Below'] = 'κάτω από τον ορίζοντα';
@@ -322,7 +322,10 @@ $lang['StrongE'] = 'Ισχυρός Σεισμός';
 $lang['RegionalE'] = 'Τοπικός';
 
 //extras
-$lang['SunPosition'] = 'Sun Position';
+$lang['Azimuth'] = 'Αζιμούθ';
+$lang['Elevation'] = 'Ανύψωση';
+$lang['SunPosition'] = 'Θέση του Ήλιου';
+
 $lang['Conditions'] = 'Συνθήκες';
 $lang['Cloudbase Height'] = 'Βάση Νεφών';
 $lang['Station'] = 'Σταθμός';
