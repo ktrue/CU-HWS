@@ -176,5 +176,7 @@ else echo '<a href="https://weather34.com/homeweatherstation/" title="https://we
 
 <div class=footertext>
 <?php echo $info?>Source:<?php echo $mbplatform;?> (<?php echo $weather["swversion"];echo "-",$weather["version"]." Template:<oblue>".$templateversion?></oblue>)&nbsp;
-<?php echo $info;?>Hardware:<?php echo $weatherhardware;?><br><?php echo $info;?><?php echo $stationlocation ;?> Weather Station &nbsp; <img src="img/flags/<?php echo $flag ;?>.svg" width="20px" ></div></div></div>
+<?php echo $info;?>Hardware:<?php echo $weatherhardware;?><br><?php echo $info;?><?php echo $stationlocation ;?> Weather Station &nbsp; <img src="img/flags/<?php echo $flag ;?>.svg" width="20px" ><?php 
+if (isset($personalmessage) and trim($personalmessage) <> '') {echo '<br />'.$personalmessage;}
+?></div></div></div>
 <div id=lightningalert></div></body><?php include('updater.php');include('menu.php')?></html>
