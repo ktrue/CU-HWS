@@ -70,7 +70,7 @@ else echo $weather["wind_units"];?>
 <?php if (array_key_exists("wind_speed_max", $weather)) { ?>
 
 <div class="windspeedtrend1">
-<?php echo "<span> Max </span>"."<max><b>".number_format($weather["wind_gust_speed_max"],1)."</max></b>"."<supmb> ".$weather["wind_units"]."</supmb> <br>Gust (".$weather["maxgusttime"].")";?></div>
+<?php echo "<span>".$lang['Max']."</span>"."<max><b>"." ".number_format($weather["wind_gust_speed_max"],1)."</max></b>"."<supmb> ".$weather["wind_units"]."</supmb> <br>".$lang['Gust']."(".$weather["maxgusttime"].")";?></div>
 <div class="windconverter"><?php 
 if ($weather["wind_units"]=="km/h" && $weather["wind_gust_speed"]>=50){echo "<div class=windconvertercirclered1>".number_format($weather["wind_gust_speed"]*0.621371,1)." <smallrainunit>mph</smallrainunit>";}
 else if ($weather["wind_units"]=="km/h" && $weather["wind_gust_speed"]>=35){echo "<div class=windconvertercircleorange1>".number_format($weather["wind_gust_speed"]*0.621371,1)." <smallrainunit>mph</smallrainunit>";}
