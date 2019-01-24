@@ -1,5 +1,5 @@
 <?php
-$scrpt_vrsn_dt  = 'sun3.php|00|2019-01-13|';  # first version
+$scrpt_vrsn_dt  = 'sun3.php|00|2019-01-24|';  # first version
 # 
 # weather34 template for use with Cumulus->realtime.txt
 # original version by BRIAN UNDERDOWN 2015-2016-2017-2018
