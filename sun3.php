@@ -5,6 +5,7 @@ $scrpt_vrsn_dt  = 'sun3.php|00|2019-01-13|';  # first version
 # original version by BRIAN UNDERDOWN 2015-2016-2017-2018
 # updated as sun_block.php by Wim van der Kuil http://wd34.weather-template.com/ for pwsWD 10-Jan-2019
 # back-adapted for Cumulus CU-HWS as sun3.php by Ken True - 13-Jan-2019
+# 24-Jan-2019 - fixed sun position filled circle for all browsers - ktrue
 # 
 if (isset($_REQUEST['sce']) && strtolower($_REQUEST['sce']) == 'view' ) {
    $filenameReal = __FILE__;    #               display source of script if requested so
@@ -179,11 +180,21 @@ function clc_crcl ($integer)
         $calc   = $m + $h*60;   ####  ADD check for 24 hours dark / light
         $calc   = (float) 0.5 + ($calc / $d_crcl );
         if ($calc > 2.0) { $calc = $calc - 2;}
-        return round ($calc,5);}
+        return round ($calc,5);
+		}
+function clc_sun ($integer)
+     {  global $d_crcl ;
+        $h      = (int) date ('H',$integer);
+        $m      = (int) date ('i',$integer);
+        $calc   = $h + $m/60;
+				$calc   = ($calc/24)*360; # hrs to angle in degrees
+        return round ($calc,5);
+		}
 
 $start  = clc_crcl ($result['sunrise']);
 $end    = clc_crcl ($result['sunset']);
 $pos    = clc_crcl ($now);
+$sundegrees = clc_sun  ($now); # returns angle to us for sun circle
 #
 if ($now > $result['sunset'] || $now < $result['sunrise'] ) 
      {  $sn_clr = '#B6B6B6';}
@@ -192,6 +203,7 @@ echo '
 <script>
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
+// draw hours text
 ctx.fillStyle = "#FF8940";
 ctx.textAlign = "center";
 ctx.font = "8px Arial";
@@ -204,22 +216,39 @@ ctx.textAlign = "center";
 ctx.fillStyle = "#FF8940";
 ctx.fillText("12", 63, 8);
 
+// draw background circle
 ctx.beginPath();
 ctx.arc(63, 65, 55, 0, 2 * Math.PI);
 ctx.lineWidth = 3;
 ctx.strokeStyle = "#3D4042";
 ctx.stroke();
+
+// draw daylight arc
 ctx.beginPath();
 ctx.arc(63, 65, 55, '.$start.' * Math.PI, '.$end.' * Math.PI);
 ctx.lineWidth = 3;
 ctx.lineCap = "round";
 ctx.strokeStyle = "#FF8940";
 ctx.stroke();
-ctx.beginPath();
-ctx.arc(63, 65, 55, '.$pos.'* Math.PI, '.$pos.' * Math.PI);
-ctx.lineWidth = 12;
-ctx.lineCap = "round";
-ctx.strokeStyle = "'.$sn_clr.'";
-ctx.stroke();
+
+// draw sun circle at position
+var radius = 55;
+var point_size = 6;
+var center_x = 63;
+var center_y = 65;
+
+function drawSun(angle,distance,fill){
+	var x = center_x + radius * Math.sin(-angle*Math.PI/180) * distance;
+	var y = center_y + radius * Math.cos(-angle*Math.PI/180) * distance;
+
+	ctx.beginPath();
+	ctx.fillStyle = fill;
+	ctx.strokeStyle = fill;
+	ctx.arc(x, y, point_size, 0, 2 * Math.PI);
+	ctx.fill();
+}
+
+drawSun('.$sundegrees.',1.0,"'.$sn_clr.'");
+
 </script> 
 ';
