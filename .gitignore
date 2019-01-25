@@ -13,3 +13,5 @@ demodata/*
 # ignore settings1.php as it contains the user's current configuration
 settings1.php
 
+# ignore all compare backup files
+*.bak
