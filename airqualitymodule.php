@@ -45,18 +45,31 @@ $aqiweather["label"]     = $parsed_json->{'results'}[0]->{'Label'};
 $a="";if($aqiweather["aqi"]==$a){$aqiweather["aqi"] = "0" ;}
 ?>
 <div class="updatedtime"><span><?php if(file_exists($json_string)&&time()- filemtime($json_string)>300)echo $offline. '<offline> Offline </offline>';else echo $online." ".$aqiweather["time"];?></div> 
-<div class="airqualitymoduleposition">
-<div class="airhouse">
+<div class="tempconverter2">
 <?php //WEATHER34 AIR QAULITY SVG
-if ($aqiweather["aqi"]>300){echo "<img src='css/aqi/hazair.svg?ver=1.4' width='120px' height='120px' alt='weather34 hazardous air quality' title='weather34 hazardous air quality' "; }
-else if ($aqiweather["aqi"]>200){echo "<img src='css/aqi/vhair.svg?ver=1.4' width='120px' height='120px' alt='weather34 very unhealthy air quality' title='weather34 very unhealthy air quality'" ; }
-else if ($aqiweather["aqi"]>150){echo "<img src='css/aqi/uhair.svg?ver=1.4' width='120px' height='120px' alt='weather34 unhealthy air quality' title='weather34 unhealthy air quality'" ; }
-else if ($aqiweather["aqi"]>100){echo "<img src='css/aqi/uhfsair.svg?ver=1.4' width='120px' height='120px'  alt='weather34 unhealthy for some air quality' title='weather34 unhealthy for some air quality'" ; }
-else if ($aqiweather["aqi"]>50){echo "<img src='css/aqi/modair.svg?ver=1.4' width='120px' height='120px' alt='weather34 moderate air quality' title='weather34 moderate air quality'" ; }
-else if ($aqiweather["aqi"]>=0){echo "<img src='css/aqi/goodair.svg?ver=1.4' width='120px' height='120px' alt='weather34 good air quality' title='weather34 good air quality'" ; }
+if ($aqiweather["aqi"]>200){echo "<div class=tempconvertercirclepurple>PM2.5"; }
+
+else if ($aqiweather["aqi"]>150){echo "<div class=tempconvertercirclered>PM2.5" ; }
+else if ($aqiweather["aqi"]>100){echo "<div class=tempconvertercircleorange>PM2.5" ; }
+else if ($aqiweather["aqi"]>50){echo "<div class=tempconvertercircleyellow>PM2.5" ; }
+else if ($aqiweather["aqi"]>=0){echo "<div class=tempconvertercirclegreen>PM2.5" ; }
+?>
+
+
+</div></div></div>
+
+<div class="airqualitymoduleposition">
+<div class="tempcontainer">
+<?php //WEATHER34 AIR QAULITY SVG
+if ($aqiweather["aqi"]>300){echo "<div class=air300><img src='css/aqi/hazair.svg?ver=1.4' width='110px' height='100px' alt='weather34 hazardous air quality' title='weather34 hazardous air quality' "; }
+else if ($aqiweather["aqi"]>200){echo "<div class=air200><img src='css/aqi/vhair.svg?ver=1.4' width='110px' height='100px' alt='weather34 very unhealthy air quality' title='weather34 very unhealthy air quality'" ; }
+else if ($aqiweather["aqi"]>150){echo "<div class=air150><img src='css/aqi/uhair.svg?ver=1.4' width='110px' height='100px' alt='weather34 unhealthy air quality' title='weather34 unhealthy air quality'" ; }
+else if ($aqiweather["aqi"]>100){echo "<div class=air100><img src='css/aqi/uhfsair.svg?ver=1.4' width='110px' height='100px'  alt='weather34 unhealthy for some air quality' title='weather34 unhealthy for some air quality'" ; }
+else if ($aqiweather["aqi"]>50){echo "<div class=air50><img src='css/aqi/modair.svg?ver=1.4' width='110px' height='100px' alt='weather34 moderate air quality' title='weather34 moderate air quality'" ; }
+else if ($aqiweather["aqi"]>=0){echo "<div class=air0><img src='css/aqi/goodair.svg?ver=1.4' width='110px' height='100px' alt='weather34 good air quality' title='weather34 good air quality'" ; }
 
 ?>
-</div></div>
+</div></div></div>
   
 <div class="airsvg">
 <?php 
@@ -69,12 +82,12 @@ else if ($aqiweather["aqi"]>=0){echo "<div class=dottedcirclegreen>" ; }
 ?>
 <div class="airvalue">
 <?php //WEATHER34 AIR QAULITY VALUE
- if ($aqiweather["aqi"] >300){echo "<indoorred>",$aqiweather["aqi"] ;echo "" ; } 
- else if ($aqiweather["aqi"] >200){echo "<indoorpurple>",$aqiweather["aqi"] ;echo "" ; }
- else if ($aqiweather["aqi"] >150){echo "<indoorred>",$aqiweather["aqi"] ;echo "" ; }
- else if ($aqiweather["aqi"] >100){echo "<indoororange>",$aqiweather["aqi"] ;echo "" ; }
- else if ($aqiweather["aqi"] >50){echo "<indooryellow>",$aqiweather["aqi"] ;echo "" ; }
- else if ($aqiweather["aqi"] >=0){echo "<indoorgreen>",$aqiweather["aqi"] ;echo "" ; }
+ if ($aqiweather["aqi"] >300){echo $aqiweather["aqi"] ;echo "" ; } 
+ else if ($aqiweather["aqi"] >200){echo $aqiweather["aqi"] ;echo "" ; }
+ else if ($aqiweather["aqi"] >150){echo $aqiweather["aqi"] ;echo "" ; }
+ else if ($aqiweather["aqi"] >100){echo $aqiweather["aqi"] ;echo "" ; }
+ else if ($aqiweather["aqi"] >50){echo $aqiweather["aqi"] ;echo "" ; }
+ else if ($aqiweather["aqi"] >=0){echo $aqiweather["aqi"] ;echo "" ; }
  //WEATHER34 air quality description
  if ($aqiweather["aqi"]>300){echo "<br><airdescription><indoorred> ".$lang['Hazordous']."</airdescription></oorange>  ";}
  else if ($aqiweather["aqi"]>200){echo "<br><airdescription><indoorpurple>&nbsp; &nbsp;".$lang['VeryUnhealthy']."</airdescription>  ";}
@@ -92,12 +105,5 @@ else if($aqiweather["aqi"]>100)echo $airalertorange ;
 else if($aqiweather["aqi"]>50)echo $airokyellow ;
 else echo $airok ;?></div>
 
-<div class="airwarning1"><?php 
-if ($aqiweather["aqi"]>300){echo "<div class=circlered>PM2.5" ; }
-else if ($aqiweather["aqi"]>200){echo "<div class=circlepurple>PM2.5" ; }
-else if ($aqiweather["aqi"]>150){echo "<div class=circlered>PM2.5" ; }
-else if ($aqiweather["aqi"]>100){echo "<div class=circleorange>PM2.5" ; }
-else if ($aqiweather["aqi"]>50){echo "<div class=circleyellow>PM2.5" ; }
-else if ($aqiweather["aqi"]>=0){echo "<div class=circlegreen>PM2.5" ; }
-?></div>
+
 </body>
