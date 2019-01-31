@@ -1,8 +1,9 @@
 <?php
-include('settings1.php');
+include_once('settings1.php');
 date_default_timezone_set($TZ);
 //translations for HOMEWEATHERSTATION TEMPLATE UPDATED 2nd November added set locale
 /* mb_ functions not used - ktrue - 11-Jan-2019
+  $language set to DarkSky language (doesn't always match $lang in the scripts)
 mb_internal_encoding('UTF-8');
 mb_http_output('UTF-8');
 mb_http_input('UTF-8');
@@ -49,7 +50,7 @@ switch ($lang) {
   $lang_flag = 'can';
   $lang_option = 'can';
 	$language = 'en';
-  setlocale(LC_TIME, "en_EN");
+  setlocale(LC_TIME, "en_CA");
   break;
   
   //english	us
@@ -67,7 +68,7 @@ switch ($lang) {
   $lang_flag = 'dk';
   $lang_option = 'en'; 
 	$language = 'da';
-  setlocale(LC_TIME, 'danish', 'DK', 'da_DK.ISO8859-1', 'da_DK.utf-8');
+  setlocale(LC_TIME, 'danish.utf8',  'da_DK.utf8');
   break;
   
   
@@ -77,7 +78,7 @@ switch ($lang) {
   $lang_flag = 'nl';
   $lang_option = 'en';
 	$language = 'nl';
-  setlocale(LC_TIME, "nl_NL.UTF-8");
+  setlocale(LC_TIME, 'dutch.utf8',"nl_NL.utf8");
   break;
   
   
@@ -87,7 +88,7 @@ switch ($lang) {
   $lang_flag = 'br';
   $lang_option = 'en';
 	$language = 'pt';
-  setlocale(LC_TIME, "pt_BR.UTF-8");
+  setlocale(LC_TIME, 'portugues.utf8',"pt_BR.utf8");
   break;
   
   //argentine
@@ -96,7 +97,7 @@ switch ($lang) {
   $lang_flag = 'ar';
   $lang_option = 'en';
 	$language = 'es';
-  setlocale(LC_TIME, "es_ES.UTF-8");
+  setlocale(LC_TIME, 'spanish.utf8',"es_ES.utf8");
   break;
   
     
@@ -106,7 +107,7 @@ switch ($lang) {
   $lang_flag = 'pl';
   $lang_option = 'en';
 	$language = 'pl';
-  setlocale(LC_TIME, 'pl_PL', 'pl_PL.ISO8859-2', 'polish_pol');
+  setlocale(LC_TIME, 'polish.utf8', 'pl_PL.utf8', 'polish_pol.utf8');
   break;
   
   
@@ -116,7 +117,7 @@ switch ($lang) {
   $lang_flag = 'dl';
   $lang_option = 'en';
 	$language = 'de';
-  setlocale(LC_TIME, "de_DE.UTF-8");
+  setlocale(LC_TIME, 'german.utf8', "de_DE.utf8");
   break;
   
   //italian
@@ -125,7 +126,7 @@ switch ($lang) {
   $lang_flag = 'it';
   $lang_option = 'en';
 	$language = 'it';
-  setlocale(LC_TIME, "it_IT.UTF-8");
+  setlocale(LC_TIME, 'italian.utf8', "it_IT.utf8");
   break;
   
 //spanish
@@ -134,6 +135,7 @@ switch ($lang) {
   $lang_flag = 'sp';
   $lang_option = 'en';
 	$language = 'es';
+  setlocale(LC_TIME, 'spanish.utf8', "es_ES.utf8");
   break;
   
   
@@ -143,7 +145,7 @@ switch ($lang) {
   $lang_flag = 'cat';
   $lang_option = 'en';
 	$language = 'ca';
-  setlocale(LC_TIME, "ca_ES");
+  setlocale(LC_TIME, 'catalan.utf8', "ca_ES.utf8");
   break; 
   
 //french  
@@ -152,7 +154,7 @@ switch ($lang) {
   $lang_flag = 'fr';
   $lang_option = 'en';
 	$language = 'fr';
-  setlocale(LC_TIME, "fr_FR.UTF-8");
+  setlocale(LC_TIME, 'french.utf8', "fr_FR.utf8");
   break;
   
 //greek  
@@ -161,7 +163,7 @@ switch ($lang) {
   $lang_flag = 'gr';
   $lang_option = 'en';
 	$language = 'el';
-  setlocale(LC_TIME, "el_GR.UTF-8");
+  setlocale(LC_TIME, "el_GR.utf8",'el_GR','greek.utf8');
   break;
 
 //turkish  
@@ -170,7 +172,7 @@ switch ($lang) {
   $lang_flag = 'tr';
   $lang_option = 'en';
 	$language = 'tr';
-  setlocale(LC_TIME, "tr_TR.UTF-8");
+  setlocale(LC_TIME, 'turkish.utf8',"tr_TR.utf8");
   break;
   
 //swedish 
@@ -179,7 +181,7 @@ switch ($lang) {
   $lang_flag = 'sv';
   $lang_option = 'sv';
 	$language = 'sv';
-  setlocale(LC_TIME, "sv_SE.UTF-8");
+  setlocale(LC_TIME, 'swedish.utf8',"sv_SE.utf8");
   break;
   
 //default
@@ -188,7 +190,7 @@ switch ($lang) {
   $lang_flag = $defaultlanguage;
   $lang_option = 'en';
 	$language = 'en';
-  setlocale(LC_TIME, "");
+  setlocale(LC_TIME, "en_US.utf8", "en_US");
   }
 
 

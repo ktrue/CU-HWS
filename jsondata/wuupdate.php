@@ -1,7 +1,9 @@
 <?php
+// 31-Jan-2019 DarkSky multilanguage support added - ktrue
 chdir(dirname(__FILE__));
 include_once('../settings.php');
 include_once('../settings1.php');
+include_once('../common.php');
 date_default_timezone_set($TZ);
 // NEW checkwx.com API 
 if(file_exists('metar34.txt')&&time()- filemtime('metar34.txt')>1800){
@@ -19,11 +21,12 @@ $result = curl_exec ($ch5);
 curl_close ($ch5);}
 ?>
 <?php
-if(file_exists('darksky.txt')&&time()- filemtime('darksky.txt')>3600){
+$filename4 = 'darksky-'.$language.'.txt';
+if(!file_exists($filename4) or 
+  (file_exists($filename4)&&time()- filemtime($filename4)>3600)){
 // weather34 darksky  curl based
 $url4 = 'https://api.forecast.io/forecast/'.$apikey.'/'.$lat.','.$lon.'?lang='.$language.'&units='.$darkskyunit ;
 $ch4 = curl_init($url4);
-$filename4 = 'darksky.txt';
 $complete_save_loc4 = $filename4; 
 $fp4 = fopen($complete_save_loc4, 'wb'); 
 curl_setopt($ch4, CURLOPT_FILE, $fp4);
