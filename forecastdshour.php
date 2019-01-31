@@ -1,5 +1,9 @@
 <?php
-include_once('settings.php');include('livedata.php');header('Content-type: text/html; charset=utf-8');
+// 31-Jan-2019 DarkSky multilanguage support added - ktrue
+include_once('settings.php');
+include_once('common.php');
+include_once('livedata.php');
+header('Content-type: text/html; charset=utf-8');
 
 	####################################################################################################
 	#	HOME WEATHER STATION TEMPLATE by BRIAN UNDERDOWN 2016                                          #
@@ -89,7 +93,13 @@ border:0;color:#aaa;overflow:hidden!important;margin-bottom:5px;border:solid 1px
             $darkskyhourlyHumidity = $cond['humidity']*100;
             $darkskyhourlyPrecipProb = $cond['precipProbability']*100;
             if (isset($cond['precipType'])){
-            $darkskyhourlyPrecipType = $cond['precipType'];}
+              $darkskyhourlyPrecipType = $cond['precipType'];
+							if(isset($lang[ucfirst($darkskyhourlyPrecipType)])) {
+								$darkskyhourlyPrecipType = $lang[ucfirst($darkskyhourlyPrecipType)];
+							}
+						} else {
+							$darkskyhourlyPrecipType = '&nbsp;';
+						}
 			$darkskyhourlyprecipIntensity = number_format($cond['precipIntensityMax'],1);         
             $darkskyhourlyWindSpeed = round($cond['windSpeed'],0);
 			$darkskyhourlyWindGust = round($cond['windGust'],0);

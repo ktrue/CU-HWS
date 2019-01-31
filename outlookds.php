@@ -1,6 +1,11 @@
 <?php
-include_once('settings.php');include('livedata.php');include('common.php');
-
+// 31-Jan-2019 - added DarkSky multilanguage support - ktrue
+error_reporting(E_ALL);
+include_once('settings.php');
+include_once('common.php');
+include_once('livedata.php');
+ini_set('default_charset','UTF-8');
+header('Content-type: text/html; charset=UTF-8');
 	####################################################################################################
 	#	HOME WEATHER STATION TEMPLATE by BRIAN UNDERDOWN 2016-18                                       #
 	#	CREATED FOR HOMEWEATHERSTATION TEMPLATE at https://weather34.com/homeweatherstation/index.html # 
@@ -108,7 +113,7 @@ border:0;color:#aaa;overflow:hidden!important;margin-bottom:5px;border:solid 1px
 		 <div class="darkskyforecasthome">
 		<div class="darkskydiv">
 		  <?php
-        
+        print "<!-- language='$language' darkskyCond = ".count($darkskyCond)." entries. -->\n";
         foreach ($darkskydayCond as $cond) {
             $darkskydayTime = $cond['time'];
             $darkskydaySummary = $cond['summary'];
@@ -121,7 +126,10 @@ border:0;color:#aaa;overflow:hidden!important;margin-bottom:5px;border:solid 1px
 			$darkskydayUV = $cond['uvIndex'];
 			
             if (isset($cond['precipType'])){
-            $darkskydayPrecipType = $cond['precipType'];}
+              $darkskydayPrecipType = $cond['precipType'];
+						} else {
+							$darkskydayPrecipType = '';
+						}
 			$darkskydayacumm=round($cond['precipAccumulation'],1);
 			$darkskydayprecipIntensity = number_format($cond['precipIntensityMax'],1);         
             $darkskydayWindSpeed = round($cond['windSpeed'],0);
@@ -160,7 +168,7 @@ border:0;color:#aaa;overflow:hidden!important;margin-bottom:5px;border:solid 1px
 				  echo ''.$snowflakesvg.'&nbsp;<darkskytempwindhome><span>Snow <blue1>&nbsp;'.$darkskydayacumm.'</blue1> cm</darkskywindhome><br></span>';}  
 				  
 				  else if ($darkskydayPrecipType='rain'){
-				  echo ''.$rainsvg.'&nbsp;<darkskytempwindhome><span>Rain <blue1>&nbsp;'. $darkskydayprecipIntensity.'</blue1>'.$rainunit.'&nbsp;<blue1>'.$darkskydayPrecipProb.'</blue1>%</darkskywindhome></span>';}  
+				  echo ''.$rainsvg.'&nbsp;<darkskytempwindhome><span>'.$lang['Rain'].' <blue1>&nbsp;'. $darkskydayprecipIntensity.'</blue1>'.$rainunit.'&nbsp;<blue1>'.$darkskydayPrecipProb.'</blue1>%</darkskywindhome></span>';}  
 				   
 				  echo  '</div>';}?></div></div></div>                
                   

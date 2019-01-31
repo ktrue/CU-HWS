@@ -1,5 +1,6 @@
 <?php 
-	####################################################################################################
+// 31-Jan-2019 DarkSky multilanguage support added - ktrue
+####################################################################################################
 	#	HOME WEATHER STATION TEMPLATE by BRIAN UNDERDOWN 2015-2016-2017                                #
 	#	CREATED FOR HOMEWEATHERSTATION TEMPLATE at https://weather34.com/homeweatherstation            # 
 	# 	                                                                                               #
@@ -8,7 +9,8 @@
 	# 	                                                                                               #
 	#   https://www.weather34.com 	                                                                   #
 	####################################################################################################
- include('settings.php');include('shared.php');
+ include_once('settings.php');
+ include_once('shared.php');
  error_reporting(0); 
  
 $file1 = 'jsondata/weatherflow.txt';
@@ -406,7 +408,7 @@ if ($weather["wind_units"] == 'mph') {
 // darksky api forecast and current script for HOMEWEATHERSTATION gets data from jsondata/darksky.json Friday 2nd December 2016 //
 //$units = 'auto';  // Read the API docs for full details // default is auto
 date_default_timezone_set($TZ);
-$json = 'jsondata/darksky.txt'; 
+$json = 'jsondata/darksky-'.$language.'.txt'; 
 $json = file_get_contents($json); 
 $response = json_decode($json, true);       
 if ($response != null) {

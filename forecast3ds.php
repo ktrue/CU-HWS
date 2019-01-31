@@ -1,6 +1,10 @@
 <?php
+// 31-Jan-2019 DarkSky multilanguage support added - ktrue
+include_once('settings.php');
+include_once('common.php');
 include_once('livedata.php');
-error_reporting(0); date_default_timezone_set($TZ);include('common.php');
+error_reporting(0); date_default_timezone_set($TZ);
+header('Content-type: text/html; charset=UTF-8');
 
 	####################################################################################################
 	#	HOME WEATHER STATION TEMPLATE by BRIAN UNDERDOWN 2016-17                                       #
@@ -20,9 +24,9 @@ error_reporting(0); date_default_timezone_set($TZ);include('common.php');
 <?php 
 
 
-$forecastime=filemtime('jsondata/darksky.txt');
+$forecastime=filemtime('jsondata/darksky-'.$language.'.txt');
 	$weather34wuurl = file_get_contents("jsondata/dark.txt");
-	if(filesize('jsondata/darksky.txt')<1){echo "".$offline. " Offline<br>";}else echo $online,"";echo " ",	date($timeFormat,$forecastime);	?></div>
+	if(filesize('jsondata/darksky-'.$language.'.txt')<1){echo "".$offline. " Offline<br>";}else echo $online,"";echo " ",	date($timeFormat,$forecastime);	?></div>
 		<?php
 		
 	$rainsvg= '<svg id="weather34 raindrop" x="0px" y="0px" viewBox="0 0 512 512" width="8px" fill="#01a4b5" stroke="#01a4b5" stroke-width="3%"><g><g><path d="M348.242,124.971C306.633,58.176,264.434,4.423,264.013,3.889C262.08,1.433,259.125,0,256,0	c-3.126,0-6.079,1.433-8.013,3.889c-0.422,0.535-42.621,54.287-84.229,121.083c-56.485,90.679-85.127,161.219-85.127,209.66
