@@ -6,7 +6,7 @@ include_once('../settings1.php');
 include_once('../common.php');
 date_default_timezone_set($TZ);
 // NEW checkwx.com API 
-if(file_exists('metar34.txt')&&time()- filemtime('metar34.txt')>1800){
+if(!file_exists('metar34.txt') or file_exists('metar34.txt')&&time()- filemtime('metar34.txt')>1800){
 $w34header= array(
             "X-API-KEY:".$metarapikey."",);
 $ch5 = curl_init();
@@ -37,7 +37,7 @@ fclose($fp4);}?>
 
 <?php 
 // weather34 earthquakes curl based
-if(file_exists('eqnotification.txt')&&time()- filemtime('eqnotification.txt')>1800){
+if(!file_exists('eqnotification.txt') or file_exists('eqnotification.txt')&&time()- filemtime('eqnotification.txt')>1800){
 $url1a = 'https://earthquake-report.com/feeds/recent-eq?json'; 
 $ch1a = curl_init($url1a);
 $filename1a = 'eqnotification.txt';

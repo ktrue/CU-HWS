@@ -1,4 +1,5 @@
 <?php
+if(!file_exists('settings1.php')) {copy('initial-settings1.php','settings1.php'); }
 include('settings1.php');
  // HOMEWEATHERSTATION EASY SETUP AUGUST 2016 //
  // SIMPLE EASY PHP BASED AND CSS //
