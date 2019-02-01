@@ -1,4 +1,0 @@
-
-Date,TemperatureHighC,TemperatureAvgC,TemperatureLowC,DewpointHighC,DewpointAvgC,DewpointLowC,HumidityHigh,HumidityAvg,HumidityLow,PressureMaxhPa,PressureMinhPa,WindSpeedMaxKMH,WindSpeedAvgKMH,GustSpeedMaxKMH,PrecipitationSumCM<br>
-2018-10-1,10.8,10.3,9.9,4.6,4.4,4.2,69,67,65,1017,1015,10,2,11,0.00
-<br>
