@@ -63,7 +63,7 @@ aqiimage1{position:absolute;left:-5px;top:-2px;}
 .aqigraphic{position:absolute;left:0;}
 
 
-.extraqiinfo{position:absolute;top:10px;font-size:12px;color:#aaa;left:175px;width:100px}
+.extraqiinfo{position:absolute;top:10px;font-size:12px;color:#aaa;left:175px;width:100px;white-space:nowrap}
 .extraqiinfo2{position:absolute;top:20px;font-size:12px;color:#aaa;left:175px;width:100px}
 
 .airhouse{position:absolute;margin-top:0;margin-left:20px;z-index:99999}.airsvg{position:relative;margin-top:5px;left:27px;}airvalue{position:absolute;top:25px;left:135px;font-size:26px;}airvalue0{position:absolute;top:-10px;left:135px;font-size:26px;}
@@ -189,7 +189,7 @@ $parsed_json             = json_decode($json_string);
 $aqiweather["aqi"]       = number_format(pm25_to_aqi(($parsed_json->{'results'}[0]->{'PM2_5Value'} + $parsed_json->{'results'}[1]->{'PM2_5Value'}) / 2),1);
 $aqiweather["aqiozone"]  = 'N/A';
 $aqiweather["time2"]     = $parsed_json->{'results'}[1]->{'LastSeen'};
-$aqiweather["time"]      = date("H:i",$aqiweather["time2"]);
+$aqiweather["time"]      = date($timeFormat,$aqiweather["time2"]);
 $aqiweather["city"]      = $parsed_json->{'results'}[0]->{'ID'};
 $aqiweather["label"]     = $parsed_json->{'results'}[0]->{'Label'};
 $a="";if($aqiweather["aqi"]==$a){$aqiweather["aqi"] = "0" ;}
@@ -228,7 +228,7 @@ else if ($aqiweather["aqi"]>=0){echo "<div class=\"air0\"><img src=\"css/aqi/goo
  </div>
             
             <div class="extraqiinfo">
-<?php echo "Station ID:" .$aqiweather["city"]. " ".$aqiweather["state"];?>
+<?php echo "Station ID:" .$aqiweather["city"]. " ".$aqiweather["state"];?><br/>
 <?php echo "Updated:<green> " .$aqiweather["time"] ?></green>
 </div>
 
