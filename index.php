@@ -7,6 +7,7 @@
 	# 	Cumulus Version    														                       #
 	#   https://www.weather34.com 	                                                                   #
 	####################################################################################################
+if(!file_exists('settings1.php')) {copy('initial-settings1.php','settings1.php'); }
 include('livedata.php');include('common.php');include('settings1.php');date_default_timezone_set($TZ);?>
 <!DOCTYPE html>
 <html>
