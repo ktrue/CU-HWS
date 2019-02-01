@@ -169,15 +169,15 @@ include('livedata.php');include('common.php');include('settings1.php');date_defa
     </div></div>
  <!--end outdoor data for homeweatherstation template-->
   <!--footer area for homeweatherstation template warning dont mess with this below this line unless you really know what you are doing-->
-<div class=weatherfooter-container><div class=weatherfooter-item> 
-<div class=hardwarelogo1><a href="" target="_blank" title=""><img src="img/cumulus.svg" width="125px" height="25px" alt="meteobridge"></a></div><div class=hardwarelogo2><?php 
-if ($davis=="Yes"){echo '<a href="https://www.davisinstruments.com/solution/vantage-pro2/" title="https://www.davisinstruments.com/solution/vantage-pro2/" target="_blank"><img src="img/designedfor.svg" width="125px" height="125px" alt="Davis Instruments&reg;" ></a>';}
-else if ($weatherhardware=='Weatherflow Air-Sky'){echo '<a href="http://weatherflow.com/" title="http://weatherflow.com/" target="_blank"><img src="img/wflogo.svg" width="100px" alt="http://weatherflow.com/" ></a>';}
-else echo '<a href="https://weather34.com/homeweatherstation/" title="https://weather34.com/homeweatherstation/" target="_blank"><img src="img/weather34logo.svg" width="40px" alt="https://weather34.com/homeweatherstation/" class="homeweatherstationlogo" ></a>';?> </div>
+<div class="weatherfooter-container"><div class="weatherfooter-item"> 
+<div class="hardwarelogo1"><a href="" target="_blank" title=""><img src="img/cumulus.svg" width="125" height="25" alt="meteobridge"></a></div><div class="hardwarelogo2"><?php 
+if ($davis=="Yes"){echo '<a href="https://www.davisinstruments.com/solution/vantage-pro2/" title="https://www.davisinstruments.com/solution/vantage-pro2/" target="_blank"><img src="img/designedfor.svg" width="125" height="125" alt="Davis Instruments&reg;"  style="margin-top: -40px" ></a>';}
+else if ($weatherhardware=='Weatherflow Air-Sky'){echo '<a href="http://weatherflow.com/" title="http://weatherflow.com/" target="_blank"><img src="img/wflogo.svg" width="100" alt="http://weatherflow.com/" ></a>';}
+else echo '<a href="https://weather34.com/homeweatherstation/" title="https://weather34.com/homeweatherstation/" target="_blank"><img src="img/weather34logo.svg" width="40" alt="https://weather34.com/homeweatherstation/" class="homeweatherstationlogo" ></a>';?> </div>
 
-<div class=footertext>
+<div class="footertext">
 <?php echo $info?>Source:<?php echo $mbplatform;?> (<?php echo $weather["swversion"];echo "-",$weather["version"]." Template:<oblue>".$templateversion?></oblue>)&nbsp;
-<?php echo $info;?>Hardware:<?php echo $weatherhardware;?><br><?php echo $info;?><?php echo $stationlocation ;?> Weather Station &nbsp; <img src="img/flags/<?php echo $flag ;?>.svg" width="20px" ><?php 
+<?php echo $info;?>Hardware:<?php echo $weatherhardware;?><br><?php echo $info;?><?php echo $stationlocation ;?> Weather Station &nbsp; <img src="img/flags/<?php echo $flag ;?>.svg" width="20" ><?php 
 if (isset($personalmessage) and trim($personalmessage) <> '') {echo '<br />'.$personalmessage;}
 ?></div></div></div>
-<div id=lightningalert></div></body><?php include('updater.php');include('menu.php')?></html>
+<div id="lightningalert"></div></body><?php include('updater.php');include('menu.php')?></html>
