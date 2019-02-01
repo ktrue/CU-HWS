@@ -39,7 +39,7 @@ $parsed_json             = json_decode($json_string);
 $aqiweather["aqi"]       = number_format(pm25_to_aqi(($parsed_json->{'results'}[0]->{'PM2_5Value'} + $parsed_json->{'results'}[1]->{'PM2_5Value'}) / 2),1);
 $aqiweather["aqiozone"]  = 'N/A';
 $aqiweather["time2"]     = $parsed_json->{'results'}[1]->{'LastSeen'};
-$aqiweather["time"]      = date("H:i:s",$aqiweather["time2"]);
+$aqiweather["time"]      = date($timeFormat,$aqiweather["time2"]);
 $aqiweather["city"]      = $parsed_json->{'results'}[0]->{'ID'};
 $aqiweather["label"]     = $parsed_json->{'results'}[0]->{'Label'};
 $a="";if($aqiweather["aqi"]==$a){$aqiweather["aqi"] = "0" ;}
