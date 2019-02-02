@@ -9,6 +9,9 @@ This version requires Cumulus software (either Cumulus 1.9.4 Windows or Cumulus 
 from your personal weather station.  Cumulus and Cumulus MX software is available from the Cumulus Wiki at https://cumuluswiki.wxforum.net/a/Software  Cumulus 1.9.4 is *not maintained* but still functional on Windows systems.
 Cumulus MX is supported and maintained by Mark Crossley at https://github.com/mcrossley/CumulusMX
 
+Weather software that produces a realtime.txt formatted conditions file can also use this template.
+Both **WeeWX** and **WeatherCat** now have this capability.
+
 # Setup
 
 * Setup Cumulus/CumulusMX to upload realtime.txt to your weather website.
