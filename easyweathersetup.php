@@ -50,8 +50,6 @@ $livedata   = "'. $_POST["livedata"]. '";
 $currentconditions   = "'. $_POST["currentconditions"]. '";
 $boltekfile   = "'. $_POST["boltekfile"]. '";
 
-
-
 $personalmessage   = "'. $_POST["personalmessage"]. '";
 $extralinks   = "'. $_POST["extralinks"]. '";
 $languages   = "'. $_POST["languages"]. '";
@@ -113,7 +111,13 @@ FWRITE($fp, $string);
 FCLOSE($fp);
  
 }
+header('Content-type: text/html;charset=UTF-8');
+
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>easyweathersetup</title>
 <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
 <link href="favicon.ico" rel="icon" type="image/x-icon">
 <style> <!---cleaned and minified at http:http://refresh-sf.com --->
@@ -428,7 +432,8 @@ Choose the default Language to display and use..</div>
 </svg> Software 
 
      <br /><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(67, 58, 80, 1.000)" stroke="rgba(67, 58, 80, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
-     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg> Cumulus 
+     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg>
+     <?php echo ucfirst($livedataFormat); ?> 
      
     
 
@@ -463,27 +468,26 @@ Cumulus Software Path to Data file</div><p>
         <select id="livedataFormat" name="livedataFormat" class="choose1">
            <option ><?php echo $livedataFormat ;?></option>  
             <option>cumulus</option>
-          
-           
+            <option>weewx</option>
+            <option>weathercat</option>
         </select>
-            
-        
         </p>
         
     <div class= "stationvalue">Your Path to data file</div> 
     <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="#F05E40" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M12 30 L24 16 12 2" />
-</svg><br>
+</svg>
 
   <input name="livedata" type="text" id="livedata" value="<?php echo $livedata ;?>" class="chooseapi">
-       
-	<strong><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(67, 58, 80, 1.000)" stroke="rgba(67, 58, 80, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
-     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg></strong><span style="color:#777;"> Cumulus path example: http://yourdomain/realtime.txt</span><br>
+   <br>    
+     <span style="color:#777;"> Cumulus path example: <strong>./realtime.txt</strong></span><br>
+     <span style="color:#777;"> WeeWX path example: <strong>weewx/realtime.txt</strong></span><br>
+     <span style="color:#777;"> WeatherCat path example: <strong>./WCT_Realtime.txt</strong></span><br>
 	
     <br>
     <span style="color:#00A4B4">
     <strong> <svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="#FF793A" stroke="#FF793A" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
-     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg> getting the path correct is essential for live realtime data display</strong></span>
+     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg> getting the relative file path/filename correct is essential for live realtime data display</strong></span>
 <p>
   </div>
    <div class="weatheroptions">
