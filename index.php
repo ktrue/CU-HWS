@@ -170,10 +170,29 @@ include('livedata.php');include('common.php');include('settings1.php');date_defa
  <!--end outdoor data for homeweatherstation template-->
   <!--footer area for homeweatherstation template warning dont mess with this below this line unless you really know what you are doing-->
 <div class="weatherfooter-container"><div class="weatherfooter-item"> 
-<div class="hardwarelogo1"><a href="" target="_blank" title=""><img src="img/cumulus.svg" width="125" height="25" alt="meteobridge"></a></div><div class="hardwarelogo2"><?php 
+<div class="hardwarelogo1"><?php 
+ if (preg_match('|weewx/realtime|',$livedata)) {
+	echo '<a href="http://www.weewx.com/" title="WeeWX Software" target="_blank">
+	<img src="img/logo-weewx.png" width="50" height="50" alt="http://www.weewx.com/" 
+	style="margin-left: 20px"></a>';
+	}
+  elseif (preg_match('|WCT_Realtime|',$livedata)){
+	echo '<a href="https://trixology.com/" title="WeatherCat Software" target="_blank">
+	<img src="img/WeatherCat100.png" width="50" height="50" alt="https://trixology.com/" 
+	style="margin-left: 20px"></a>';
+	}
+  else { 
+  echo '<a href="https://cumuluswiki.wxforum.net/a/Software" target="_blank" title="Cumulus Software">
+	<img src="img/cumulus.svg" width="125" height="25" alt="Cumulus"
+	style="margin-top: 15px;"></a>';
+	}
+?></div>
+
+<div class="hardwarelogo2"><?php 
 if ($davis=="Yes"){echo '<a href="https://www.davisinstruments.com/solution/vantage-pro2/" title="https://www.davisinstruments.com/solution/vantage-pro2/" target="_blank"><img src="img/designedfor.svg" width="125" height="125" alt="Davis Instruments&reg;"  style="margin-top: -40px" ></a>';}
 else if ($weatherhardware=='Weatherflow Air-Sky'){echo '<a href="http://weatherflow.com/" title="http://weatherflow.com/" target="_blank"><img src="img/wflogo.svg" width="100" alt="http://weatherflow.com/" ></a>';}
-else echo '<a href="https://weather34.com/homeweatherstation/" title="https://weather34.com/homeweatherstation/" target="_blank"><img src="img/weather34logo.svg" width="40" alt="https://weather34.com/homeweatherstation/" class="homeweatherstationlogo" ></a>';?> </div>
+else {
+	echo '<a href="https://weather34.com/homeweatherstation/" title="https://weather34.com/homeweatherstation/" target="_blank"><img src="img/weather34logo.svg" width="40" alt="https://weather34.com/homeweatherstation/" class="homeweatherstationlogo" ></a>';}?> </div>
 
 <div class="footertext">
 <?php echo $info?>Source:<?php echo $mbplatform;?> (<?php echo $weather["swversion"];echo "-",$weather["version"]." Template:<oblue>".$templateversion?></oblue>)&nbsp;
