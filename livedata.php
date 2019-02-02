@@ -1,5 +1,6 @@
 <?php 
 // 31-Jan-2019 DarkSky multilanguage support added - ktrue
+// 02-Feb-2019 Added weewx/weathercat realtime.txt support
 ####################################################################################################
 	#	HOME WEATHER STATION TEMPLATE by BRIAN UNDERDOWN 2015-2016-2017                                #
 	#	CREATED FOR HOMEWEATHERSTATION TEMPLATE at https://weather34.com/homeweatherstation            # 
@@ -61,7 +62,11 @@ foreach($json['obs'] as $item)
 
 //Cumulus-Meteobridge(Sararoga Method)
 // Cumulus and Meteobridge(Sararoga Method) are virtually identical, so handle them together
-if (($livedataFormat == 'cumulus' || $livedataFormat == 'meteobridge') && $livedata) {
+if (
+   ($livedataFormat == 'cumulus' || 
+    $livedataFormat == 'meteobridge' ||
+		$livedataFormat == 'weewx' || 
+		$livedataFormat == 'weathercat') && $livedata) {
 	$file_live = file_get_contents($livedata);
 	$cumulus = explode(" ", $file_live);
 
@@ -136,7 +141,7 @@ if (($livedataFormat == 'cumulus' || $livedataFormat == 'meteobridge') && $lived
 	$weather["maxwindtime"]        = $cumulus[31];
 	$weather["maxgusttime"]        = $cumulus[33];	
 	$weather["version"]       	   = $cumulus[39];	
-	$weather["swversion"]          = "Cumulus" ;	
+	$weather["swversion"]          = ucfirst($livedataFormat) ;	
 	$weather["cloudbase"]          = $cumulus[52] ; 
 	$weather["cloudbase_units"]    = $cumulus[53] ;	 
 	$weather["thb0seapressmaxtime"]	= $cumulus[35] ;	

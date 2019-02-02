@@ -8,7 +8,8 @@
 	#   https://www.weather34.com 	                                                                   #
 	####################################################################################################
 if(!file_exists('settings1.php')) {copy('initial-settings1.php','settings1.php'); }
-include('livedata.php');include('common.php');include('settings1.php');date_default_timezone_set($TZ);?>
+include('livedata.php');include('common.php');include('settings1.php');date_default_timezone_set($TZ);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -171,12 +172,12 @@ include('livedata.php');include('common.php');include('settings1.php');date_defa
   <!--footer area for homeweatherstation template warning dont mess with this below this line unless you really know what you are doing-->
 <div class="weatherfooter-container"><div class="weatherfooter-item"> 
 <div class="hardwarelogo1"><?php 
- if (preg_match('|weewx/realtime|',$livedata)) {
+ if ($livedataFormat == 'weewx') {
 	echo '<a href="http://www.weewx.com/" title="WeeWX Software" target="_blank">
 	<img src="img/logo-weewx.png" width="50" height="50" alt="http://www.weewx.com/" 
 	style="margin-left: 20px"></a>';
 	}
-  elseif (preg_match('|WCT_Realtime|',$livedata)){
+  elseif ($livedataFormat=='weathercat'){
 	echo '<a href="https://trixology.com/" title="WeatherCat Software" target="_blank">
 	<img src="img/WeatherCat100.png" width="50" height="50" alt="https://trixology.com/" 
 	style="margin-left: 20px"></a>';
@@ -195,7 +196,7 @@ else {
 	echo '<a href="https://weather34.com/homeweatherstation/" title="https://weather34.com/homeweatherstation/" target="_blank"><img src="img/weather34logo.svg" width="40" alt="https://weather34.com/homeweatherstation/" class="homeweatherstationlogo" ></a>';}?> </div>
 
 <div class="footertext">
-<?php echo $info?>Source:<?php echo $mbplatform;?> (<?php echo $weather["swversion"];echo "-",$weather["version"]." Template:<oblue>".$templateversion?></oblue>)&nbsp;
+<?php echo $info?>Source: (<?php echo $weather["swversion"];echo "-",$weather["version"]." Template:<oblue>".$templateversion?></oblue>)&nbsp;
 <?php echo $info;?>Hardware:<?php echo $weatherhardware;?><br><?php echo $info;?><?php echo $stationlocation ;?> Weather Station &nbsp; <img src="img/flags/<?php echo $flag ;?>.svg" width="20" ><?php 
 if (isset($personalmessage) and trim($personalmessage) <> '') {echo '<br />'.$personalmessage;}
 ?></div></div></div>
