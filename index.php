@@ -74,6 +74,7 @@ include('livedata.php');include('common.php');include('settings1.php');date_defa
   <div class="weather-item"><div class="chartforecast">
          <!-- HOURLY & Outlook for homeweather station-->
    <span class="yearpopup"> <a alt="nearby metar station" title="nearby metar station" href="metarnearby.php" data-featherlight="iframe"><?php echo $chartinfo?> <?php echo 'Nearby Metar';?> <?php if(filesize('jsondata/metar34.txt')<160){echo "(<ored>Offline</ored>)";}else echo "" ?></a></span>
+<span class="yearpopup">  <a href="windy-radar.php" data-featherlight="iframe" ><?php echo $chartinfo?> <?php echo 'Radar'; ?></a></span>
              
          </div>
   <span class='moduletitle'><?php echo $lang['Currentsky'];?></span><br /> 
