@@ -93,8 +93,24 @@ $position1title   = "'. $_POST["position1title"]. '";
 $position2title   = "'. $_POST["position2title"]. '";
 $position3title   = "'. $_POST["position3title"]. '";
 $position4title   = "'. $_POST["position4title"]. '";
+';
+if(empty($position12) or !isset($_POST['position12'])) { // convert from old index.php
+		$position12 = 'indoortemperature.php';
+		$position12title = 'Indoor Data';
+	$_POST['position12'] = $position12;
+	$_POST['position12title'] = $position12title;
+}
+$string .= '
 $position12title   = "'. $_POST["position12title"]. '";
 $position12   = "'. $_POST["position12"]. '";
+';
+if(empty($positionlastmodule) or !isset($_POST['positionlastmodule'])) { // convert from old index.php
+	$positionlastmodule = 'moonphase.php';
+	$positionlastmoduletitle = 'Moon Data';
+	$_POST['positionlastmodule'] = $positionlastmodule;
+	$_POST['positionlastmoduletitle'] = $positionlastmoduletitle;
+}
+$string .= '
 $positionlastmoduletitle   = "'. $_POST["positionlastmoduletitle"]. '";
 $positionlastmodule   = "'. $_POST["positionlastmodule"]. '";
 $temperaturemodule   = "'. $_POST["temperaturemodule"]. '";
@@ -1250,6 +1266,12 @@ your nearly there :-) keep going<br><br>
            
             
         </select>
+<?php
+  if(!isset($position12)) {
+		$position12 = 'indoortemperature.php';
+		$position12title = 'Indoor Data';
+	}
+?>
         <br>
          <div class= "stationvalue"> *Position 12</div>
        <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
@@ -1285,6 +1307,12 @@ your nearly there :-) keep going<br><br>
         <br>
         
         
+<?php
+  if(!isset($positionlastmodule)) {
+		$positionlastmodule = 'moonphase.php';
+		$positionlastmoduletitle = 'Moon Data';
+	}
+?>
         
          <div class= "stationvalue"> *Last Module</div>
        <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
