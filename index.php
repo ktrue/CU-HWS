@@ -116,10 +116,11 @@ include('livedata.php');include('common.php');include('settings1.php');date_defa
       </div>
   <span class='moduletitle'><?php echo $lang['Rainfalltoday']; ?></span><br />   
          <div id="rainfall"></div></div>
+  <?php
+/* old version  
   <!--solar or web cam for homeweatherstation template-->
   <div class="weather-item"><div class="chartforecast" style="z-index:20;">  
    <span class="yearpopup"> 
-  <?php 
   if ($uvhardware == 'webcamsmall.php' ) {echo  $webcamicon.'  <a href="cam.php" data-featherlight="iframe" >
    '.$lang['LiveWebCam'] ."</a>";}  
   else echo ''   ?></a></span>      
@@ -169,6 +170,51 @@ include('livedata.php');include('common.php');include('settings1.php');date_defa
      </span></span>
       <div id="dldata"></div>    
     </div></div>
+
+ <!--end outdoor data for homeweatherstation template-->
+*/
+?>
+  <!--position 12th module (second to last) for homeweatherstation template-->
+  <div class="weather-item"><div class="chartforecast" >
+  <span class="yearpopup">
+<?php if ($position12=='webcamsmall.php'){echo'<a alt="Webcam " title="Webcam " href="webcam.php" data-featherlight="iframe">'. $webcamicon. " Live Webcam </a></span>";}?>
+<?php if ($position12=='airqualitymodule.php') {echo ' <a alt="air quality information" title="air quality information" href="purpleair.php" data-featherlight="iframe">'. $chartinfo. " Air Quality | Cloudbase </a></span>";}?>
+<?php if ($position12=='indoortemperature.php') {echo ' <a alt="Indoor Guide" title="Indoor Guide" href="homeindoor.php" data-featherlight="iframe">'. $chartinfo. " Indoor Guide </a></span>";}?>
+<?php if ($position12=='moonphase.php') {echo ' <a alt="Moon Info" title="Moon Info" href="mooninfo.php" data-featherlight="iframe">'. $chartinfo. " Moon Info </a></span>";}?>
+<?php /* uvalmanac.php has no data to use
+<?php if ($position12=='weather34uvsolar.php') {echo ' <a alt="UV Alamanac" title="UV Alamanac" href="uvalmanac.php" data-featherlight="iframe">'. $chartinfo. " UV Alamanac </a></span>";}?>
+//*/ ?>
+<?php /* solaralmanac.php not working.. no data source
+<?php if ($position12=='weather34uvsolar.php') {echo '<span class="yearpopup"> <a alt="Solar Alamanac" title="Solar Alamanac" href="solaralmanac.php" data-featherlight="iframe">'. $chartinfo. " Solar Alamanac </a></span>";}?>
+//*/ ?>
+<?php if ($position12=='solaruvds.php') {echo ' <a alt="UV Guide" title="UV Guide" href="uvindexds.php" data-featherlight="iframe">'. $chartinfo. " UV Guide </a></span>";}?>
+<?php /* solaralmanac.php not working .. no data source
+<?php if ($position12=='solaruvds.php') {echo ' <a alt="Solar Alamanac" title="Solar Alamanac" href="solaralmanac.php" data-featherlight="iframe">'. $chartinfo. " Solar Alamanac </a></span>";}?>
+//*/ ?>
+<?php if ($position12=='eq.php') {echo ' <a alt="Earthquakes Worldwide" title="Earthquakes Worldwide" href="eqlist.php" data-featherlight="iframe">'. $chartinfo. " Worldwide Earthquakes </a></span>";}?>
+</div><span class='moduletitle'><?php echo $position12title?></span></span><div id="solar"></div></div>
+ <!--position last module for homeweatherstation template-->
+  <div class="weather-item"><div class="chartforecast" >
+  <span class="yearpopup">
+<?php if ($positionlastmodule=='webcamsmall.php'){echo'<a alt="Webcam " title="Webcam " href="webcam.php" data-featherlight="iframe">'. $webcamicon. " Live Webcam </a></span>";}?>
+<?php if ($positionlastmodule=='airqualitymodule.php') {echo ' <a alt="air quality" title="air quality" href="purpleair.php" data-featherlight="iframe">'. $chartinfo. " Air Quality | Cloudbase </a></span>";}?>
+<?php if ($positionlastmodule=='indoortemperature.php') {echo ' <a alt="Indoor Guide" title="Indoor Guide" href="homeindoor.php" data-featherlight="iframe">'. $chartinfo. " Indoor Guide </a></span>";} ?>
+<?php if ($positionlastmodule=='moonphase.php') {echo ' <a alt="Moon Info" title="Moon Info" href="mooninfo.php" data-featherlight="iframe">'. $chartinfo. " Moon Info </a></span>";}?>
+<?php /* uvalmanac.php has no data to use
+<?php if ($positionlastmodule=='weather34uvsolar.php') {echo ' <a alt="UV Alamanac" title="UV Alamanac" href="uvalmanac.php" data-featherlight="iframe">'. $chartinfo. " UV Alamanac </a></span>";} ?>
+//*/ ?>
+<?php /* solaralmanac.php not working.. no data
+<?php if ($positionlastmodule=='weather34uvsolar.php') {echo '<span class="yearpopup"> <a alt="Solar Alamanac" title="Solar Alamanac" href="solaralmanac.php" data-featherlight="iframe">'. $chartinfo. " Solar Alamanac </a></span>";}?>
+//*/ ?>
+<?php if ($positionlastmodule=='solaruvds.php') {echo ' <a alt="UV Guide" title="UV Guide" href="uvindexds.php" data-featherlight="iframe">'. $chartinfo. " UV Guide </a></span>";}?>
+<?php /* solaralmanac.php not working.. no data
+<?php if ($positionlastmodule=='solaruvds.php') {echo ' <a alt="Solar Alamanac" title="Solar Alamanac" href="solaralmanac.php" data-featherlight="iframe">'. $chartinfo. " Solar Alamanac </a></span>";}?>
+//*/
+?>
+<?php if ($positionlastmodule=='eq.php') {echo ' <a alt="Earthquakes Worldwide" title="Earthquakes Worldwide" href="eqlist.php" data-featherlight="iframe">'. $chartinfo. " Worldwide Earthquakes </a></span>";}?>
+</div><span class='moduletitle'><?php echo $positionlastmoduletitle?></span></span><div id="dldata"></div>
+</div></div>
+
  <!--end outdoor data for homeweatherstation template-->
   <!--footer area for homeweatherstation template warning dont mess with this below this line unless you really know what you are doing-->
 <div class="weatherfooter-container"><div class="weatherfooter-item"> 

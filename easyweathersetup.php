@@ -22,7 +22,7 @@ $UTC = "'. $_POST["UTC"]. '";
 $lon = '. $_POST["lon"]. ';
 $lat = '. $_POST["lat"]. ';
 $stationlocation = "'. $_POST["stationlocation"]. '";
-$stationName = "'. $_POST["stationName"]. '";
+$stationName = "'. $_POST["stationName"]. '";           
 $moonadj = "'. $_POST["moonadj"]. '";
 $minmag = "'. $_POST["minmag"]. '";
 $unit = "'. $_POST["unit"]. '";
@@ -34,10 +34,34 @@ $purpleairhardware   = "'. $_POST["purpleairhardware"]. '";
 $darkskyunit   = "'. $_POST["darkskyunit"]. '";
 
 $indoor = '. $_POST["indoor"]. ';
-$uk = '. $_POST["uk"]. ';
-$usa = '. $_POST["usa"]. ';
-$scandinavia = '. $_POST["scandinavia"]. ';
-$restoftheworld = '. $_POST["restoftheworld"]. ';
+$worldloc = "'.$_POST["worldloc"].'";'."\n";
+//$uk = '. $_POST["uk"]. ';
+//$usa = '. $_POST["usa"]. ';
+//$scandinavia = '. $_POST["scandinavia"]. ';
+//$restoftheworld = '. $_POST["restoftheworld"]. ';
+
+if($_POST['worldloc'] == 'usa') {
+	$string .= '$usa = true; '."\n";
+} else {
+	$string .= '$usa = false; '."\n";
+}
+if($_POST['worldloc'] == 'uk') {
+	$string .= '$uk = true; '."\n";
+} else {
+	$string .= '$uk = false; '."\n";
+}
+if($_POST['worldloc'] == 'scandinavia') {
+	$string .= '$scandinavia = true; '."\n";
+} else {
+	$string .= '$scandinavia = false; '."\n";
+}
+if($_POST['worldloc'] == 'restoftheworld') {
+	$string .= '$restoftheworld = true; '."\n";
+} else {
+	$string .= '$restoftheworld = false; '."\n";
+}
+	
+$string .= '
 $windunit = "'. $_POST["windunit"]. '";
 $distanceunit = "'. $_POST["distanceunit"]. '";
 $tempunit = "'. $_POST["tempunit"]. '";
@@ -59,7 +83,7 @@ $timeFormat    = "'. $_POST["timeFormat"]. '";
 $timeFormatShort    = "'. $_POST["timeFormatShort"]. '";
 $clockformat    = "'. $_POST["clockformat"]. '";
 
-$showDate = '. $_POST["showDate"]. ';
+$showDate = false; // always false after 27th April 2017 
 $fireriskshow = '. $_POST["fireriskshow"]. ';
 $position1   = "'. $_POST["position1"]. '";
 $position2   = "'. $_POST["position2"]. '";
@@ -69,13 +93,17 @@ $position1title   = "'. $_POST["position1title"]. '";
 $position2title   = "'. $_POST["position2title"]. '";
 $position3title   = "'. $_POST["position3title"]. '";
 $position4title   = "'. $_POST["position4title"]. '";
+$position12title   = "'. $_POST["position12title"]. '";
+$position12   = "'. $_POST["position12"]. '";
+$positionlastmoduletitle   = "'. $_POST["positionlastmoduletitle"]. '";
+$positionlastmodule   = "'. $_POST["positionlastmodule"]. '";
 $temperaturemodule   = "'. $_POST["temperaturemodule"]. '";
 $hardware   = "'. $_POST["hardware"]. '";
 $email    = "'. $_POST["email"]. '";
 $twitter   = "'. $_POST["twitter"]. '";
 $showEqNotDaylight   = '. $_POST["showEqNotDaylight"]. ';
 $notificationeq   = "'. $_POST["notificationeq"]. '";
-$uvhardware    = "'. $_POST["uvhardware"]. '";
+
 $theme1   = "'. $_POST["theme1"]. '";
 $since    = "'. $_POST["since"]. '";
 
@@ -140,12 +168,12 @@ function showForm($error="LOGIN"){
   
   <div class= "login_screen" style="width:60%;max-width:600px;margin:0 auto;color:rgba(24, 25, 27, 1.000);border:solid 1px grey;padding:10px;border-radius:4px;">  <?php echo 'Your Current PHP version is  : ' . phpversion(), ' <br>(PHP 5.6 or higher PHP 7+ is  advised if you are not already using these versions)'; ?>
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="pwd" > 
-   Enter Your Password For Cumulus Setup Screen Below
+   Enter Your Password For HWS Setup Screen Below
 <center> <div class="modal-buttons">
      <input name="passwd" type="password" class="input-button"/>  <input type="submit" name="submit_pwd" value="Login " class="modal-button" /> 
          </form> 
      </center>
-      <?php echo "2015-" ;?><?php echo date('Y');?> &copy;</a> WEATHER34 CUMULUS DASHBOARD W34-CU</span></span></span>
+      <?php echo "2015-" ;?><?php echo date('Y');?> &copy;</a> WEATHER34 HWS DASHBOARD W34-CU-HWS</span></span></span>
       <br><br>
         
 
@@ -164,11 +192,11 @@ function showForm($error="LOGIN"){
 $Password = $password; 
 if (isset($_POST['submit_pwd'])){    $pass = isset($_POST['passwd']) ? $_POST['passwd'] : '';  
    if ($pass != $Password) { 
-      showForm("Dashboard CUMULUS EASY SETUP"); 
+      showForm("Dashboard HWS EASY SETUP"); 
       exit();      
    } 
 } else { 
-   showForm("Dashboard CUMULUS EASY SETUP"); 
+   showForm("Dashboard HWS EASY SETUP"); 
    exit(); 
 } 
 ?>
@@ -177,7 +205,7 @@ if (isset($_POST['submit_pwd'])){    $pass = isset($_POST['passwd']) ? $_POST['p
 </div>
 <div span style="width:400px;margin:0 auto;margin-top:10px;text-align:center;color:#fff;background:rgba(24, 25, 27, 0.8);font-family:arial;padding:20px;border-radius:4px;"> 
 <img src='img/easyweathersetupweather34.svg' width='220px'><br>
-Welcome you have logged into the WEATHER34 CUMULUS setup screen <?php echo date("M jS Y H:i"); ?>
+Welcome! You have logged into the WEATHER34 HWS setup screen <?php echo date("M jS Y H:i"); ?>
 </span>
 </div>
 </div></div>
@@ -457,8 +485,8 @@ check path to data file
     <path d="M10 9 L3 17 10 25 M22 9 L29 17 22 25 M18 7 L14 27" />
 </svg>
 
-Cumulus Software Path to Data file</div><p>
-      <div class= "stationvalue">Data Type</div>
+Weather Software Path to Data file</div><p>
+      <div class= "stationvalue">Weather Software</div>
       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="#F05E40" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M12 30 L24 16 12 2" />
 </svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
@@ -533,26 +561,26 @@ Which Weather Station Hardware</div><p>
        <label name="weatherhardware"></label>
         <select id="weatherhardware" name="weatherhardware" class="chooseapi">           
            <option><?php echo $weatherhardware ;?></option>
-           <option>Davis&reg; Vantage Pro2&#8482;</option>
-           <option>Davis&reg; Vantage Pro2 Plus&#8482;</option> 
-           <option>Davis&reg; Vantage Pro2 Plus+FARS&#8482;</option>
-           <option>Davis&reg; Vantage Pro2 FARS&#8482;</option>
-           <option>Davis&reg; Vantage Pro2 Solar&#8482;</option>
-           <option>Davis&reg; Vantage Pro2 UV&#8482;</option> 
-           <option>Davis&reg; Vantage Vue&#8482;</option>
-           <option>Davis&reg; Envoy8x&#8482;</option>
-           <option>Davis&reg; Cabled Vantage Pro2&#8482;</option>  
-           <option>Davis&reg; Cabled Vantage Pro2 Plus&#8482;</option>  
-           <option>Davis&reg; Envoy8x&#8482;</option>  
-           <option>Davis&reg; Envoy8x&#8482;</option>
-           <option>Davis&reg; Vantage Pro1&#8482;</option>
-           <option>Davis&reg; Vantage Pro1+Solar/UV&#8482;</option>
-           <option>Davis&reg; Vantage Pro1+Solar/UV/FARS&#8482;</option>
-           <option>Davis&reg; Vantage Pro1+FARS&#8482;</option>   
-           <option>Davis&reg; Cabled Vantage Pro1&#8482;</option>           
-           <option>Davis&reg; Cabled Vantage Pro1+Solar/UV&#8482;</option>
-           <option>Davis&reg; Cabled Vantage Pro1+Solar/UV/FARS&#8482;</option> 
-           <option>Davis&reg; Cabled Vantage Pro1+FARS&#8482;</option>              
+           <option>Davis Vantage Pro2&#8482;</option>
+           <option>Davis Vantage Pro2&#8482; Plus</option> 
+           <option>Davis Vantage Pro2&#8482; Plus+FARS</option>
+           <option>Davis Vantage Pro2&#8482; FARS</option>
+           <option>Davis Vantage Pro2&#8482; Solar</option>
+           <option>Davis Vantage Pro2&#8482; UV</option> 
+           <option>Davis Vantage Vue&reg</option>
+           <option>Davis Envoy8x&#8482;</option>
+           <option>Davis Cabled Vantage Pro2&#8482;</option>  
+           <option>Davis Cabled Vantage Pro2&#8482; Plus</option>  
+           <option>Davis Envoy8x&#8482;</option>  
+           <option>Davis Envoy8x&#8482;</option>
+           <option>Davis Vantage Pro1&#8482;</option>
+           <option>Davis Vantage Pro1&#8482;+Solar/UV</option>
+           <option>Davis Vantage Pro1&#8482;+Solar/UV/FARS</option>
+           <option>Davis Vantage Pro1&#8482;+FARS</option>   
+           <option>Davis Cabled Vantage Pro1&#8482;</option>           
+           <option>Davis Cabled Vantage Pro1&#8482;+Solar/UV</option>
+           <option>Davis Cabled Vantage Pro1&#8482;+Solar/UV/FARS</option> 
+           <option>Davis Cabled Vantage Pro1&#8482;+FARS</option>              
            <option>Oregon WMR-88</option>
            <option>Oregon WMR-100</option>
            <option>Oregon WMR-200</option>
@@ -661,7 +689,7 @@ Location Details <strong>try and keep these short dont include full country try 
 </svg>
 
 <strong>Lat/Lon Example</strong><br>
-<strong>Lat</strong> 54.00000  <strong>Lon</strong> -22.00000<br><br>
+<strong>Lat</strong> 54.00000  <strong>Lon</strong> -122.00000<br><br>
 
 <svg id="i-checkmark" viewBox="0 0 32 32" width="12" height="12" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M2 20 L12 28 30 4" />
@@ -825,14 +853,14 @@ check unit(s)
     <p>
    <div class="weatheroptionssidebar"><svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="#F05E40" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M12 30 L24 16 12 2" />
-</svg> In this area only select one as true , it converts the charts to display units same as main page
+</svg> In this area only check one box. This converts the charts to display using the units that are the same as main page.
 
 <div class="weatherbottominfo">
 <svg id="i-checkmark" viewBox="0 0 32 32" width="12" height="12" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M2 20 L12 28 30 4" />
 </svg>
 
-only set one as true
+select one location
 </div>
 
 </div>
@@ -846,52 +874,19 @@ only set one as true
     <circle cx="16" cy="11" r="4" />
     <path d="M24 15 C21 22 16 30 16 30 16 30 11 22 8 15 5 8 10 2 16 2 22 2 27 8 24 15 Z" />
 </svg>
-       Tell us where your are so we can convert the charts. very important  set only one box to true set all others false (important to set each option do not leave blank !!)
+       Tell us where your are so we can convert the charts to your selection of units.
     </div>     <p>
-        <label name="uk"></label>
-        <div class= "stationvalue">Are you in the UK</div> <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="#F05E40" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-        <select id="uk" name="uk" class="choose1">
-            <option <?php if($uk=="false") echo "selected"; ?> >false</option>
-            <option <?php if($uk=="true") echo "selected"; ?> >true</option>           
-        </select>
-        
-        <label name="usa"></label>
-        <div class= "stationvalue">Are you in the USA</div> <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="#F05E40" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-        <select id="usa" name="usa" class="choose1">
-            <option <?php if($usa=="false") echo "selected"; ?> >false</option>
-            <option <?php if($usa=="true") echo "selected"; ?> >true</option>
-        </select>
-        <P>
-        <label name="scandinavia"></label>
-        <div class= "stationvalue">Are you in Scandinavia</div> <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="#F05E40" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-        <select id="scandinavia" name="scandinavia" class="choose1">
-            <option <?php if($scandinavia=="false") echo "selected"; ?> >false</option>
-            <option <?php if($scandinavia=="true") echo "selected"; ?> >true</option>            
-        </select>
-       
-         <label name="restoftheworld"></label>
-        <div class= "stationvalue">Are you not in any of others</div> <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="#F05E40" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-        <select id="restoftheworld" name="restoftheworld" class="choose1">
-            <option <?php if($restoftheworld=="false") echo "selected"; ?> >false</option>
-            <option <?php if($restoftheworld=="true") echo "selected"; ?> >true</option>
-        </select>
-    
+  <fieldset class="choose" style="width:auto; text-align:left;padding-left: 5px;margin-left: 10px;">
+  Select your location<br>
+  <input type="radio" name="worldloc" value="usa" style="text-align: left;width: auto;" 
+    <?php if($usa) {echo 'checked="checked"';}?>> United States<br>
+  <input type="radio" name="worldloc" value="uk" style="text-align: left;width: auto;"
+    <?php if($uk) {echo 'checked="checked"';}?>> United Kingdom<br>
+  <input type="radio" name="worldloc" value="scandinavia" style="text-align: left;width: auto;"
+    <?php if($scandinavia) {echo 'checked="checked"';}?>> Scandinavia (DK,NO,SE,FI)<br>
+  <input type="radio" name="worldloc" value="restoftheworld" style="text-align: left;width: auto;"
+    <?php if($restoftheworld) {echo 'checked="checked"';}?>> Other<br>
+  </fieldset>
    </div>
    
    
@@ -1129,52 +1124,8 @@ your nearly there :-) keep going<br><br>
             <option>metres</option> 
         </select>
 <br><br>
-       <div class= "stationvalue"> Do you have UV/SOLAR Hardware? Or Web Cam?</div>
-       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(0, 154, 171, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M12 30 L24 16 12 2" />
-</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-    <path d="M30 12 L16 24 2 12" />
-</svg>
-       <label name="uvhardware"></label>
-        <select id="uvhardware" name="uvhardware" class="choose">  
-            <option><?php echo $uvhardware ;?></option>              
-            <option>webcamsmall.php</option>
-            <option>eq.php</option>              
-            <option>weatherflowuvsolar.php</option>
-            <option>weather34uvsolar.php</option>
-            <option>solaruvds.php</option>
-            <option>indoortemperature.php</option>
-           
-        </select><br>
-        <strong> <span style="color:#00A4B4;">options</span></strong><br>
-        
-     <strong><svg id="i-eye" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(67, 58, 80, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="10%">
-    <circle cx="17" cy="15" r="1" /><circle cx="16" cy="16" r="6" /><path d="M2 16 C2 16 7 6 16 6 25 6 30 16 30 16 30 16 25 26 16 26 7 26 2 16 2 16 Z" />
-</svg><span style="color:#777"> webcamsmall.php if you have <strong><span style="color:#777"> webcam</strong> <span style="color:#777;"> use the optional web cam script <br>(need to add url web cam image to webcamsmall.php) <br><br></span></span>
-
-<strong><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="#F75C46" stroke="#F75C46" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
-     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777"> eq.php if you want <strong><span style="color:#777"> earthquake </strong> <span style="color:#777;"> information <br> <br></span></span>
-    
-     
-     
-    <br>
-  <strong><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="#F75C46" stroke="#F75C46" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
-     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777"> New option <span style="color:rgba(67, 58, 80, 1.000)">weather34uvsolar.php</span> if you have solar and uv hardware  <strong><span style="color:#777">  **note you must have uv/solar radiation sensor!!!<br><br></span></span>
-
- <br>
-  <strong><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="#F75C46" stroke="#F75C46" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
-     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777"> New design and option October 2018 <span style="color:rgba(67, 58, 80, 1.000)">indoortemperature.php </span>Indoor Temperature <strong><span style="color:#777">  <br><br></span></span>
-     
-     <br>
-  <strong><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="#F75C46" stroke="#F75C46" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
-     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777"> September 3rd 2018 New option <span style="color:rgba(67, 58, 80, 1.000)">weatherflowuvsolar.php </span>Weatherflow Hardware only if you want to use UV/Solar Data <strong><span style="color:#777">  <br><br></span></span>
-     
-     <br>
-  <strong><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="#F75C46" stroke="#F75C46" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
-     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777"> September 30th 2018 New option <span style="color:rgba(67, 58, 80, 1.000)">solaruvds.php </span>uses darksky forecast UV and you must have solar radiation hardware <strong><span style="color:#777">  <br><br></span></span>
-
 <div class="seperator"></div>
-  
+
   
   
   
@@ -1183,7 +1134,7 @@ your nearly there :-) keep going<br><br>
     <path d="M16 14 L16 23 M16 8 L16 10" />
     <circle cx="16" cy="16" r="14" />
 </svg>
-</svg> Options for Top Row 4 Modules <span style="color:#777;"></span> <br>   
+</svg> Options for Top Row 4 Modules and last bottom right modules <span style="color:#777;"></span> <br>   
        <div class= "stationvalue"> Position 1 Fixed</div>
        <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="#F05E40" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M12 30 L24 16 12 2" />
@@ -1300,6 +1251,75 @@ your nearly there :-) keep going<br><br>
             
         </select>
         <br>
+         <div class= "stationvalue"> *Position 12</div>
+       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M12 30 L24 16 12 2" />
+</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M30 12 L16 24 2 12" />
+</svg>
+        <label name="position12"></label>
+        <select id="position12" name="position12" class="choose">  
+            <option><?php echo $position12 ;?></option> 
+            <option>indoortemperature.php</option> 
+            <option>airqualitymodule.php</option>   
+            <option>webcamsmall.php</option> 
+            <option>moonphase.php</option>  
+            <option>weather34uvsolar.php</option>  
+            <option>solaruvds.php</option> 
+            <option>eq.php</option>    
+                     </select>
+               
+        
+        
+        <div class= "stationvalue"> Position 12 Title</div>
+       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M12 30 L24 16 12 2" />
+</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M30 12 L16 24 2 12" />
+</svg>   
+        <label name="position12title"></label>
+       <input name="position12title" type="text" id="position12title" value="<?php echo $position12title ;?>" class="choose"> 
+           
+            
+        </select>
+        <br>
+        
+        
+        
+         <div class= "stationvalue"> *Last Module</div>
+       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M12 30 L24 16 12 2" />
+</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M30 12 L16 24 2 12" />
+</svg>
+        <label name="positionlastmodule"></label>
+        <select id="positionlastmodule" name="positionlastmodule" class="choose">  
+            <option><?php echo $positionlastmodule ;?></option> 
+            <option>indoortemperature.php</option> 
+            <option>airqualitymodule.php</option>   
+            <option>webcamsmall.php</option> 
+            <option>moonphase.php</option>  
+            <option>weather34uvsolar.php</option>  
+            <option>solaruvds.php</option>  
+            <option>eq.php</option>   
+                     </select>
+               
+        
+        
+        <div class= "stationvalue">Last Title</div>
+       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M12 30 L24 16 12 2" />
+</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M30 12 L16 24 2 12" />
+</svg>   
+        <label name="positionlastmoduletitle"></label>
+       <input name="positionlastmoduletitle" type="text" id="positionlastmoduletitle" value="<?php echo $positionlastmoduletitle ;?>" class="choose"> 
+           
+            
+        </select>
+        <br>
+
+
         <strong> <span style="color:#00A4B4;">options</span></strong><br>
         <span style="color:rgba(236, 87, 27, 1.000);"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(236, 87, 27, 1.000)" stroke="rgba(67, 58, 80, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
      <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> cumulus-sunshine.php</span> if you <span style="color:rgba(67, 58, 80, 1.000)">USE</span> CUMULUS software</span><br>
@@ -1579,7 +1599,8 @@ your nearly there :-) keep going<br><br>
      <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg> g:i   <span style="color:#777;">05:34 format</span></span><br> 
      
      <br>
-        
+<?php 
+/*      
         <div class= "stationvalue">show updated date & time </div> <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="#F05E40" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M12 30 L24 16 12 2" />
 </svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
@@ -1594,7 +1615,8 @@ your nearly there :-) keep going<br><br>
     
      <span style="color:#00A4B4;font-weight:normal;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="#FF793A" stroke="#FF793A" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
      <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg> false = </span> <span style="color:#777;font-weight:normal;">not used as of 27th April 2017 always false</span>
-     
+*/
+?>     
      <div class="seperator"></div>
      
      
@@ -2053,8 +2075,10 @@ now check the weather
     <span style="font-size:12px;color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="12" height="12" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M16 14 L16 23 M16 8 L16 10" />
     <circle cx="16" cy="16" r="14" />
-</svg> CUMULUS DASHBOARD EASY SETUP &copy; 2015-<?php echo date('Y');?> Dashboard <span style="color:rgba(67, 58, 80, 1.000);">CU</span>-<span style="color:rgba(0, 154, 171, 1.000);">AUG 30th 2018</span></span>
+</svg> WEATHER34 HWS DASHBOARD EASY SETUP &copy; 2015-<?php echo date('Y');?> Dashboard <span style="color:rgba(67, 58, 80, 1.000);">CU</span>-<span style="color:rgba(0, 154, 171, 1.000);">FEB 6, 2019</span></span>
 
  
 </form></div> 
 </div>
+</body>
+</html>
