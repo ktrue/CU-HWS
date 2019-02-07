@@ -61,13 +61,13 @@ var refreshId;$(document).ready(function(){moonphase()});function moonphase(){$.
 var refreshId;$(document).ready(function(){rainfall()});function rainfall(){$.ajax({cache:false,success:function(a){$("#rainfall").html(a);<?php if ($rainRefresh > 0) {
     echo 'setTimeout(rainfall,' . 1000*$rainRefresh.')';
 } ?>},type:"GET",url:"rainfall.php"})};
-// solar or webcam
+// position12
 var refreshId;$(document).ready(function(){solar()});function solar(){$.ajax({cache:false,success:function(a){$("#solar").html(a);<?php if ($solarRefresh > 0) {
     echo 'setTimeout(solar,' . 1000*$solarRefresh.')';
-} ?>},type:"GET",url:'<?php echo $uvhardware?>'})};
+} ?>},type:"GET",url:'<?php echo $position12?>'})};
 
-//daylight /airquality
-var refreshId;$(document).ready(function(){dldata()});function dldata(){$.ajax({cache:false,success:function(a){$("#dldata").html(a);<?php if ($daylightRefresh > 0) { echo 'setTimeout(dldata,' . 1000*$daylightRefresh.')';  } ?>}, type:"GET",url:"<?php if ($purpleairhardware=="yes"){echo "airqualitymodule.php";} else if ($indoor=="true")echo "indoortemperature.php";else echo "moonphase.php"?>"})}; 
+//last module
+var refreshId;$(document).ready(function(){dldata()});function dldata(){$.ajax({cache:false,success:function(a){$("#dldata").html(a);<?php if ($daylightRefresh > 0) { echo 'setTimeout(dldata,' . 1000*$daylightRefresh.')';  } ?>}, type:"GET",url:"<?php echo $positionlastmodule?>"})}; 
 //current 3dy forecast
 var refreshId;$(document).ready(function(){currentfore()});function currentfore(){$.ajax({cache:false,success:function(a){$("#currentfore").html(a);setTimeout(currentfore,360000)},type:"GET",url:"forecast3ds.php"})};
 
