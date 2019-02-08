@@ -401,7 +401,7 @@ echo "Total Darkness Overnight <grey> $hours5:$minutesdarkness </grey> ";?>
 <div class="provided"> <?php echo $info?>  
 &nbsp;CSS/SVG/PHP scripts by <a href="https://weather34.com" title="weather34.com" target="_blank">weather34.com  &copy; 2015-<?php echo date('Y');?></a></div></body>
 <script src='js/jquery.js'></script>
-<script src='js/sundial34.js'></script>
+<!-- script src='js/sundial34.js'></script -->
 <script defer>
  var dataset=[{rrtype:"Daylight",rrtotal:<?php echo $daylighthourstoday;?>},{rrtype:"Darkness",rrtotal:<?php echo $darkhourstonight ;?>}];
  var width=107;var height=107; var radius=Math.min(width,height)/2; var donutWidth=75; var color=weather34sundial.scale.categoryweather34c().range(["#44a6b5","#3f474e"]);
