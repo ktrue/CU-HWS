@@ -82,7 +82,7 @@ $db_user    = "root";
 $db_pass  = "";
 $db_name   = "weatherstation";
 
-$metarapikey ="c18426c58f8a453fcc42cc1f82";
+$metarapikey ="";
 
 $metar   = "yes";
 $icao1   = "KSJC";
