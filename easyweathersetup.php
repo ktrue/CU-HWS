@@ -1150,7 +1150,7 @@ your nearly there :-) keep going<br><br>
     <path d="M16 14 L16 23 M16 8 L16 10" />
     <circle cx="16" cy="16" r="14" />
 </svg>
-</svg> Options for Top Row 4 Modules and last bottom right modules <span style="color:#777;"></span> <br>   
+Options for Top Row 4 Modules and last bottom right modules <span style="color:#777;"></span> <br>   
        <div class= "stationvalue"> Position 1 Fixed</div>
        <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="#F05E40" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M12 30 L24 16 12 2" />
@@ -1186,6 +1186,7 @@ your nearly there :-) keep going<br><br>
         <label name="position2"></label>
         <select id="position2" name="position2" class="choose">  
             <option><?php echo $position2 ;?></option>        
+            <option>advisory.php</option>            
             <option>cumulus-sunshine.php</option>           
             <option>max-mintemp.php</option>
             <option>max-minwind.php</option>
@@ -1217,11 +1218,11 @@ your nearly there :-) keep going<br><br>
         <label name="position3"></label>
         <select id="position3" name="position3" class="choose">  
             <option><?php echo $position3 ;?></option>        
+            <option>advisory.php</option>            
             <option>cumulus-sunshine.php</option>            
             <option>max-mintemp.php</option>
             <option>max-minwind.php</option>
             <option>rainfallf-year-month.php</option>
-            <option>homeindoor.php</option> 
             <option>earthquake.php</option>             
             <option>boltek.php</option> 
             <option>wflightning.php</option> 
@@ -1248,9 +1249,14 @@ your nearly there :-) keep going<br><br>
         <label name="position4"></label>
         <select id="position4" name="position4" class="choose">  
             <option><?php echo $position4 ;?></option>        
-             <option>advisory.php</option>
-            
-            
+            <option>advisory.php</option>            
+            <option>cumulus-sunshine.php</option>            
+            <option>max-mintemp.php</option>
+            <option>max-minwind.php</option>
+            <option>rainfallf-year-month.php</option>
+            <option>earthquake.php</option>             
+            <option>boltek.php</option> 
+            <option>wflightning.php</option> 
             </select>
                
         
@@ -1334,7 +1340,7 @@ your nearly there :-) keep going<br><br>
                
         
         
-        <div class= "stationvalue">Last Title</div>
+        <div class= "stationvalue">Last Module Title</div>
        <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M12 30 L24 16 12 2" />
 </svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
@@ -1347,14 +1353,18 @@ your nearly there :-) keep going<br><br>
         </select>
         <br>
 
+      <strong> <span style="color:rgba(86, 95, 103, 1.000);">Options Top 4 positions</span></strong><br>
 
-        <strong> <span style="color:#00A4B4;">options</span></strong><br>
+        <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(24, 25, 27, 0.8)" stroke="rgba(24, 25, 27, 0.8)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
+     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> weather34clock.php</span> Station  <span style="color:rgba(24, 25, 27, 0.8)">Time</span> (Position 1 only)<br>
+     
+       <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(236, 87, 27, 1.000)" stroke="rgba(67, 58, 80, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
+     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> 
+advisory.php</span> Station <span style="color:rgba(67, 58, 80, 1.000)">WEATHER</span> ALERTS (Note: English only)<br>
         <span style="color:rgba(236, 87, 27, 1.000);"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(236, 87, 27, 1.000)" stroke="rgba(67, 58, 80, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
      <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> cumulus-sunshine.php</span> if you <span style="color:rgba(67, 58, 80, 1.000)">USE</span> CUMULUS software</span><br>
      
-       <span style="color:rgba(236, 87, 27, 1.000);"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(67, 58, 80, 1.000)" stroke="rgba(67, 58, 80, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
-     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> weather34clcok.php</span> Daily <span style="color:rgba(67, 58, 80, 1.000)">Local</span> Time<br></span>
-       
+    
        <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(236, 87, 27, 1.000)" stroke="rgba(67, 58, 80, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
      <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> max-mintemp.php</span> Daily <span style="color:rgba(67, 58, 80, 1.000)">MAX-MIN</span> Temperatures<br></span>
      <span style="color:rgba(236, 87, 27, 1.000);"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(67, 58, 80, 1.000)" stroke="rgba(67, 58, 80, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
@@ -1362,14 +1372,7 @@ your nearly there :-) keep going<br><br>
      <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(67, 58, 80, 1.000)" stroke="rgba(67, 58, 80, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
      <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> rainfallf-year-month.php</span> Totals <span style="color:rgba(67, 58, 80, 1.000)">YEARLY-MONTHLY</span> Rainfall<br></span>
      
-       <span style="color:rgba(236, 87, 27, 1.000);"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(67, 58, 80, 1.000)" stroke="rgba(67, 58, 80, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
-     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> homeindoor.php</span> Current <span style="color:rgba(67, 58, 80, 1.000)">INDOOR</span> Temperature/Humidity<br></span>
-     
-       <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(236, 87, 27, 1.000)" stroke="rgba(67, 58, 80, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
-     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> *<span style="color:#F75C46;">English only NEW 27TH March 2018</span> advisory.php</span> Station <span style="color:rgba(67, 58, 80, 1.000)">WEATHER</span> ALERTS<br>
-      <span style="color:rgba(236, 87, 27, 1.000);"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(67, 58, 80, 1.000)" stroke="rgba(67, 58, 80, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
-     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> homenotification.php</span> Station <span style="color:rgba(67, 58, 80, 1.000)">WEATHER</span> ALERTS<br>
-     
+   
        <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(67, 58, 80, 1.000)" stroke="rgba(67, 58, 80, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
      <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> earthquake.php</span> Latest<span style="color:rgba(67, 58, 80, 1.000)"> EARTHQUAKE</span> ALERT<br>
      <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(236, 87, 27, 1.000)" stroke="rgba(67, 58, 80, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
@@ -1379,6 +1382,26 @@ your nearly there :-) keep going<br><br>
        
        
         <br></span></span>
+        <br><br>
+         <strong> <span style="color:rgba(86, 95, 103, 1.000);">options Position 12 and last module</span></strong><br>
+        <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(24, 25, 27, 0.8)" stroke="rgba(24, 25, 27, 0.8)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
+     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> indoortemperature.php <orange>display indoor temperature</orange><br></span>
+     <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(24, 25, 27, 0.8)" stroke="rgba(24, 25, 27, 0.8)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
+     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> airqualitymodule.php <orange>display airquality</orange><br></span>
+     <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(24, 25, 27, 0.8)" stroke="rgba(24, 25, 27, 0.8)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
+     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> webcamsmall.php</span> <orange>display webcam</orange> (Note: also configure <strong>webcam.php</strong> with webcam URL)<br></span>
+     <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(24, 25, 27, 0.8)" stroke="rgba(24, 25, 27, 0.8)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
+     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> mooonphase.php</span> <orange>display moonphase</orange><br></span>
+     <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(24, 25, 27, 0.8)" stroke="rgba(24, 25, 27, 0.8)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
+     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> weather34uvsolar.php</span> <orange>display uv and solar radiation if you have hardware</orange> <br></span>
+     <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(24, 25, 27, 0.8)" stroke="rgba(24, 25, 27, 0.8)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
+     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> solaruvds.php</span> <orange>display Darksky UV forecast if you have only solar radiation sensor </orange> <br></span>
+     <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(24, 25, 27, 0.8)" stroke="rgba(24, 25, 27, 0.8)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
+     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> eq.php</span> <orange>display latest earthquakes from earthquakereport.com</orange>   <br></span>
+    
+        
+        
+        <br>
         
         
         
