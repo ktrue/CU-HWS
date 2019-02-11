@@ -101,6 +101,11 @@ if (
 	$weather["barometer_min"]      = $cumulus[36];
 	$weather["barometer_units"]    = $cumulus[15]; // mb or hPa or in
 	$weather["temp_units"]         = $cumulus[14]; // C or F
+	if(preg_match('/C/i',$weather["temp_units"])) { // handle WeatherCat WCT_Realtime.txt TEMPUNITS$ format
+		$weather["temp_units"] = 'C';
+	} else {
+		$weather["temp_units"] = 'F';
+	}
 	$weather["temp_indoor"]        = $cumulus[22];
 	$weather["temp_indoor_feel"]   = heatIndex($cumulus[22], $cumulus[23]); // must set temp_units first
 	$weather["humidity_indoor"]    = $cumulus[23];
