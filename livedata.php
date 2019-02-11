@@ -135,7 +135,7 @@ if (
 	$weather["wind_gust_speed"]    = $cumulus[40];
 	$weather["wind_speed_max"]     = $cumulus[30];
 	$weather["wind_gust_speed_max"]= $cumulus[32];
-	$weather["wind_units"]         = $cumulus[13]; // m/s or mph or km/h or kts
+	$weather["wind_units"]         = strtolower($cumulus[13]); // m/s or mph or km/h or kts
 	$weather["wind_run"]           = $cumulus[17];
 	$weather["wind_speed_avg"]     = $cumulus[5];
 	$weather["sunshine"]           = $cumulus[55];
