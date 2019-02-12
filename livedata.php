@@ -63,11 +63,15 @@ foreach($json['obs'] as $item)
 //Cumulus-Meteobridge(Sararoga Method)
 // Cumulus and Meteobridge(Sararoga Method) are virtually identical, so handle them together
 if (
-   ($livedataFormat == 'cumulus' || 
-    $livedataFormat == 'meteobridge' ||
-		$livedataFormat == 'weewx' || 
-		$livedataFormat == 'weathercat') && $livedata) {
+	($livedataFormat == 'cumulus' || 
+	$livedataFormat == 'meteobridge' ||
+	$livedataFormat == 'weewx' || 
+	$livedataFormat == 'weathercat') && $livedata) {
 	$file_live = file_get_contents($livedata);
+	if(preg_match('| \d+,\d+ |',$file_live) ) {
+		// found decimal commas.. replace with decimal periods for math
+		$file_live = preg_replace('| ([-\+\d]+),(\d+)|is'," $1.$2",$file_live);
+	}
 	$cumulus = explode(" ", $file_live);
 
 	// For both Cumulus remove decimal places from wind direction
