@@ -39,11 +39,11 @@ else if($weather["temp_units"]=='F' && $weather['temp']<212){echo '<div class=ou
 <div class="temptrendx">
 <?php echo $weather["temp_trend"]." </span>\n";
 //falling
-if($weather["temp_trend"]<0){echo '<trendmovementfallingx><span>&nbsp;&nbsp;Trend</span> '.$tempfallingsymbol.' '.number_format($weather["temp_trend"],1).'&deg;</trendmovementfallingx>';}
+if($weather["temp_trend"]<0){echo '<trendmovementfallingx><span>&nbsp;&nbsp;'.$lang['Trend'].'</span> '.$tempfallingsymbol.' '.number_format($weather["temp_trend"],1).'&deg;</trendmovementfallingx>';}
 //rising
-elseif($weather["temp_trend"]>0){echo '<trendmovementrisingx><span>&nbsp;&nbsp;Trend</span> '.$temprisingsymbol.' '.number_format($weather["temp_trend"],1).'&deg;</trendmovementrisingx>';}
+elseif($weather["temp_trend"]>0){echo '<trendmovementrisingx><span>&nbsp;&nbsp;'.$lang['Trend'].'</span> '.$temprisingsymbol.' '.number_format($weather["temp_trend"],1).'&deg;</trendmovementrisingx>';}
 //steady
-else echo '<trendmovementsteadyx>Trend '.$steadysymbol.'Steady</trendmovementsteadyx>';?>
+else echo '<trendmovementsteadyx>'.$lang['Trend'].' '.$steadysymbol.'Steady</trendmovementsteadyx>';?>
 </span></div></div></div>
 <div class="heatcircle">
 <div class="heatcircle-content">
