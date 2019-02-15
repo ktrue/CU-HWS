@@ -175,6 +175,15 @@ switch ($lang) {
   setlocale(LC_TIME, 'turkish.utf8',"tr_TR.utf8");
   break;
   
+//swedish 
+  case 'sw':
+  $lang_file = 'lang.sw.php';
+  $lang_flag = 'sv';
+  $lang_option = 'sv';
+	$language = 'sv';
+  setlocale(LC_TIME, 'swedish.utf8',"sv_SE.utf8");
+  break;
+  
 //Suomi (finnish) 
   case 'fi':
   $lang_file = 'lang.fi.php';
