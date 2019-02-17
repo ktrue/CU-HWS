@@ -2,8 +2,8 @@
 /* 
 -----------------
 Language Translation File for HOMEWEATHERSTATION Template
-Language: FINNISH - SUOMI
-Translation By :  Timo Kiiveri - veikkola-weather.com
+Language: FINNISH
+Translation By :  Timo Kiiveri - veikkola-weather.com/weather34 -- https://veikkola-weather.com/ 2019-02-16
 Developed By: Brian Underdown/Erik M Madsen
 November 2016
 */
@@ -27,15 +27,15 @@ $lang['Settings'] = 'Asetukset';
 $lang['Layout'] = 'Vaihda ulkoasu';
 $lang['Lighttheme'] = 'Vaalea teema';
 $lang['Darktheme'] = 'Tumma teema';
-$lang['Nonmetric'] = 'US (F) ';
-$lang['Metric'] = 'Metrinen (C)';
-$lang['UKmetric'] = 'UK (MPH - Metrinen) ';
+$lang['Nonmetric'] = 'Fahrenheit (F) ';
+$lang['Metric'] = 'Celcius (C) ';
+$lang['UKmetric'] = 'UK (MPH) ';
 $lang['Scandinavia'] = 'Skandinavinen (m/s)';
 
-$lang['Worldwideearthquakes'] = 'World Wide Earthquakes';
-$lang['Toggle'] = 'Toggle Fullscreen ';
-$lang['Contactinfo'] = 'Station & Contact Info';
-$lang['Templateinfo'] = 'Contributors';
+$lang['Worldwideearthquakes'] = 'Maanjäristykset';
+$lang['Toggle'] = 'Vaihda kokonäyttöön ';
+$lang['Contactinfo'] = 'Ota yhteyttä';
+$lang['Templateinfo'] = 'Avustajat';
 $lang['language'] = 'Valitse kieli';
 $lang['Weatherstationinfo'] = 'Weather Station Info';
 $lang['Webdesigninfo'] = 'Template Info';
@@ -50,26 +50,26 @@ $lang['Trend'] = 'Muutos';
 $lang['Heatindex'] = 'Tukaluus';
 $lang['Windchill'] = 'Hyytävyys';
 $lang['Tempfactors'] = 'Temp Factors';
-$lang['Nocautions'] = 'No Cautions';
+$lang['Nocautions'] = 'Ei varoituksia';
 $lang['Wetbulb'] = 'Märkält';
 $lang['dry'] = '& Dry';
 $lang['verydry'] = '& Very Dry';
 //new feature temperature feels
-$lang['FreezingCold'] = 'Freezing Cold';
-$lang['FeelingVeryCold'] = 'Feeling Very Cold';
-$lang['FeelingCold'] = 'Feeling Cold';
-$lang['FeelingCool'] = 'Feeling Cool';
-$lang['FeelingComfortable'] = 'Feeling Comfortable ';
-$lang['FeelingWarm'] = 'Feeling Warm';
-$lang['FeelingHot'] = 'Feeling Hot';
-$lang['FeelingUncomfortable'] = 'Feeling Uncomfortable';
-$lang['FeelingVeryHot'] = 'Feeling Very Hot';
-$lang['FeelingExtremelyHot'] = 'Feeling Extremely Hot';
+$lang['FreezingCold'] = 'Suuri paleltumisvaara';
+$lang['FeelingVeryCold'] = 'Paleltumisvaara';
+$lang['FeelingCold'] = 'Erittäin kylmä';
+$lang['FeelingCool'] = 'Kylmä';
+$lang['FeelingComfortable'] = 'Miellyttävä';
+$lang['FeelingWarm'] = 'Lämmin';
+$lang['FeelingHot'] = 'Kuuma';
+$lang['FeelingUncomfortable'] = 'Tukala';
+$lang['FeelingVeryHot'] = 'Tukala';
+$lang['FeelingExtremelyHot'] = 'Erittäin tukala';
 
 
 
 //wind
-$lang['Windspeed'] = 'Wind Speed';
+$lang['Windspeed'] = 'Tuulen nopeus';
 $lang['Gust'] = 'Puuska';
 $lang['Direction'] = 'Suunta';
 $lang['Gusting'] = 'Gusting at';
@@ -166,36 +166,36 @@ $lang['Sunrise'] = 'Nousu';
 $lang['Sunset'] = 'Lasku';
 $lang['Moonrise'] = 'Nousu';
 $lang['Moonset'] = 'Lasku';
-$lang['Night'] = 'Night ';
-$lang['Day'] = 'Day';
+$lang['Night'] = 'Yö';
+$lang['Day'] = 'Päivä';
 $lang['Nextnewmoon'] = 'Uusikuu';
 $lang['Nextfullmoon'] = 'Täysikuu';
 $lang['Luminance'] = 'Valaistuna';
-$lang['Moonphase'] = 'Moonphase';
+$lang['Moonphase'] = 'Kuun vaihe';
 $lang['Estimated'] = 'Aika';
 $lang['Daylight'] = 'Valoisa';
 $lang['Darkness'] = 'Pimeys';
-$lang['Daysold'] = 'Days Old';
-$lang['Belowhorizon'] = 'below<br>horizon';
+$lang['Daysold'] = 'Päivää vanha';
+$lang['Belowhorizon'] = 'horisontin<br>alapuolella';
 $lang['Mintill'] = '<br>mins till';
-$lang['Minago'] = ' mins ago';
+$lang['Minago'] = ' minuuttia sitten';
 $lang['Hrs'] = ' hr';
 $lang['Mins'] = ' min';
 $lang['TotalDarkness'] = 'Total Darkness';
 $lang['TotalDaylight'] = 'Total Daylight';
-$lang['Below'] = 'is below the horizon';
+$lang['Below'] = 'on horisontin alapuolella';
 $lang['Tillsunset'] = 'auringon laskuun';
 $lang['Tillsunrise'] = 'auringon nousuun';
 
 $lang['Newmoon'] = 'Uusikuu';
-$lang['Waxingcrescent'] = 'Kasvava sirppi';
-$lang['Firstquarter'] = 'Ensimmäinen neljännes';
-$lang['Waxinggibbous'] = 'Kasvava kupera kuu';
+$lang['Waxingcrescent'] = 'Kasvava<br/>sirppi';
+$lang['Firstquarter'] = 'Ensimmäinen<br/>neljännes';
+$lang['Waxinggibbous'] = 'Kasvava<br/>kupera kuu';
 $lang['Fullmoon'] = 'Täysikuu';
-$lang['Waninggibbous'] = 'Vähenevä kupera kuu';
-$lang['Lastquarter'] = 'Viimeinen neljännes';
-$lang['Waningcrescent'] = 'Vähenevä sirppi';
-
+$lang['Waninggibbous'] = 'Vähenevä<br/>kupera kuu';
+$lang['Lastquarter'] = 'Viimeinen<br/>neljännes';
+$lang['Waningcrescent'] = 'Vähenevä<br/>sirppi';
+$lang['Mooninfo'] = 'Kuun vaihe';
 
 //trends
 
@@ -227,21 +227,23 @@ $lang['Solarradiation']= 'Solar Radiation';
 
 //current sky
 $lang['Currentsky'] = 'Viimeisimmät havainnot';
-$lang['Currently'] = 'Currently';
-$lang['Cloudcover'] = 'Cloud Cover';
+$lang['Currently'] = 'Tällä hetkellä';
+$lang['Cloudcover'] = 'Pilvipeite';
 
 //Notifications
-$lang['Nocurrentalert'] = 'No Current Weather Alerts';
-$lang['Windalert'] = 'Wind Gusts at';
-$lang['Tempalert'] = 'High Temperature';
-$lang['Heatindexalert'] = 'Heat Index Caution ';
-$lang['Windchillalert'] = 'Windchill Caution';
-$lang['Dewpointalert'] = 'Uncomfortable humidity';
+$lang['Nocurrentalert'] = 'Ei varoituksia voimassa';
+$lang['Windalert'] = 'Kovan tuulen varoitus';
+$lang['Tempalert'] = 'Korkean lämpötilan varoitus';
+$lang['Heatindexalert'] = 'Hellevaroitus';
+$lang['Windchillalert'] = 'Pakkasvaroitus';
+$lang['Dewpointalert'] = 'Tukala helle';
 $lang['Dewpointcolderalert'] = 'Dewpoint Feeling Colder';
 $lang['Feelslikecolderalert'] = 'Feels Colder';
 $lang['Feelslikewarmeralert'] = 'Feels Warmer';
 $lang['Rainratealert'] = 'per/hr<span> Rainfall ';
-$lang['Fireriskalert'] = 'Fire Risk Warning';
+$lang['Fireriskalert'] = 'Metsäpalon vaara';
+$lang['Caution'] = 'Varoitus';
+$lang['Belowfreezing'] = 'Nollan alapuolella';
 
 //Earthquake Notifications
 $lang['Regional'] = 'Regional Earthquake';
@@ -273,29 +275,35 @@ $lang['Average'] = 'Keskituuli';
 $lang['Notifications'] = 'Notifications Alert';
 $lang['Indoor'] = 'Indoor';
 $lang['Today'] = 'Tänään';
-$lang['Tonight'] = 'Tonight';
+$lang['Tonight'] = 'Tänä yönä';
 $lang['Tomorrow'] = 'Huomenna';
-$lang['Tomorrownight'] 		 = 'Tomorrow Night';
+$lang['Tomorrownight'] 		 = 'Ensi yönä';
 $lang['Updated'] 		 = 'Päivitetty';
 $lang['Meteor'] 		 = 'Meteoriparvet';
-$lang['WeatherStationNotifications'] = 'Notifications';   
-$lang['Firerisk'] = 'Fire Risk'; 
-$lang['Localtime'] = 'Local Time';
+$lang['WeatherStationNotifications'] = 'Säävaroitukset';   
+$lang['Firerisk'] = 'Metsäpaloriski'; 
+$lang['Localtime'] = 'Paikallinen aika';
 $lang['Nometeor'] = 'Ei meteoriparvia';
 $lang['LiveWebCam'] = 'Live-kamera';
 $lang['Online'] = 'Online';
 $lang['Offline'] = 'Offline';
 $lang['Weatherstation'] = 'Sääasema';
-$lang['Cloudbase'] = 'Cloudbase';
-$lang['uvalert'] = 'Caution High UVINDEX';
-$lang['Rainbow'] = 'Rainbow';
+$lang['Cloudbase'] = 'Pilvisyys';
+$lang['uvalert'] = 'Varoitus: korkea UV säteily';
+$lang['Rainbow'] = 'Sateenkaari';
 $lang['Windy'] = 'Windy';
 $lang['Max'] = 'Max';
 $lang['Min'] = 'Min';
+$lang['Aurora'] = 'Revontulet';
+
 //other
 $lang['FullWxsimForecast'] = 'Indstillinger';
 $lang['LiveWebcamimagesofWeatherstationSauwerd'] = 'Skift Layout';
 $lang['EuropeanWeathernetworkForecast'] = 'Light Theme1';
+$lang['Total'] = 'Yhteensä';
+$lang['NearbyMetar'] = 'Lähin Metar';
+$lang['Radar'] = 'Tutka';
+$lang['Source'] = 'Lähde';
 
 //earthquake TOP MODULE 10 July 2017
 $lang['ModerateE'] = 'Moderate Earthquake';
@@ -307,17 +315,17 @@ $lang['RegionalE'] = 'Regional';
 $lang['SunPosition'] = 'Auringonnousu ja -lasku';
 $lang['Azimuth'] = 'Atsimuutti';
 $lang['Elevation'] = 'Korkeus';
-$lang['Conditions'] = 'Conditions';
-$lang['Cloudbase Height'] = 'Cloudbase Height';
-$lang['Station'] = 'Station';
+$lang['Conditions'] = '';
+$lang['Cloudbase Height'] = 'Pilvikorkeus';
+$lang['Station'] = 'Sääasema';
 $lang['Detailed Forecast'] = 'Detailed Forecast';
-$lang['Summary Outlook'] = 'Summary';
+$lang['Summary Outlook'] = 'Sääennuste';
 
 //Air Quality
-$lang['Hazordous']= 'Hazardous Conditions';
-$lang['VeryUnhealthy']= 'Very Unhealthy';
-$lang['Unhealthy']= 'Unhealthy Air Quality';
-$lang['UnhealthyFS']= 'Unhealthy For Some';
-$lang['Moderate']= 'Moderate Air Quality ';
-$lang['Good']= 'Good Air Quality ';
+$lang['Hazordous']= 'Vaarallinen';
+$lang['VeryUnhealthy']= 'Erittäin huono';
+$lang['Unhealthy']= 'Huono';
+$lang['UnhealthyFS']= 'Välttävä';
+$lang['Moderate']= 'Tyydyttävä';
+$lang['Good']= 'Hyvä';
 ?>
