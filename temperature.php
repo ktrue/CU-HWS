@@ -43,7 +43,7 @@ if($weather["temp_trend"]<0){echo '<trendmovementfallingx><span>&nbsp;&nbsp;'.$l
 //rising
 elseif($weather["temp_trend"]>0){echo '<trendmovementrisingx><span>&nbsp;&nbsp;'.$lang['Trend'].'</span> '.$temprisingsymbol.' '.number_format($weather["temp_trend"],1).'&deg;</trendmovementrisingx>';}
 //steady
-else echo '<trendmovementsteadyx>'.$lang['Trend'].' '.$steadysymbol.'Steady</trendmovementsteadyx>';?>
+else echo '<trendmovementsteadyx>'.$lang['Trend'].' '.$steadysymbol.$lang['Steady'].'</trendmovementsteadyx>';?>
 </span></div></div></div>
 <div class="heatcircle">
 <div class="heatcircle-content">
