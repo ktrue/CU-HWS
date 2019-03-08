@@ -12,6 +12,8 @@ Cumulus MX is supported and maintained by Mark Crossley at https://github.com/mc
 Weather software that produces a realtime.txt formatted conditions file can also use this template.
 Both **WeeWX** and **WeatherCat** now have this capability.
 
+A live sample of this distribution is viewable at https://hws.saratoga-weather.org/index.php
+
 # Setup
 
 * Setup Cumulus/CumulusMX to upload realtime.txt to your weather website.
