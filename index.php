@@ -144,7 +144,7 @@ include('livedata.php');include('common.php');include('settings1.php');date_defa
 <div class="hardwarelogo1"><?php 
  if ($livedataFormat == 'weewx') {
 	echo '<a href="http://www.weewx.com/" title="WeeWX Software" target="_blank">
-	<img src="img/logo-weewx.png" width="50" height="50" alt="http://www.weewx.com/" 
+	<img src="img/icon-weewx.svg" width="150" height="55" alt="http://www.weewx.com/" 
 	style="margin-left: 20px"></a>';
 	}
   elseif ($livedataFormat=='weathercat'){
