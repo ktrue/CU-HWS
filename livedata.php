@@ -456,6 +456,10 @@ if ($weather["wind_units"] == 'mph') {
 	$darkskywind = 1;
 }
 
+if(isset($_REQUEST['sce']) and $_REQUEST['sce'] == 'dump') {
+	print "<!-- livedata type='$livedataFormat' at '$livedata' -->\n";
+	print "<!-- LiveData dump \n".print_r($weather,true)." -->\n";
+}
 
 $windconversion = $darkskywind;
 
