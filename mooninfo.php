@@ -383,15 +383,15 @@ $moon = new MoonPhase();$moonage =round($moon->age(),2);echo $lang['Moonphase'].
 <circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> 
 <?php echo $lang['Sunrise'].':';?> <?php //sunrise
 echo '';
-if(date('H:i')  > $sunr) {echo "<span style='color:#aaa;'>Tomorrow </span> (" . $tw . ") <span style='color:#ff8841;'>" . date($timeFormatShort, date_sunrise(strtotime('+1 day', time()), SUNFUNCS_RET_TIMESTAMP, $lat,$lon, $rise_zenith, $UTC)) . "</span>  ";}
-else echo "<span style='color:#aaa;'>Today </span> (" . $tw . ") <span style='color:#ff8841;'>" . date($timeFormatShort, date_sunrise(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lon, $rise_zenith, $UTC)) . "</span>  ";
+if(date('H:i')  > $sunr) {echo "<span style='color:#aaa;'>".$lang['Tomorrow']." </span> (" . $tw . ") <span style='color:#ff8841;'>" . date($timeFormatShort, date_sunrise(strtotime('+1 day', time()), SUNFUNCS_RET_TIMESTAMP, $lat,$lon, $rise_zenith, $UTC)) . "</span>  ";}
+else echo "<span style='color:#aaa;'>".$lang['Today']." </span> (" . $tw . ") <span style='color:#ff8841;'>" . date($timeFormatShort, date_sunrise(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lon, $rise_zenith, $UTC)) . "</span>  ";
 ?> <svg id="i-chevron-top" viewBox="0 0 32 32" width="10" height="10" fill="none" stroke="rgba(255, 136, 65, 1.00)" stroke-linecap="round" stroke-linejoin="round" stroke-width="10%"><path d="M30 20 L16 8 2 20" /></svg>
 <br><svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="rgba(210, 90, 73, 1.00)" stroke="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1%"><circle cx="16" cy="16" r="14" />
 <path d="M6 6 L26 26" /></svg>
 <span style="color:rgba(255, 136, 65, 1.00);"></span> <?php echo $lang['Sunset'].':';?> <?php //sunset 
 echo '';
 if(date('H:i')  > $suns) {echo "<span style='color:#aaa;'>".$lang['Tomorrow']." <span style='color:rgba(255, 136, 65, 1.00);'>" . date($timeFormatShort, date_sunset(strtotime('+1 day', time()), SUNFUNCS_RET_TIMESTAMP, $lat,$lon, $rise_zenith, $UTC)) . "</daylight></span></span> (" . $twe . ") ";}
-else echo "<span style='color:#aaa;'>Today <span style='color:#e9996a;'>" . date($timeFormatShort, date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lon, $rise_zenith, $UTC)) . " </span>(" . $twe . ") ";
+else echo "<span style='color:#aaa;'>".$lang['Today']." <span style='color:#e9996a;'>" . date($timeFormatShort, date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lon, $rise_zenith, $UTC)) . " </span>(" . $twe . ") ";
 ?><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="none" stroke="#ff8841" stroke-linecap="round" stroke-linejoin="round" stroke-width="10%"><path d="M30 12 L16 24 2 12" /></svg></span><br>
 <svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="rgba(255, 147, 80, 1.00)" stroke="none)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1%"><circle cx="16" cy="16" r="14" />
 <path d="M6 6 L26 26" /></svg> 
