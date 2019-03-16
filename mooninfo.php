@@ -1,4 +1,10 @@
-<?php include('livedata.php');?>
+<?php
+include_once('settings.php');
+include_once('common.php');
+include_once('livedata.php');
+error_reporting(E_ALL); date_default_timezone_set($TZ);
+header('Content-type: text/html; charset=UTF-8');
+ ?>
 <?php //homeweatherstation calculate sunrise/set times and differences
 		$result = date_sun_info( time(), $lat, $lon );	
 		// homeweatherstation sun hours graphic beta August 8th 2016//
@@ -177,8 +183,8 @@ body,section{padding:10px}.weather34card,.weather34cards{display:-webkit-box;dis
 .weather34sunclock #poscircircle {top: 50%;left:calc(48% - 52%);z-index: 1;height:8px;width:8px;border:0;border-radius:50%;background:<?php if ($elev<=0 && $elev>-4){echo "rgba(255, 112, 50, 0.5)";}else if ($elev<=0){echo "rgba(86, 95, 103, 0.7)";}else echo "rgba(255, 112, 50, 1.000)"?>;}
 .daylightvalue{color:#f8f8f8;margin-left:14px;margin-top:0px;}.daylightvalue span{color:#aaa;}
 .azimuth,.elevation{position:absolute;margin-top:75px;font-size:11px;width:50px;font-family:Arial,Helvetica,sans-serif;line-height:12px;font-weight:400}.azimuth{left:30px}.elevation{left:220px}
-.daylightvalue:before{position:absolute;content:"Estimated";display:block;font-size:12px;line-height:20px;top:28px;left:20px;letter-spacing:normal;color:#f8f8f8}
-.daylightvalue1:before{position:absolute;content:"There is";display:block;font-size:12px;line-height:20px;top:-32px;left:24px;letter-spacing:normal;color:#f8f8f8}
+.daylightvalue:before{position:absolute;content:"<?php echo $lang['Estimated'];?>";display:block;font-size:12px;line-height:20px;top:28px;left:20px;letter-spacing:normal;color:#f8f8f8}
+.daylightvalue1:before{position:absolute;content:" ";display:block;font-size:12px;line-height:20px;top:-32px;left:24px;letter-spacing:normal;color:#f8f8f8}
 #daylight34{background:none;border:0;width:116px;height:116px;-webkit-transform: rotate(-90deg) ;-moz-transform: rotate(-90deg) ;-o-transform: rotate(-90eg) ;-ms-transform: rotate(-90deg) ;transform: rotate(-90deg) ;margin-left:5px;-webkit-transform-origin:50% 48%;-moz-transform-origin:50% 48%;-o-transform-origin:50% 48%;-ms-transform-origin:50% 48%;transform-origin:50% 48%;}
 .daylight{margin-left:80px;margin-top:10px;z-index:auto}
 .daylightoutput{position:absolute;width:105px;height:105px;border-radius:50%;border:0px;margin-top:-110px;margin-left:0;-webkit-transform-origin:50% 48%;-moz-transform-origin:50% 48%;-o-transform-origin:50% 48%;-ms-transform-origin:50% 48%;transform-origin:50% 48%;
@@ -211,7 +217,7 @@ sup{color:#f8f8f8}red{color:#FF6F61;opacity:0.6}
 <div class="weather34darkbrowser" url="Moon Phase / Sun Rise-Sun Set Information"></div>
  <section class="weather34cards">
    <div class="weather34card weather34card--earthquake1">
-               <div class="weather34card_weather34-container"><mydate><?php echo $solareclipsesvg2;?>  Moonphase <?php echo date('l jS F');?><br></mydate>
+               <div class="weather34card_weather34-container"><mydate><?php echo $solareclipsesvg2.' '.$lang['Moonphase'].' '.date('l jS F');?><br></mydate>
             <div class="weather34card_weather34-wrapper">
             
             <div class="weather34mooncontainer">
@@ -248,26 +254,32 @@ else if($day===date("l jS F Y",strtotime('2019-12-26'))){echo 'Solar <orange>Ecl
 	// weather34 moonphase no scraping its calculated from the livedata !
 	else if ($moonage<1.84566)  {
 	echo "<aqivalue1>New Moon </aqivalue1>";}
-	else if ($moonage<5.53699) {echo "<aqivalue1>Waxing Crescent</aqivalue1>";} 	
-	else if ($moonage<9.22831) {echo "<aqivalue3>First Quarter</aqivalue3>";} 	
-	else if ($moonage<12.91963) {echo "<aqivalue1>Waxing Gibbous</aqivalue1>";} 	
-	else if ($moonage<16.61096) {echo "<aqivalue1>Full Moon</aqivalue1>";} 	
-	else if ($moonage<20.302228) {echo "<aqivalue1>Waning Gibbous</aqivalue1>";}	
-	else if ($moonage<23.99361) {echo "<aqivalue1>Last Quarter</aqivalue1>";}	
-	else if ($moonage<27.68493) {echo "<aqivalue1>Waning Crescent</aqivalue1>";}		
-		else echo "<aqivalue1>New Moon </aqivalue1>";}
-		
-		
-
-		
-		
-		
-		
-		
-		
+	else if ($moonage<5.53699) {echo "<aqivalue1>".$lang['Waxingcrescent']."</aqivalue1>";} 	
+	else if ($moonage<9.22831) {echo "<aqivalue3>".$lang['Firstquarter']."</aqivalue3>";} 	
+	else if ($moonage<12.91963) {echo "<aqivalue1>".$lang['Waxinggibbous']."</aqivalue1>";} 	
+	else if ($moonage<16.61096) {echo "<aqivalue1>".$lang['Fullmoon']."</aqivalue1>";} 	
+	else if ($moonage<20.302228) {echo "<aqivalue1>".$lang['Waninggibbous']."</aqivalue1>";}	
+	else if ($moonage<23.99361) {echo "<aqivalue1>".$lang['Lastquarter']."</aqivalue1>";}	
+	else if ($moonage<27.68493) {echo "<aqivalue1>".$lang['Waningcrescent']."</aqivalue1>";}		
+		else echo "<aqivalue1>".$lang['Newmoon']."</aqivalue1>";}
 ?>
 <br>
-<?php $date="";$time="";$tzone="$TZ </span>";do_phase($date,$time,$tzone);function do_phase($date,$time,$tzone){$moondata=phase(strtotime($date.' '.$time.' '.$tzone));$MoonIllum=$moondata[1];$MoonIllum=round($MoonIllum,2);$MoonIllum*=100;if($MoonIllum==0){$phase="New Moon";}if($MoonIllum==100){$phase="Full Moon";}echo" Luminance <orange> $MoonIllum% </orange> \n";}?>
+<?php $date="";$time="";$tzone="$TZ </span>";
+do_phase($date,$time,$tzone);
+function do_phase($date,$time,$tzone){
+	global $lang;
+	$moondata=phase(strtotime($date.' '.$time.' '.$tzone));
+	$MoonIllum=$moondata[1];
+	$MoonIllum=round($MoonIllum,2);
+	$MoonIllum*=100;
+	if($MoonIllum==0){
+		$phase=$lang['Newmoon'];
+	}
+	if($MoonIllum==100){
+		$phase=$lang['Fullmoon'];
+	} 
+	echo " ".$lang['Luminance']." <orange> $MoonIllum% </orange> \n";
+}?>
 
 	</div>
         </div></div></div></div></div>
@@ -281,7 +293,7 @@ else if($day===date("l jS F Y",strtotime('2019-12-26'))){echo 'Solar <orange>Ecl
         
         </div>
     <div class="weather34card weather34card--earthquake2">
-               <div class="weather34card_weather34-container"><mydate><?php echo $sunsvg;?> Sun Position <?php echo date('H:i:s');?><br></mydate>
+               <div class="weather34card_weather34-container"><mydate><?php echo $sunsvg.' '.$lang['SunPosition'].' '.date('H:i:s');?><br></mydate>
              
                <div class="daylight">
 <div id="daylight34"></div>
@@ -293,17 +305,17 @@ else if($day===date("l jS F Y",strtotime('2019-12-26'))){echo 'Solar <orange>Ecl
             <?php echo "";{
 	// Sun
 	if ($lightLeft) {
-	if ($now > $suns2) { echo "$hours3<sup> hrs</sup> : $minutesdarkleft<sup> min</sup><br><span>Till <orange>Sunrise $sunrisesvg</orange></span>" ;}
-	else if ($now < $sunr2) {echo "$hours3<sup> hrs</sup> : $minutesdarkleft<sup> min</sup><br><span>Till <orange>Sunrise $sunrisesvg</orange></span>" ;}
-	else if ($now < $suns2) {echo "$hours1<sup> hrs</sup> : $minutesdayleft<sup> min</sup><br><span>Till <red>Sunset $sunsetsvg</red></span>" ;}
+	if ($now > $suns2) { echo "$hours3<sup>".$lang['Hrs']."</sup> : $minutesdarkleft<sup>".$lang['Mintill']."</sup><br><span> <orange>".$lang['Sunrise']." $sunrisesvg</orange></span>" ;}
+	else if ($now < $sunr2) {echo "$hours3<sup>".$lang['Hrs']."</sup> : $minutesdarkleft<sup>".$lang['Mintill']."</sup><br><span> <orange>".$lang['Sunrise']." $sunrisesvg</orange></span>" ;}
+	else if ($now < $suns2) {echo "$hours1<sup>".$lang['Hrs']."</sup> : $minutesdayleft<sup>".$lang['Mintill']."</sup><br><span> <red>".$lang['Sunset']." $sunsetsvg</red></span>" ;}
 } else { 
-	if ($now > $suns2) { echo "$hours5<sup> hrs</sup> : $minutesdarkness<sup> min</sup><br><span>Till <orange>Sunrise $sunrisesvg</orange></span>";}
-	else if ($now < $suns2) {echo "$hours4<sup> hrs</sup> : $minutesdaylight<sup> min</sup><br><span>Till <red>Sunset $sunsetsvg</red></span>" ;}}}
+	if ($now > $suns2) { echo "$hours5<sup>".$lang['Hrs']."</sup> : $minutesdarkness<sup>".$lang['Mintill']."</sup><br><span> <orange>".$lang['Sunrise']." $sunrisesvg</orange></span>";}
+	else if ($now < $suns2) {echo "$hours4<sup>".$lang['Hrs']."</sup> : $minutesdaylight<sup>".$lang['Mintill']."</sup><br><span> <red>".$lang['Sunset']." $sunsetsvg</red></span>" ;}}}
 ?>
             </div></span></div></div>
             
-            <div class="azimuth"><?php echo "Azimuth <orange>".$_SunPos->azimuth."</orange>&deg;";?></div>
-<div class="elevation"><?php echo "Elevation <orange>".$_SunPos->elevation."</orange>&deg;";?></div>
+            <div class="azimuth"><?php echo $lang['Azimuth']." <orange>".$_SunPos->azimuth."</orange>&deg;";?></div>
+<div class="elevation"><?php echo $lang['Elevation']." <orange>".$_SunPos->elevation."</orange>&deg;";?></div>
         
         <div class="weather34card__count-container">
             <div class="weather34card__count-text">
@@ -324,14 +336,14 @@ else if($day===date("l jS F Y",strtotime('2019-12-26'))){echo 'Solar <orange>Ecl
             <div class="weather34card_weather34-wrapper"><span class="weather34card__count-text--bigsa">
               
 
-<?php echo $info;?> Moon Rise/Set <span>Information</span><br>
+<?php echo $info; echo $lang['Moonrise']."/".$lang['Moonset']?><br>
 <svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="rgba(255, 136, 65, 1.00)" stroke="rgba(255, 136, 65, 1.00)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
-<circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> Moonrise:
+<circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> <?php echo $lang['Moonrise'].':';?>
 <span style="color:#aaa;font-weight:normal;">
 <?php echo  date('D jS-M-Y' . ' ' . $timeFormatShort, $MoonRise ),"\n";?>
 <svg id="i-chevron-top" viewBox="0 0 32 32" width="10" height="10" fill="none" stroke="#ff8841" stroke-linecap="round" stroke-linejoin="round" stroke-width="10%"><path d="M30 20 L16 8 2 20" /></svg>
 </span><br>
-<svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="#D46842" stroke="#D46842" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%"><circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> Moonset: <span style="color:#aaa;font-weight:normal;">
+<svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="#D46842" stroke="#D46842" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%"><circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> <?php echo $lang['Moonset'].':';?> <span style="color:#aaa;font-weight:normal;">
 <?php echo date('D jS-M-Y' . ' ' . $timeFormatShort, $MoonSet ),"\n";?>
 <svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="none" stroke="#ff8841" stroke-linecap="round" stroke-linejoin="round" stroke-width="10%"><path d="M30 12 L16 24 2 12" /></svg>
 </span><br>
@@ -339,7 +351,7 @@ else if($day===date("l jS F Y",strtotime('2019-12-26'))){echo 'Solar <orange>Ecl
 <span style="color:#aaa;"> 
 <svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="rgba(255, 136, 65, 1.00)" stroke="rgba(255, 136, 65, 1.00)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
 <circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg>
-Next Full Moon:<span style="color:#aaa;"> <?php  // homeweatherstation fullmoon info output 18th Aug
+<?php echo $lang['Nextfullmoon'].':';?><span style="color:#aaa;"> <?php  // homeweatherstation fullmoon info output 18th Aug
 $now1 =time();$moon1 = new MoonPhase();
 echo "";
 if ($now1 < $moon1->full_moon()) 
@@ -349,11 +361,11 @@ else echo date('D jS-M-Y', $moon1->next_full_moon() );
 <span style="color:#aaa;"> 
 <svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
 <circle cx="16" cy="16" r="14" /> <path d="M6 6 L26 26" /></svg>
-Next New Moon:<?php $moon=new MoonPhase();$nextnewmoon=date('D jS-M-Y',$moon->next_new_moon());echo $nextnewmoon;?>
+<?php echo $lang['Nextnewmoon'].':';?><?php $moon=new MoonPhase();$nextnewmoon=date('D jS-M-Y',$moon->next_new_moon());echo $nextnewmoon;?>
 </span><br /><svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="rgba(154, 186, 47, 1.00)" stroke="rgba(154, 186, 47, 1.00)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
 <circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> 
 <?php // homeweatherstation create an instance of the age of moon
-$moon = new MoonPhase();$moonage =round($moon->age(),2);echo "Current Moon cycle is <span style='color:#ff8841'>", round($moonage,0)," days old";?>
+$moon = new MoonPhase();$moonage =round($moon->age(),2);echo $lang['Moonphase']." <span style='color:#ff8841'>", round($moonage,0)," ".$lang['Daysold'];?>
 
             </div>
         </div>
@@ -366,28 +378,28 @@ $moon = new MoonPhase();$moonage =round($moon->age(),2);echo "Current Moon cycle
     <div class="weather34cardinfo weather34card--earthquake2">
                <div class="weather34card_weather34-container">
             <div class="weather34card_weather34-wrapper"><span class="weather34card__count-text--bigsa">
-         <?php echo $info;?> Sun Rise/Set <span>Information</span><br>
+         <?php echo $info. ' '.$lang['Sunrise'].'/'.$lang['Sunset'];?><br>
 <svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="#9aba2f" stroke="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="10%">
 <circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> 
-Sunrise: <?php //sunrise
+<?php echo $lang['Sunrise'].':';?> <?php //sunrise
 echo '';
 if(date('H:i')  > $sunr) {echo "<span style='color:#aaa;'>Tomorrow </span> (" . $tw . ") <span style='color:#ff8841;'>" . date($timeFormatShort, date_sunrise(strtotime('+1 day', time()), SUNFUNCS_RET_TIMESTAMP, $lat,$lon, $rise_zenith, $UTC)) . "</span>  ";}
 else echo "<span style='color:#aaa;'>Today </span> (" . $tw . ") <span style='color:#ff8841;'>" . date($timeFormatShort, date_sunrise(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lon, $rise_zenith, $UTC)) . "</span>  ";
 ?> <svg id="i-chevron-top" viewBox="0 0 32 32" width="10" height="10" fill="none" stroke="rgba(255, 136, 65, 1.00)" stroke-linecap="round" stroke-linejoin="round" stroke-width="10%"><path d="M30 20 L16 8 2 20" /></svg>
 <br><svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="rgba(210, 90, 73, 1.00)" stroke="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1%"><circle cx="16" cy="16" r="14" />
 <path d="M6 6 L26 26" /></svg>
-<span style="color:rgba(255, 136, 65, 1.00);"></span> Sunset: <?php //sunset 
+<span style="color:rgba(255, 136, 65, 1.00);"></span> <?php echo $lang['Sunset'].':';?> <?php //sunset 
 echo '';
-if(date('H:i')  > $suns) {echo "<span style='color:#aaa;'>Tomorrow <span style='color:rgba(255, 136, 65, 1.00);'>" . date($timeFormatShort, date_sunset(strtotime('+1 day', time()), SUNFUNCS_RET_TIMESTAMP, $lat,$lon, $rise_zenith, $UTC)) . "</daylight></span></span> (" . $twe . ") ";}
+if(date('H:i')  > $suns) {echo "<span style='color:#aaa;'>".$lang['Tomorrow']." <span style='color:rgba(255, 136, 65, 1.00);'>" . date($timeFormatShort, date_sunset(strtotime('+1 day', time()), SUNFUNCS_RET_TIMESTAMP, $lat,$lon, $rise_zenith, $UTC)) . "</daylight></span></span> (" . $twe . ") ";}
 else echo "<span style='color:#aaa;'>Today <span style='color:#e9996a;'>" . date($timeFormatShort, date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lon, $rise_zenith, $UTC)) . " </span>(" . $twe . ") ";
 ?><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="none" stroke="#ff8841" stroke-linecap="round" stroke-linejoin="round" stroke-width="10%"><path d="M30 12 L16 24 2 12" /></svg></span><br>
 <svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="rgba(255, 147, 80, 1.00)" stroke="none)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1%"><circle cx="16" cy="16" r="14" />
 <path d="M6 6 L26 26" /></svg> 
 <?php // daylight hours
-echo " Total Daylight Today <blue> $hours4:$minutesdaylight </blue><br>" ;?>
+echo $lang['Daylight']." <blue> $hours4:$minutesdaylight </blue><br>" ;?>
 <svg id="i-ban" viewBox="0 0 32 32" width="10" height="10" fill="#716098" stroke="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1%"><circle cx="16" cy="16" r="14" /><path d="M6 6 L26 26" /></svg> 
 <?php // darkness hours
-echo "Total Darkness Overnight <grey> $hours5:$minutesdarkness </grey> ";?>
+echo $lang['Darkness']." <grey> $hours5:$minutesdarkness </grey> ";?>
             </div>
         
         
