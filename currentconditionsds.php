@@ -1,4 +1,10 @@
-<?php include('livedata.php');include('common.php');?>
+<?php 
+include_once('settings.php');
+include_once('common.php');
+include_once('livedata.php');
+error_reporting(0); date_default_timezone_set($TZ);
+header('Content-type: text/html; charset=UTF-8');
+?>
 <?php error_reporting(0); 
 $result = date_sun_info(time(), $lat, $lon);
 $sunr=date_sunrise(time(), SUNFUNCS_RET_STRING, $lat, $lon, $rise_zenith, $UTC);
@@ -32,9 +38,9 @@ $now =date('G.i');
 
 ?><head>
 <div class="updatedtimecurrent">
-<?php $forecastime=filemtime('jsondata/darksky.txt');
-	$weather34wuurl = file_get_contents("jsondata/dark.txt");
-	if(filesize('jsondata/darksky.txt')<1){echo "".$offline. " Offline<br>";}else echo $online,"";echo " ",	date($timeFormat,$forecastime);	?></div>
+<?php $forecastime=filemtime('jsondata/darksky-'.$language.'.txt');
+	$weather34wuurl = file_get_contents('jsondata/darksky-'.$language.'.txt');
+	if(filesize('jsondata/darksky-'.$language.'.txt')<1){echo "".$offline. " Offline<br>";}else echo $online,"";echo " ",	date($timeFormat,$forecastime);	?></div>
  <div class="darkskyiconcurrent">
  <span1><?php 
   

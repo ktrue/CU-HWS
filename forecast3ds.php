@@ -25,7 +25,7 @@ header('Content-type: text/html; charset=UTF-8');
 
 
 $forecastime=filemtime('jsondata/darksky-'.$language.'.txt');
-	$weather34wuurl = file_get_contents("jsondata/dark.txt");
+	$weather34wuurl = file_get_contents('jsondata/darksky-'.$language.'.txt');
 	if(filesize('jsondata/darksky-'.$language.'.txt')<1){echo "".$offline. " Offline<br>";}else echo $online,"";echo " ",	date($timeFormat,$forecastime);	?></div>
 		<?php
 		
