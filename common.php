@@ -4,12 +4,7 @@ date_default_timezone_set($TZ);
 //translations for HOMEWEATHERSTATION TEMPLATE UPDATED 2nd November added set locale
 /* mb_ functions not used - ktrue - 11-Jan-2019
   $language set to DarkSky language (doesn't always match $lang in the scripts)
-mb_internal_encoding('UTF-8');
-mb_http_output('UTF-8');
-mb_http_input('UTF-8');
-mb_language('uni');
-mb_regex_encoding('UTF-8');
-ob_start('mb_output_handler');
+Simplified the settings for language selection via array lookup - ktrue 19-Mar-2019
 */
 if(isSet($_GET['lang']))
 {
@@ -33,176 +28,95 @@ else
 	$lang = $defaultlanguage;
 }
 
-switch ($lang) {
+$LanguageList = array(
+// lang => langfile,langflag,langoption,language,locale
 //english uk	
-  case 'en':
-  $lang_file = 'lang.en.php';
-  $lang_flag = 'en';
-  $lang_option = 'us';
-	$language = 'en';
-  setlocale(LC_TIME, "en_EN");
-  break;
-  
-  
-  //canada english uk	
-  case 'can':
-  $lang_file = 'lang.can.php';
-  $lang_flag = 'can';
-  $lang_option = 'can';
-	$language = 'en';
-  setlocale(LC_TIME, "en_CA");
-  break;
-  
-  //english	us
-  case 'us':
-  $lang_file = 'lang.us.php';
-  $lang_flag = 'us';
-  $lang_option = 'en';
-	$language = 'en';
-  setlocale(LC_TIME, "en_US");
-  break;
-  
+   'en' => 'lang.en.php|en|en|en|"en_EN"',
+//canada english 
+   'can' => 'lang.can.php|can|en|en|"en_CA"',
+//english	us
+   'us' => 'lang.us.php|us|en|en|"en_US"',
 //danish
-  case 'dk':
-  $lang_file = 'lang.dk.php';
-  $lang_flag = 'dk';
-  $lang_option = 'en'; 
-	$language = 'da';
-  setlocale(LC_TIME, 'danish.utf8',  'da_DK.utf8');
-  break;
-  
-  
-  //dutch
-  case 'nl':
-  $lang_file = 'lang.nl.php';
-  $lang_flag = 'nl';
-  $lang_option = 'en';
-	$language = 'nl';
-  setlocale(LC_TIME, 'dutch.utf8',"nl_NL.utf8");
-  break;
-  
-  
-  //brazilian/south america
-  case 'br':
-  $lang_file = 'lang.br.php';
-  $lang_flag = 'br';
-  $lang_option = 'en';
-	$language = 'pt';
-  setlocale(LC_TIME, 'portugues.utf8',"pt_BR.utf8");
-  break;
-  
-  //argentine
-  case 'ar':
-  $lang_file = 'lang.ar.php';
-  $lang_flag = 'ar';
-  $lang_option = 'en';
-	$language = 'es';
-  setlocale(LC_TIME, 'spanish.utf8',"es_ES.utf8");
-  break;
-  
-    
-  //polish
-  case 'pl':
-  $lang_file = 'lang.pl.php';
-  $lang_flag = 'pl';
-  $lang_option = 'en';
-	$language = 'pl';
-  setlocale(LC_TIME, 'polish.utf8', 'pl_PL.utf8', 'polish_pol.utf8');
-  break;
-  
-  
+   'dk' => 'lang.dk.php|dk|da|da|"danish.utf8","da_DK.utf8"',
+//dutch
+   'nl' => 'lang.nl.php|nl|nl|nl|"dutch.utf8","nl_NL.utf8"',
+//brazilian/south america
+   'br' => 'lang.br.php|br|pt|pt|"portugues.utf8","pt_BR.utf8"',
+//argentine
+   'ar' => 'lang.ar.php|ar|es|es|"spanish.utf8","es_ES.utf8"',
+//polish
+   'pl' => 'lang.pl.php|pl|pl|pl|"polish.utf8","pl_PL.utf8","polish_pol.utf8"',
 //german
-  case 'dl':
-  $lang_file = 'lang.dl.php';
-  $lang_flag = 'dl';
-  $lang_option = 'en';
-	$language = 'de';
-  setlocale(LC_TIME, 'german.utf8', "de_DE.utf8");
-  break;
-  
-  //italian
-  case 'it':
-  $lang_file = 'lang.it.php';
-  $lang_flag = 'it';
-  $lang_option = 'en';
-	$language = 'it';
-  setlocale(LC_TIME, 'italian.utf8', "it_IT.utf8");
-  break;
-  
+   'dl' => 'lang.dl.php|dl|de|de|"german.utf8","de_DE.utf8"',
+//italian
+   'it' => 'lang.it.php|it|it|it|"italian.utf8","it_IT.utf8"',
 //spanish
-  case 'sp':
-  $lang_file = 'lang.sp.php';
-  $lang_flag = 'sp';
-  $lang_option = 'en';
-	$language = 'es';
-  setlocale(LC_TIME, 'spanish.utf8', "es_ES.utf8");
-  break;
-  
-  
-  //catalan 
-  case 'cat':
-  $lang_file = 'lang.cat.php';
-  $lang_flag = 'cat';
-  $lang_option = 'en';
-	$language = 'ca';
-  setlocale(LC_TIME, 'catalan.utf8', "ca_ES.utf8");
-  break; 
-  
+   'sp' => 'lang.sp.php|sp|es|es|"spanish.utf8","es_ES.utf8"',
+//catalan 
+   'cat' => 'lang.cat.php|cat|ca|ca|"catalan.utf8", "ca_ES.utf8"',
 //french  
-   case 'fr':
-  $lang_file = 'lang.fr.php';
-  $lang_flag = 'fr';
-  $lang_option = 'en';
-	$language = 'fr';
-  setlocale(LC_TIME, 'french.utf8', "fr_FR.utf8");
-  break;
-  
+   'fr' => 'lang.fr.php|fr|fr|fr|"french.utf8", "fr_FR.utf8"',
 //greek  
-  case 'gr':
-  $lang_file = 'lang.gr.php';
-  $lang_flag = 'gr';
-  $lang_option = 'en';
-	$language = 'el';
-  setlocale(LC_TIME, "el_GR.utf8",'el_GR','greek.utf8');
-  break;
-
+   'gr' => 'lang.gr.php|gr|el|el|"el_GR.utf8","el_GR","greek.utf8"',
 //turkish  
-  case 'tr':
-  $lang_file = 'lang.tr.php';
-  $lang_flag = 'tr';
-  $lang_option = 'en';
-	$language = 'tr';
-  setlocale(LC_TIME, 'turkish.utf8',"tr_TR.utf8");
-  break;
-  
+   'tr' => 'lang.tr.php|tr|tr|tr|"turkish.utf8","tr_TR.utf8"',
 //swedish 
-  case 'sw':
-  $lang_file = 'lang.sw.php';
-  $lang_flag = 'sv';
-  $lang_option = 'sv';
-	$language = 'sv';
-  setlocale(LC_TIME, 'swedish.utf8',"sv_SE.utf8");
-  break;
-  
+   'sw' => 'lang.sw.php|sv|sv|sv|"swedish.utf8","sv_SE.utf8"',
 //Suomi (finnish) 
-  case 'fi':
-  $lang_file = 'lang.fi.php';
-  $lang_flag = 'fi';
-  $lang_option = 'fi';
-	$language = 'fi';
-  setlocale(LC_TIME, 'finnish.utf8',"fi_FI.utf8",'suomi.utf8');
-  break;
-  
-//default
-  default:
-  $lang_file = 'lang.'.$defaultlanguage.'.php';
-  $lang_flag = $defaultlanguage;
-  $lang_option = 'en';
-	$language = 'en';
-  setlocale(LC_TIME, "en_US.utf8", "en_US");
-  }
+   'fi' => 'lang.fi.php|fi|fi|fi|"finnish.utf8","fi_FI.utf8","suomi.utf8"',
 
+);
+
+if(!isset($LanguageList[$lang])) { // Assume English if language not in current list
+	$lang = 'en';
+}
+// Set the template options
+list ($lang_file,$lang_flag,$lang_option,$language,$lang_locale) = explode('|',$LanguageList[$lang]);
+setlocale(LC_TIME,$lang_locale);
+
+
+ $WClanguages = array(  // our language codes v.s. lang:LL codes for JSON to TWC/WU API
+  'ar' => 'es-ES',
+	'bg' => 'bg-BG',
+	'br' => 'pt-BR',
+	'cs' => 'cs-CZ',
+	'ca' => 'ca_ES',
+	'ct' => 'ca-ES',
+	'da' => 'da-DK',
+	'dk' => 'da-DK',
+	'de' => 'de-DE',
+	'dl' => 'de-DE',
+	'nl' => 'nl-NL',
+	'el' => 'el-GR',
+	'en' => 'en-US',
+	'fi' => 'fi-FI',
+	'fr' => 'fr-FR',
+	'it' => 'it-IT',
+	'he' => 'he-IL',
+	'hu' => 'hu-HU',
+	'no' => 'no-NO',
+	'pl' => 'pl-PL',
+	'pt' => 'pt-PT',
+	'ro' => 'ro-RO',
+	'es' => 'es-ES',
+	'se' => 'sv-SE',
+	'si' => 'sl-SI',
+	'sk' => 'sk-SK',
+	'sv' => 'sv-SE',
+	'sr' => 'sr-RS',
+	'tr' => 'tr-TR',
+  );
+
+if(isset($WClanguages[$language])) {
+	$wuapilang = $WClanguages[$language];
+} else {
+	$wuapilang = 'en-US';
+}
 
 //path to language files
-include_once 'languages/'.$lang_file;
+if ( file_exists("languages/$lang_file") ) {
+  include_once("languages/$lang_file") ;
+} else {
+	include_once ("languages/lang.en.php");
+}
 ?>
