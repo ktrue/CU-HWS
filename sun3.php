@@ -70,13 +70,13 @@ $sunposicon="<svg version='1.1' id='weather34 sun position icon' x='0px' y='0px'
 </svg>";
 
 
-$result         = date_sun_info(time(), $lat, $lon);  #echo '<pre>'.time().print_r($result,true);
+$result         = date_sun_info(time(), $lat, $lon);  #echo '<!-- '.time().' '.print_r($result,true)." -->\n";
 $nextday        = time() + 24*60*60;
 $result2        = date_sun_info($nextday,$lat, $lon); # echo '<pre>'.print_r($result2,true);
 
 $light          = $result['sunset'] - $result['sunrise'];
 $daylight       = gmdate('H:i',$light);
-$dark           = 24*60 - $light;
+$dark           = 24*60*60 - $light;
 $daydark        = gmdate('H:i',$dark);
 $nextrise       = $result['sunrise'];
 $now            = time();
