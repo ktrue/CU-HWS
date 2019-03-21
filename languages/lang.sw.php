@@ -3,7 +3,7 @@
 -----------------
 Language Translation File for HOMEWEATHERSTATION Template
 Language: Swedish
-Translation By : Mats A, metzallo@gmail.com 2017-08-04
+Translation By : Mats A, metzallo@gmail.com 2019-03-21
 Developed By: Brian Underdown/Erik M Madsen
 January  2017
 */
@@ -67,8 +67,8 @@ $lang['FeelingVeryHot'] = 'Väldigt hett';
 $lang['FeelingExtremelyHot'] = 'Extremt hett';
 
 //wind
-$lang['Windspeed'] = 'Vind hast.';
-$lang['Gust'] = 'Vind stöt';
+$lang['Windspeed'] = 'Vind';
+$lang['Gust'] = 'Byar';
 $lang['Direction'] = 'Vind riktn.';
 $lang['Gusting'] = 'Vindbyar på';
 $lang['Blowing'] = 'Blåser med';
@@ -242,18 +242,17 @@ $lang['Daynight'] = 'Dagsljus och natt info.';
 $lang['Location'] = 'Plats ';
 $lang['Hardware'] = 'Hårdvara';
 $lang['Rainfalltoday'] = 'Nederbörd idag';
-$lang['Windspeed'] = 'Vind hast.';
 $lang['Winddirection'] = 'Vind riktning';
 $lang['Measured'] = 'Uppmätt idag';
 $lang['Forecast'] = 'Väderprognos';
-$lang['Forecastahead'] = 'Väderprognos 10 dagar';
-$lang['Forecastsummary'] = 'Väderprognos 2 dagar';
+$lang['Forecastahead'] = 'Väderprognos';
+$lang['Forecastsummary'] = 'Dags prognoser';
 $lang['WindGust'] = 'Vind hastighet | Stöt';
 
-$lang['Hourlyforecast'] = 'Prognos per timme ';
+$lang['Hourlyforecast'] = 'Prognos';
 $lang['Significantearthquake'] = 'Betydliga jordbävningar';
 $lang['Regionalearthquake'] = 'Regionala jordbävningar';
-$lang['Average'] = 'Genomsnitt';
+$lang['Average'] = 'Medel';
 $lang['Notifications'] = 'Väder larm';
 $lang['Indoor'] = 'Inomhus';
 $lang['Today'] = 'I Dag';
@@ -285,20 +284,20 @@ $lang['StrongE'] = 'Stark jordbävning';
 $lang['RegionalE'] = 'Regional';
 
 //extras
-$lang['SunPosition'] = 'Solens position';
+$lang['SunPosition'] = 'Solens info';
 $lang['Azimuth'] = 'Azimut';
-$lang['Elevation'] = 'Höjning';
-$lang['Conditions'] = 'Förhållande';
+$lang['Elevation'] = 'Sol höjd';
+$lang['Conditions'] = '';
 $lang['Cloudbase Height'] = '-------Molnbas';
 $lang['Station'] = 'Station';
 
 $lang['Detailed Forecast'] = 'Detaljerad prognos';
 $lang['Summary Outlook'] = 'Summerad prognos';
 //Air Quality
-$lang['Hazordous']= 'Hazardous Conditions';
-$lang['VeryUnhealthy']= 'Very Unhealthy';
-$lang['Unhealthy']= 'Unhealthy Air Quality';
-$lang['UnhealthyFS']= 'Unhealthy For Some';
-$lang['Moderate']= 'Moderate Air Quality ';
-$lang['Good']= 'Good Air Quality ';
+$lang['Hazordous']= 'Farligt ';
+$lang['VeryUnhealthy']= 'Mycket ohälsosamt ';
+$lang['Unhealthy']= 'Ohälsosamt ';
+$lang['UnhealthyFS']= 'Ohälsosamt för känsliga ';
+$lang['Moderate']= 'Måttligt bra ';
+$lang['Good']= 'Bra ';
 ?>
