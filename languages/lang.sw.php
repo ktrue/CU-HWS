@@ -284,7 +284,7 @@ $lang['StrongE'] = 'Stark jordbävning';
 $lang['RegionalE'] = 'Regional';
 
 //extras
-$lang['SunPosition'] = 'Solens info';
+$lang['SunPosition'] = 'Sol info';
 $lang['Azimuth'] = 'Azimut';
 $lang['Elevation'] = 'Sol höjd';
 $lang['Conditions'] = '';
