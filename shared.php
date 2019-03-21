@@ -198,4 +198,38 @@ function distance($lat, $lon, $lati, $longi) {
 	return 6371 * acos(sin($lat1)*sin($lat2) + cos($lat1)*cos($lat2)*cos($long2-$long1));
 }
 
+function realfeel($temp,$hum,$wind) {
+	global $weather;
+/* from http://www.bom.gov.au/info/thermal_stress/#atapproximation
+About the formula for the apparent temperature
+The formula for the AT used by the Bureau of Meteorology is an approximations of the value provided by a mathematical model of heat balance in the human body. It can include the effects of temperature, humidity, wind-speed and radiation. Two forms are given, one including radiation and one without. On this site we use the non-radiation version.
+
+Version including the effects of temperature, humidity, and wind:
+AT = Ta + 0.33×e - 0.70×ws - 4.00
+
+Version including the effects of temperature, humidity, wind, and radiation:
+AT = Ta + 0.348×e - 0.70×ws + 0.70×Q/(ws + 10) - 4.25
+
+where:
+Ta 	= Dry bulb temperature (°C)
+e   = Water vapour pressure (hPa) [humidity]
+ws  = Wind speed (m/s) at an elevation of 10 meters
+Q   = Net radiation absorbed per unit area of body surface (w/m2)
+
+The vapour pressure can be calculated from the temperature and relative humidity using the equation:
+e = rh / 100 × 6.105 × exp ( 17.27 × Ta / ( 237.7 + Ta ) )
+where:
+rh 	= Relative Humidity [%]
+
+Source: Norms of apparent temperature in Australia, Aust. Met. Mag., 1994, Vol 43, 1-16 
+
+*/
+
+	$Ta = anyToC($temp);
+	$ws = $wind;
+	$e = $hum/100*6.105*exp(17.27*$Ta/(237.7+$Ta));
+	$rfeel = round(($Ta + 0.33*$e - 0.70*$w - 4.00),1);
+  return($rfeel);
+}
+
 ?>
