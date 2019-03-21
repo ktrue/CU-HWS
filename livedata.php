@@ -127,7 +127,7 @@ if (
 	$weather["lux"] 			   = number_format($cumulus[45]/0.0084555*1.035,0, '.', '');
 	$weather["temp"]               = $cumulus[2];
 //	$weather["temp_feel"]          = heatIndex($cumulus[2], $cumulus[3]); // must set temp_units first
-  $weather["temp_feel"]          = $cumulus[54]; // use Apparent Temperature
+//  $weather["temp_feel"]          = $cumulus[54]; // use Apparent Temperature
 	$weather["heat_index"]         = $cumulus[41];
 	$weather["windchill"]          = $cumulus[24];
 	$weather["humidity"]           = $cumulus[3];
@@ -156,6 +156,7 @@ if (
 	$weather["cloudbase_units"]    = $cumulus[53] ;	 
 	$weather["thb0seapressmaxtime"]	= $cumulus[35] ;	
 	$weather["thb0seapressmintime"]	= $cumulus[37] ;	
+  $weather["temp_feel"]          = apparent_temperature($weather['temp'],$weather['humidity'],$weather['wind_speed']);
 
 	$weather["zambretti"]  = $cumulus[48] ;		
     $weather["humidex"] =$cumulus[42] ;	
@@ -551,10 +552,10 @@ $eclipse_events[]=array("event_start"=>mktime(0, 0, 0, 1, 3 , 2020),"event_title
 ","event_end"=>mktime(23, 59, 59, 1, 4, 2020),);
 
 $eclipseNow=time();$eclipseOP=false;foreach ($eclipse_events as $eclipse_check) {if ($eclipse_check["event_start"]<=$eclipseNow&&$eclipseNow<=$eclipse_check["event_end"]) {$eclipseOP=true;$eclipse_default=$eclipse_check["event_title"]; }};	
-?>
-<?php // based on cumulus forum thread http://sandaysoft.com/forum/viewtopic.php?f=14&t=2789&sid=77ffab8f6f2359e09e6c58d8b13a0c3c&start=30
-$firerisk = number_format((((110 - 1.373 * $weather["humidity"] ) - 0.54 * (10.20 - $weather["temp"] )) * (124 * pow(10,(-0.0142 * $weather["humidity"] ))))/60,0);?>
-<?php
+
+// based on cumulus forum thread https://cumulus.hosiene.co.uk/viewtopic.php?f=14&t=2789&sid=77ffab8f6f2359e09e6c58d8b13a0c3c&start=30
+$firerisk = number_format((((110 - 1.373 * $weather["humidity"] ) - 0.54 * (10.20 - $weather["temp"] )) * (124 * pow(10,(-0.0142 * $weather["humidity"] ))))/60,0);
+
 $Tc =($weather['temp']);$P = $weather['barometer'];$RH = $weather['humidity'];
 $Tdc = (($Tc - (14.55 + 0.114 * $Tc) * (1 - (0.01 * $RH)) - pow((2.5 + 0.007 * $Tc) * (1 - (0.01 * $RH)) , 3) - (15.9 + 0.117 * $Tc) * pow(1 - (0.01 * $RH),  14)));
 $E = (6.11 * pow(10 , (7.5 * $Tdc / (237.7 + $Tdc))));
@@ -563,5 +564,6 @@ $wetbulbx =number_format($wetbulbcalc,1);
 $software    = 'Cumulus <span>Software</span>';
 $designedfor    = '<br>For Cumulus';
 // K-INDEX & SOLAR DATA FOR WEATHER34 HOMEWEATHERSTATION TEMPLATE RADIO HAMS REJOICE :-) //
-$str = file_get_contents('jsondata/kindex.txt');$json = array_reverse(json_decode($str,false));$kp =  $json[1][1];?>
-<?php $file = $_SERVER["SCRIPT_NAME"];$break = Explode('/', $file);$mod34file = $break[count($break) - 1];?>
+$str = file_get_contents('jsondata/kindex.txt');$json = array_reverse(json_decode($str,false));$kp =  $json[1][1];
+
+$file = $_SERVER["SCRIPT_NAME"];$break = Explode('/', $file);$mod34file = $break[count($break) - 1];
