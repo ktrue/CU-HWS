@@ -126,7 +126,8 @@ if (
 	$weather["solar"]              = round($cumulus[45],0);
 	$weather["lux"] 			   = number_format($cumulus[45]/0.0084555*1.035,0, '.', '');
 	$weather["temp"]               = $cumulus[2];
-	$weather["temp_feel"]          = heatIndex($cumulus[2], $cumulus[3]); // must set temp_units first
+//	$weather["temp_feel"]          = heatIndex($cumulus[2], $cumulus[3]); // must set temp_units first
+  $weather["temp_feel"]          = $cumulus[54]; // use Apparent Temperature
 	$weather["heat_index"]         = $cumulus[41];
 	$weather["windchill"]          = $cumulus[24];
 	$weather["humidity"]           = $cumulus[3];
