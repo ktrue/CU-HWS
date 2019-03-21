@@ -257,23 +257,3 @@ Source: Norms of apparent temperature in Australia, Aust. Met. Mag., 1994, Vol 4
 	
   return($rfeel);
 }
-
-/*
-function ktsToms(&$weather, $field){
-	if(!isset($weather[$field])) return;
-	$weather[$field] = number_format(0.514444*$weather[$field],2);
-}
-
-function kmhToms(&$weather, $field){
-	if(!isset($weather[$field])) return;
-	$weather[$field] = number_format(0.2777778*$weather[$field],1);
-}
-
-function mphToms(&$weather, $field){
-	if(!isset($weather[$field])) return;
-	$weather[$field] = number_format(0.44704*$weather[$field],1);
-}
-
-
-*/
-?>
