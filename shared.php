@@ -198,7 +198,7 @@ function distance($lat, $lon, $lati, $longi) {
 	return 6371 * acos(sin($lat1)*sin($lat2) + cos($lat1)*cos($lat2)*cos($long2-$long1));
 }
 
-function realfeel($temp,$hum,$wind) {
+function apparent_temperature($temp,$hum,$wind) {
 	global $weather;
 /* from http://www.bom.gov.au/info/thermal_stress/#atapproximation
 About the formula for the apparent temperature
@@ -224,12 +224,56 @@ rh 	= Relative Humidity [%]
 Source: Norms of apparent temperature in Australia, Aust. Met. Mag., 1994, Vol 43, 1-16 
 
 */
-
-	$Ta = anyToC($temp);
-	$ws = $wind;
+  global $weather;
+	switch ($weather["wind_units"]) {
+	case 'kts':
+	  $ws = round(0.514444*$wind,1);
+		break;
+	case 'km/h':
+	  $ws = round(0.2777778*$wind,1);
+		break;
+	case 'mph':
+	  $ws = round(0.44704*$wind,1);
+		break;
+	case 'm/s':
+	  $ws = round($wind,1);
+		break;
+	default:
+	  $ws = round($wind,1);
+		break;
+	}
+	if($weather['temp_units'] !=='C') {
+  	$Ta = round((float)(0.55555556*($temp - 32)), 1);
+	} else {
+		$Ta = $temp;
+	}
+		
 	$e = $hum/100*6.105*exp(17.27*$Ta/(237.7+$Ta));
 	$rfeel = round(($Ta + 0.33*$e - 0.70*$w - 4.00),1);
+	
+	if($weather['temp_units'] =='F') {
+  	$rfeel = number_format((float)$rfeel*1.8 +32,1);
+	}
+	
   return($rfeel);
 }
 
+/*
+function ktsToms(&$weather, $field){
+	if(!isset($weather[$field])) return;
+	$weather[$field] = number_format(0.514444*$weather[$field],2);
+}
+
+function kmhToms(&$weather, $field){
+	if(!isset($weather[$field])) return;
+	$weather[$field] = number_format(0.2777778*$weather[$field],1);
+}
+
+function mphToms(&$weather, $field){
+	if(!isset($weather[$field])) return;
+	$weather[$field] = number_format(0.44704*$weather[$field],1);
+}
+
+
+*/
 ?>
