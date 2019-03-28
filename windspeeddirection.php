@@ -10,7 +10,7 @@
 
 <div class="windrun">
 <?php if(array_key_exists("wind_run",$weather)){echo '<windrun>Wind Run<br></windrun><span>',$weather["wind_run"],'</span>','  ';}?>
-<?php if ($weather["wind_units"] == 'mph') echo 'mi';else if ($weather["wind_units"] == 'm/s') echo '';else if ($weather["wind_units"] == 'kts') echo 'kts';else echo 'km';?></windrun>
+<?php if ($weather["wind_units"] == 'mph') echo 'mi';else if ($weather["wind_units"] == 'm/s') echo 'km';else if ($weather["wind_units"] == 'kts') echo 'kts';else echo 'km';?></windrun>
 </div><br />
 <div class="windicons1">
 <?php echo $weather["wind_speed"]."</windgust> \n";
@@ -32,7 +32,7 @@ else echo number_format($weather["wind_gust_speed"],1);?>
 <div class="windunitidgust">
 <?php echo $lang['Gust'];?></div></span></div></div>
 <div class="windspeedtrend1">
-<?php echo "<span>".$lang['Max']."(".$weather["maxgusttime"].")"."<br><max><b>".number_format($weather["wind_gust_speed_max"],1)." ".$weather["wind_units"]."</max></b><br>".$lang['Gust'];?></div>
+<?php echo "<span>".$lang['Max']."(".$weather["maxgusttime"].")"."<br><max><b>".number_format($weather["wind_gust_speed_max"],1)." ".$weather["wind_units"]."</max></b> ".$lang['Gust'];?></div>
 <div class="windconverter"><?php 
 if (($weather["wind_units"]=="km/h" || $weather["wind_units"]=="m/s") && $weather["wind_gust_speed"]>=50){echo "<div class=windconvertercirclered1>".number_format($weather["wind_gust_speed"]*0.621371,1)." <smallrainunit>mph</smallrainunit>";}
 else if (($weather["wind_units"]=="km/h" || $weather["wind_units"]=="m/s") && $weather["wind_gust_speed"]>=35){echo "<div class=windconvertercircleorange1>".number_format($weather["wind_gust_speed"]*0.621371,1)." <smallrainunit>mph</smallrainunit>";}
