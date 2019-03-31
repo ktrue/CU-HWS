@@ -12,36 +12,57 @@ ini_set('display_errors','on');
 $Status = '';
 // NEW checkwx.com API 
 
-$filename5 = 'metar34.txt';
-if(!file_exists($filename5) or file_exists($filename5)&&time()- filemtime($filename5)>1800){
-  $keyHeader = "X-API-KEY:".$metarapikey;
-  $url5 = "https://api.checkwx.com/metar/".$icao1."/decoded";
-  $data = HWS_fetchUrlWithoutHanging($url5,false,$keyHeader);
-	if(strlen($data) > 0) {
-		file_put_contents($filename5,$data);
+if(!empty($metarapikey)) {
+  $filename5 = 'metar34.txt';
+	if(!file_exists($filename5) or file_exists($filename5)&&time()- filemtime($filename5)>1800){
+		$keyHeader = "X-API-KEY:".$metarapikey;
+		$url5 = "https://api.checkwx.com/metar/".$icao1."/decoded";
+		$data = HWS_fetchUrlWithoutHanging($url5,false,$keyHeader);
+		if(strlen($data) > 0) {
+			file_put_contents($filename5,$data);
+		}
+	} else {
+		$Status .= "<!-- $filename5 is current -->\n";
 	}
-} else {
-	$Status .= "<!-- $filename5 is current -->\n";
 }
 // end metar fetch
 
+// DarkSky forecast
+if(!empty($apikey)) {
 $filename4 = 'darksky-'.$language.'.txt';
-if(!file_exists($filename4) or 
-  (file_exists($filename4)&&time()- filemtime($filename4)>3600)){
-// weather34 darksky  curl based
-  $url4 = 'https://api.forecast.io/forecast/'.$apikey.'/'.$lat.','.$lon.'?lang='.$language.'&units='.$darkskyunit ;
-
-  $data = HWS_fetchUrlWithoutHanging($url4);
-	if(strlen($data) > 0) {
-		file_put_contents($filename4,$data);
+	if(!file_exists($filename4) or 
+		(file_exists($filename4)&&time()- filemtime($filename4)>3600)){
+	// weather34 darksky  curl based
+		$url4 = 'https://api.forecast.io/forecast/'.$apikey.'/'.$lat.','.$lon.'?lang='.$language.'&units='.$darkskyunit ;
+	
+		$data = HWS_fetchUrlWithoutHanging($url4);
+		if(strlen($data) > 0) {
+			file_put_contents($filename4,$data);
+		}
+	
+	} else {
+		$Status .= "<!-- $filename4 is current -->\n";
 	}
-
-} else {
-	$Status .= "<!-- $filename4 is current -->\n";
 }
-
+// TWC/WU forecast
+if(!empty($wuapikey)) {
+$filename4c = 'wuforecast-'.$wuapiunit.'-'.$language.'.txt';
+	if(!file_exists($filename4c) or 
+		(file_exists($filename4c)&&time()- filemtime($filename4c)>3600)){
+    $url4c = 'https://api.weather.com/v3/wx/forecast/daily/5day?geocode='.$lat.','.$lon.
+		         '&language='.$wuapilang.'&format=json&units='.$wuapiunit.'&apiKey='.$wuapikey ;
+	
+		$data = HWS_fetchUrlWithoutHanging($url4c);
+		if(strlen($data) > 0) {
+			file_put_contents($filename4c,$data);
+		}
+	
+	} else {
+		$Status .= "<!-- $filename4c is current -->\n";
+	}
+}
 // weather34 earthquakes curl based
-  $filename1a = 'eqnotification.txt';
+$filename1a = 'eqnotification.txt';
 if(!file_exists($filename1a) or file_exists($filename1a)&&time()- filemtime($filename1a)>1800){
   $url1a = 'https://earthquake-report.com/feeds/recent-eq?json'; 
   $data = HWS_fetchUrlWithoutHanging($url1a);
@@ -66,7 +87,7 @@ if(!file_exists($filename2a) or file_exists($filename2a)&&time()- filemtime($fil
 }
 
 // weather34 purple air quality  curl based
-if($purpleairhardware=='yes') {
+if($purpleairhardware=='yes' and !empty($purpleairID)) {
 	$filename4a = 'purpleair.txt';
 	if(!file_exists($filename4a) or file_exists($filename4a)&&time()- filemtime($filename4a)>300){
 
@@ -76,11 +97,12 @@ if($purpleairhardware=='yes') {
 		file_put_contents($filename4a,$data);
 	}
   } else {
-	  $Status .= "<!-- $filename2a is current -->\n";
+	  $Status .= "<!-- $filename4a is current -->\n";
   }
 
 }
 
+// fetch WU historical datat for charts
 $filename = '../chartswudata/'.date('dmY').'.txt';
 if(!file_exists($filename) or file_exists($filename)&&time()- filemtime($filename)>300){
 

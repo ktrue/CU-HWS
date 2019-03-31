@@ -24,7 +24,7 @@ header('Content-type: text/html; charset=UTF-8');
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title><?php echo "${stationName}";?> <?php echo 'Forecast' ;
+		<title><?php echo "${stationName}";?> <?php echo $lang['Forecast'] ;
 		$rainsvg= '<svg id="weather34 raindrop" x="0px" y="0px" viewBox="0 0 512 512" width="8px" fill="#01a4b5" stroke="#01a4b5" stroke-width="3%"><g><g><path d="M348.242,124.971C306.633,58.176,264.434,4.423,264.013,3.889C262.08,1.433,259.125,0,256,0	c-3.126,0-6.079,1.433-8.013,3.889c-0.422,0.535-42.621,54.287-84.229,121.083c-56.485,90.679-85.127,161.219-85.127,209.66
 			C78.632,432.433,158.199,512,256,512c97.802,0,177.368-79.567,177.368-177.369C433.368,286.19,404.728,215.65,348.242,124.971z
 			 M256,491.602c-86.554,0-156.97-70.416-156.97-156.97c0-93.472,123.907-263.861,156.971-307.658
@@ -105,7 +105,7 @@ border:0;color:#aaa;overflow:hidden!important;margin-bottom:5px;border:solid 1px
 </style>
 </head>
 <body>
-<div class="weather34darkbrowser" url="<?php echo "${stationName} \n";?> Forecast "></div>
+<div class="weather34darkbrowser" url="DarkSky <?php echo $lang['Forecast'];?> (<?php echo $weather["temp_units"]?>&deg;)"></div>
 		<div style="position:absolute;width:725px;background:none;margin:0 auto;margin-left:7%;margin-top:5px;">
 			
         <br>
