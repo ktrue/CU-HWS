@@ -1,3 +1,4 @@
+<!-- webcamsmall.php begin -->
 <style>
 .webcam{
 -webkit-border-radius:4px;	-moz-border-radius:4px;	-o-border-radius:4px;	-ms-border-radius:4px;border-radius:4px;border:solid RGBA(84, 85, 86, 1.00) 2px;width:275px;height:145px;margin:2px;}
@@ -10,5 +11,5 @@
 #$myCamUrl = 'http://travelingrvwx.com/webcam/jpgwebcam.jpg';
 $myCamUrl = "http://saratogawx.dyndns.org:18080/netcam.php";
 ?>
-<img src="<?php echo $myCamUrl.'?'.time(); ?>" alt="weathercam" class="webcam">
-</span>
+<img src="<?php echo $myCamUrl.'?'.time(); ?>" alt="weathercam" class="webcam"/>
+<!-- webcamsmall.php end -->

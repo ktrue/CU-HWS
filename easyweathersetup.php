@@ -6,11 +6,15 @@ include('settings1.php');
  // DEVELOPED BY BRIAN UNDERDOWN //
  // RELEASED NOVEMBER 2016 //
  // CU //
+if(!isset($wuapikey))  { $wuapikey = ''; }  // handle Notice errata on first use
+if(!isset($wuapiunit)) { $wuapiunit = 'e';} // handle Notice errata on first use
 
 IF (ISSET($_POST["Submit"])) {
  
 $string = '<?php 
 $apikey = "'. $_POST["wuapi"]. '";
+$wuapikey = "'. $_POST["wuapikey"]. '";
+$wuapiunit   = "'. $_POST["wuapiunit"]. '";
 $weatherflowID = "'. $_POST["wfid"]. '";
 $weatherflowdairID = "'. $_POST["wfairid"]. '";
 $weatherflowdskyID = "'. $_POST["wfskyid"]. '";
@@ -89,11 +93,22 @@ $position1   = "'. $_POST["position1"]. '";
 $position2   = "'. $_POST["position2"]. '";
 $position3   = "'. $_POST["position3"]. '";
 $position4   = "'. $_POST["position4"]. '";
+$position6   = "'. $_POST["position6"]. '";
+
 $position1title   = "'. $_POST["position1title"]. '";
 $position2title   = "'. $_POST["position2title"]. '";
 $position3title   = "'. $_POST["position3title"]. '";
 $position4title   = "'. $_POST["position4title"]. '";
 ';
+//$position6title   = "'. $_POST["position6title"]. '";
+
+if(empty($position6) or !isset($_POST['position6'])) { // convert from old index.php
+	$position16 = 'forecast3ds.php';
+	$position16title = 'DarkSky Forecast';
+	$_POST['position6'] = $position16;
+	$_POST['position6title'] = $position16title;
+
+}
 if(empty($position12) or !isset($_POST['position12'])) { // convert from old index.php
 		$position12 = 'indoortemperature.php';
 		$position12title = 'Indoor Data';
@@ -1150,7 +1165,7 @@ your nearly there :-) keep going<br><br>
     <path d="M16 14 L16 23 M16 8 L16 10" />
     <circle cx="16" cy="16" r="14" />
 </svg>
-Options for Top Row 4 Modules and last bottom right modules <span style="color:#777;"></span> <br>   
+Options for Top Row 4 Modules, Position 6 (Forecast) and last bottom right modules <span style="color:#777;"></span> <br>   
        <div class= "stationvalue"> Position 1 Fixed</div>
        <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="#F05E40" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M12 30 L24 16 12 2" />
@@ -1272,6 +1287,46 @@ Options for Top Row 4 Modules and last bottom right modules <span style="color:#
            
             
         </select>
+        <br>
+        <br>
+<?php
+  if(!isset($position6)) {
+		$position6 = 'forecast3ds.php';
+		$position6title = 'DarkSky Forecast';
+	}
+?>
+        
+         <div class= "stationvalue"> *Position 6 </div>
+       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M12 30 L24 16 12 2" />
+</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M30 12 L16 24 2 12" />
+</svg>
+        <label name="position6"></label>
+        <select id="position6" name="position6" class="choose">  
+            <option><?php echo $position6 ;?></option> 
+            <option>forecast3ds.php</option> 
+            <option>forecast3wu.php</option>   
+                     </select>
+        <div class= "stationvalue"> Position 6 Title</div> (will automatically set)
+<?php
+/*    title will be autoset based on forecast script selected.
+    
+       <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="rgba(86, 95, 103, 1.000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M12 30 L24 16 12 2" />
+</svg><svg id="i-chevron-bottom" viewBox="0 0 32 32" width="10" height="10" fill="#777" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M30 12 L16 24 2 12" />
+</svg>   
+        <label name="position6title"></label>
+       <input name="position6title" type="text" id="position6title" value="<?php echo $position6title;?>" class="choose"> 
+           
+            
+        </select>
+*/
+?>
+        <br>
+        
+
 <?php
   if(!isset($position12)) {
 		$position12 = 'indoortemperature.php';
@@ -1383,6 +1438,15 @@ advisory.php</span> Station <span style="color:rgba(67, 58, 80, 1.000)">WEATHER<
        
         <br></span></span>
         <br><br>
+        <strong> <span style="color:rgba(86, 95, 103, 1.000);">options Position 6</span></strong><br>
+     <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(24, 25, 27, 0.8)" stroke="rgba(24, 25, 27, 0.8)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
+     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> forecast3ds.php</span> <orange>display 3 day forecast from DarkSky.net (set DarkSky API key below)</orange>   <br>    
+     </span>
+   
+   <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(24, 25, 27, 0.8)" stroke="rgba(24, 25, 27, 0.8)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
+     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> forecast3wu.php</span> <orange>display 3 period day/night forecast from Weather Underground (set WU API key below)</orange>   <br>    
+     </span>
+<br><br>
          <strong> <span style="color:rgba(86, 95, 103, 1.000);">options Position 12 and last module</span></strong><br>
         <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(24, 25, 27, 0.8)" stroke="rgba(24, 25, 27, 0.8)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
      <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> indoortemperature.php <orange>display indoor temperature</orange><br></span>
@@ -1782,6 +1846,40 @@ Set a short personal message that appears in the footer </div>
     <input name="WUID" type="text" id="WUID" value="<?php echo $id ;?>" class="choose"> 
     <br> <span style="color:#777;">enter your <strong>weather underground</strong> station id example in capitals <strong>ISTANBUL161</strong></span>
     <p>
+
+    
+    
+    <div class= "stationvalue"> Weather Underground API KEY (New API Version Key Required)</div> 
+    <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="#F05E40" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M12 30 L24 16 12 2" />
+</svg>
+
+    <input name="wuapikey" type="text" id="wuapikey" value="<?php echo $wuapikey ;?>" class="chooseapi"> 
+    <br> <span style="color:#777;">enter your Weather Underground API KEY <strong>8BXWEATHER34KEY123456789</strong></span>
+    <br><span style="color:#777;"><a href="https://www.wunderground.com/member/api-keys" title="https://www.wunderground.com/member/api-keys" target="_blank">login into https://www.wunderground.com/member/api-keys</a> to generate your new personal key.. </span>
+    <p>
+    
+     <div class= "stationvalue"> *important set units for Weather Underground API </div> 
+    <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="#F05E40" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M12 30 L24 16 12 2" />
+</svg>
+
+    <label name="wuapiunit"></label>
+        <select id="wuapiunit" name="wuapiunit" value="<?php echo $wuapiunit ;?>" class="choose1" >
+          <option><?php echo $wuapiunit ;?></option>
+            <option>e</option> 
+            <option>m</option>
+             <option>s</option>
+             <option>h</option>
+            </select>
+            
+             <br><span style="color:#777;"> e = <span style="color:#cd5245;">Imperial(Non Metric) </span>
+             <br><span style="color:#777;"> m = <span style="color:#cd5245;">Metric </span>
+             <br><span style="color:#777;"> s = <span style="color:#cd5245;">m/s wind speed + metric(Scandinavia) </span>
+             <br><span style="color:#777;"> h = <span style="color:#cd5245;">mph wind speed + metric(UK) </span>
+            
+    <p>
+    
     
         <div class= "stationvalue">
 <img src="img/darksky.svg" width="100" /> DarkSky API Key  for forecast Data </div>

@@ -188,13 +188,13 @@ $lang['Tillsunset'] = 'auringon laskuun';
 $lang['Tillsunrise'] = 'auringon nousuun';
 
 $lang['Newmoon'] = 'Uusikuu';
-$lang['Waxingcrescent'] = 'Kasvava<br/>sirppi';
-$lang['Firstquarter'] = 'Ensimmäinen<br/>neljännes';
-$lang['Waxinggibbous'] = 'Kasvava<br/>kupera kuu';
+$lang['Waxingcrescent'] = 'Kasvava sirppi';
+$lang['Firstquarter'] = 'Ensimmäinen neljännes';
+$lang['Waxinggibbous'] = 'Kasvava kupera kuu';
 $lang['Fullmoon'] = 'Täysikuu';
-$lang['Waninggibbous'] = 'Vähenevä<br/>kupera kuu';
-$lang['Lastquarter'] = 'Viimeinen<br/>neljännes';
-$lang['Waningcrescent'] = 'Vähenevä<br/>sirppi';
+$lang['Waninggibbous'] = 'Vähenevä kupera kuu';
+$lang['Lastquarter'] = 'Viimeinen neljännes';
+$lang['Waningcrescent'] = 'Vähenevä sirppi';
 $lang['Mooninfo'] = 'Kuun vaihe';
 
 //trends
