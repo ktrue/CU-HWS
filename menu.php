@@ -43,24 +43,24 @@ else echo' <a class="menucolor" href="./?units=metric">Units</a>';?></div>
      
 	<li>
   <span class="languages34">
-  <a href="index.php?lang=en"><img src="img/flags/en.svg"  alt="English" title="English" width="25" height="25"></a>&nbsp;
-  <a href="index.php?lang=dk"><img src="img/flags/dk.svg"  alt="Danish" title="Danish" width="25" height="25"></a>&nbsp;
-  <a href="index.php?lang=gr"><img src="img/flags/gr.svg"  alt="Greek" title="Greek" width="25" height="25"></a>&nbsp;
-  <a href="index.php?lang=it"><img src="img/flags/it.svg"  alt="Italian" title="Italian" width="25" height="25"></a>&nbsp;
-  <a href="index.php?lang=fr"><img src="img/flags/fr.svg"  alt="French" title="French" width="25" height="25"></a>&nbsp;
+  <a href="index.php?lang=en"><img src="img/flags/en.svg"  alt="English" title="English" width="25" height="25">&nbsp</a>&nbsp;
+  <a href="index.php?lang=dk"><img src="img/flags/dk.svg"  alt="Danish" title="Danish" width="25" height="25">&nbsp</a>&nbsp;
+  <a href="index.php?lang=gr"><img src="img/flags/gr.svg"  alt="Greek" title="Greek" width="25" height="25">&nbsp</a>&nbsp;
+  <a href="index.php?lang=it"><img src="img/flags/it.svg"  alt="Italian" title="Italian" width="25" height="25">&nbsp</a>&nbsp;
+  <a href="index.php?lang=fr"><img src="img/flags/fr.svg"  alt="French" title="French" width="25" height="25">&nbsp</a>&nbsp;
   </span>
   <span class="languages34">    
-  <a href="index.php?lang=dl"><img src="img/flags/dl.svg"  alt="German" title="German" width="25" height="25"></a>&nbsp;
-  <a href="index.php?lang=nl"><img src="img/flags/nl.svg"  alt="Dutch" title="Dutch" width="25" height="25"></a>&nbsp; 
-  <a href="index.php?lang=cat"><img src="img/flags/cat.svg" alt="Catalan" title="Catalan" width="25" height="25"></a>&nbsp;
-  <a href="index.php?lang=sp"><img src="img/flags/sp.svg"  alt="Spanish" title="Spanish" width="25" height="25"></a>&nbsp;
-  <a href="index.php?lang=tr"><img src="img/flags/tr.svg"  alt="Turkish" title="Turkish" width="25" height="25"></a>&nbsp;
+  <a href="index.php?lang=dl"><img src="img/flags/dl.svg"  alt="German" title="German" width="25" height="25">&nbsp</a>&nbsp;
+  <a href="index.php?lang=nl"><img src="img/flags/nl.svg"  alt="Dutch" title="Dutch" width="25" height="25">&nbsp</a>&nbsp; 
+  <a href="index.php?lang=cat"><img src="img/flags/cat.svg" alt="Catalan" title="Catalan" width="25" height="25">&nbsp</a>&nbsp;
+  <a href="index.php?lang=sp"><img src="img/flags/sp.svg"  alt="Spanish" title="Spanish" width="25" height="25">&nbsp</a>&nbsp;
+  <a href="index.php?lang=tr"><img src="img/flags/tr.svg"  alt="Turkish" title="Turkish" width="25" height="25">&nbsp</a>&nbsp;
   </span>
   <span class="languages34">    
-  <a href="index.php?lang=pl"><img src="img/flags/pl.svg"  alt="Polish" title="Polish" width="25" height="25"></a>&nbsp;
-  <a href="index.php?lang=mi"><img src="img/flags/mi.svg"  alt="Maori" title="Maori" width="25" height="25"></a>&nbsp; 
-  <a href="index.php?lang=fi"><img src="img/flags/fi.svg"  alt="Finnish" title="Finnish" width="25" height="25"></a>&nbsp; 
-  <a href="index.php?lang=sw"><img src="img/flags/sw.svg"  alt="Swedish" title="Swedish" width="25" height="25"></a>&nbsp;
+  <a href="index.php?lang=pl"><img src="img/flags/pl.svg"  alt="Polish" title="Polish" width="25" height="25">&nbsp</a>&nbsp;
+  <a href="index.php?lang=mi"><img src="img/flags/mi.svg"  alt="Maori" title="Maori" width="25" height="25">&nbsp</a>&nbsp; 
+  <a href="index.php?lang=fi"><img src="img/flags/fi.svg"  alt="Finnish" title="Finnish" width="25" height="25">&nbsp</a>&nbsp; 
+  <a href="index.php?lang=sw"><img src="img/flags/sw.svg"  alt="Swedish" title="Swedish" width="25" height="25">&nbsp</a>&nbsp;
   </span></li>
 ';  ?>
 <?php //do not remove this and if so no support is given and your domain will be blacklisted it is not much to ask //?>
