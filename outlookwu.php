@@ -17,10 +17,10 @@ header('Content-type: text/html; charset=UTF-8');
 	# 	Code simplified by ktrue - 30-Mar-2019
 	####################################################################################################
 
-$lightningalert4=' <svg id="weather34_wu_lightning_alert" width="9" height="9" fill="#ff552e" viewBox="0 0 20 20"><path d="M19.64 16.36L11.53 2.3A1.85 1.85 0 0 0 10 1.21 1.85 1.85 0 0 0 8.48 2.3L.36 16.36C-.48 17.81.21 19 1.88 19h16.24c1.67 0 2.36-1.19 1.52-2.64zM11 16H9v-2h2zm0-4H9V6h2z"/></svg>';
+$lightningalert4=' <svg width="9" height="9" fill="#ff552e" viewBox="0 0 20 20"><path d="M19.64 16.36L11.53 2.3A1.85 1.85 0 0 0 10 1.21 1.85 1.85 0 0 0 8.48 2.3L.36 16.36C-.48 17.81.21 19 1.88 19h16.24c1.67 0 2.36-1.19 1.52-2.64zM11 16H9v-2h2zm0-4H9V6h2z"/></svg>';
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE HTML>
+<html lang="<?php echo $language; ?>">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>Weather34 Weather Underground Forecast </title>
@@ -124,7 +124,7 @@ $lightningalert4=' <svg id="weather34_wu_lightning_alert" width="9" height="9" f
 	
 	.darkskywindgust {
 	    font-family: Arial;
-	    margin-top: -55px;
+	    margin-top: -35px;
 	    margin-left: 97px
 	}
 	
@@ -140,7 +140,7 @@ $lightningalert4=' <svg id="weather34_wu_lightning_alert" width="9" height="9" f
 	
 	.greydesc,
 	.none {
-	    position: absolute
+	    display: block;
 	}
 	
 	.darkskyforecastinghome {
@@ -197,12 +197,12 @@ $lightningalert4=' <svg id="weather34_wu_lightning_alert" width="9" height="9" f
 	}
 	
 	.darkskyweekdayhome {
-	    postion: absolutue;
+	    position: absolute;
 	    text-align: center;
 	    padding: 0;
 	    color: #fff;
 	    font-family: Arial;
-	    font-size: .7rem;
+	    font-size: 0.7rem;
 	    margin: 0 0 12px;
 	    background: 0
 	}
@@ -252,20 +252,21 @@ $lightningalert4=' <svg id="weather34_wu_lightning_alert" width="9" height="9" f
 	}
 	
 	.darkskyforecasthome darkskytemphihome {
-	    font-size: .7rem;
+	    font-size: 0.7rem;
 	    color: #ff7c39;
 	    font-family: Arial;
 	    line-height: 10px
 	}
 	
 	.darkskyforecasthome darkskytemphihome span {
-	    font-size: : .7rem;
+	    font-size: 0.7rem;
 	    color: #ff7c39;
 	    font-family: Arial;
 	    line-height: 10px
 	}
 	
 	.darkskyforecasthome darkskytemplohome {
+	    font-family: weathertext2
 	    font-size: .65rem;
 	    color: #ff7c39;
 	    font-family: Arial;
@@ -294,7 +295,7 @@ $lightningalert4=' <svg id="weather34_wu_lightning_alert" width="9" height="9" f
 	}
 	
 	.darkskyforecasthome darkskytempwindhome span2 {
-	    font-size: .7rem;
+	    font-size: 0.7rem;
 	    color: silver;
 	    font-family: Arial;
 	    line-height: 10px;
@@ -314,7 +315,7 @@ $lightningalert4=' <svg id="weather34_wu_lightning_alert" width="9" height="9" f
 	
 	.darkskyforecastinghome img {
 	    position: relative;
-	    margin-top: -5px;
+	    margin-top: 25px;
 	    margin-bottom: 10px
 	}
 	
@@ -500,7 +501,7 @@ $lightningalert4=' <svg id="weather34_wu_lightning_alert" width="9" height="9" f
         <br>
 		<script src="js/jquery.js"></script>
 		 <div class="darkskyforecasthome">
-		<div class="darkskydiv"><value>
+		<div class="darkskydiv value">
 		<?php //begin wu stuff 
 $Thunder = array(
 	0 => "No thunder",
@@ -516,6 +517,7 @@ $weather34wuurl=file_get_contents($jsonfile);
 $parsed_weather34wujson = json_decode($weather34wuurl,false);
 
 $idx = 0;
+$wordWrapAt = 30; // number of characters in wxPhraseLong to wrap text
 for ($k=0;$k<=8;$k++) {
 	 if(empty($parsed_weather34wujson->{'daypart'}[0]->{'iconCode'}[$k])) { continue; }
 	 if($idx > 8) {break; }
@@ -536,6 +538,8 @@ for ($k=0;$k<=8;$k++) {
 	 $wuskydaysummary = $parsed_weather34wujson->{'daypart'}[0]->{'narrative'}[$k];
 	 $wuskydaynight = $parsed_weather34wujson->{'daypart'}[0]->{'dayOrNight'}[$k];
 	 $wuskydesc = $parsed_weather34wujson->{'daypart'}[0]->{'wxPhraseLong'}[$k];
+   if(strlen($wuskydesc) > $wordWrapAt) {$wuskydesc = wordwrap($wuskydesc,$wordWrapAt,'<br/>'); }
+
 	 if(!empty($parsed_weather34wujson->{'daypart'}[0]->{'thunderCategory'}[$k])) {
 		 $wuskythunder = $parsed_weather34wujson->{'daypart'}[0]->{'thunderCategory'}[$k];
 	 } else {
@@ -576,41 +580,47 @@ for ($k=0;$k<=8;$k++) {
 
 // weather34 lets make it look pretty
 	echo "\n<!-- k=$k idx=$idx -->\n"; 
-	echo '<div class="darkskyforecastinghome"><value>';  
-	echo '<div class="darkskyweekdayhome"><value>'.$wuskydayTime.'</div>'; 				  			  
-	if ($wuskydaynight=='D'){echo '<img src="css/wuicons/'.$wuskydayIcon.'.svg" width="40" ></img>';}
-	if ($wuskydaynight=='N'){echo '<img src="css/wuicons/nt_'.$wuskydayIcon.'.svg" width="40" ></img>';}
+	echo '<div class="darkskyforecastinghome">';  
+	echo '  <div class="darkskyweekdayhome">'.$wuskydayTime.'</div>'; 				  			  
+	if ($wuskydaynight=='D'){
+		echo '<img src="css/wuicons/'.$wuskydayIcon.'.svg" alt="'.$wuskydayIcon.' icon" width="40" />';}
+	if ($wuskydaynight=='N'){
+		echo '<img src="css/wuicons/nt_'.$wuskydayIcon.'.svg" alt="'.$wuskydayIcon.' icon" width="40" />';}
 	//summary icon
-	echo '<div class=greydesc>'. $wuskydesc.'</div><br>';	
-	//uvi	+ tstorm		  
-	echo '<darkskytemplohome><grey><value> '.$sunlight.' UVI ';				 
-	if ($wuskydayUV>=10){echo 	"<purpleu>".$wuskydayUV. '</purpleu><grey> '.$wuskydayUVdesc;}
-	else if ($wuskydayUV>7){echo 	"<redu>".$wuskydayUV. '</redu><grey> '.$wuskydayUVdesc;}
-	else if ($wuskydayUV>5){echo 	"<orangeu>".$wuskydayUV. '</orangeu><grey> '.$wuskydayUVdesc;}
-	else if ($wuskydayUV>2){echo 	"<yellowu>".$wuskydayUV. '</yellowu><grey> '.$wuskydayUVdesc;}
-	else if ($wuskydayUV>0){echo 	"<greenu>".$wuskydayUV. '</greenu><grey> '.$wuskydayUVdesc;}
-	else if ($wuskydayUV==0){echo 	"<zerou>".$wuskydayUV. '</zerou><grey>';}				  
-	if ( $wuskydayacumm>0){ echo " ".$snowflakesvg." <blueu> ".$wuskydayacumm."cm</bluet></blueu><br>";}	
-	else echo " ".$rainsvg." <blueu>".number_format($wuskydayprecipIntensity,2)."<value> ". $rainunit." </value></blueu><br>";				   			 
-	 echo $lightningalert4;
-	 if ($wuskythunder=="No thunder"){ echo ' <thunder>'.$wuskythunder.'</thunder></grey>	 </value></darkskytemplohome>';}
-	 else echo ' <thunder><orange1>'.$wuskythunder.'</orange1></thunder></grey>	 </value></darkskytemplohome>';      
-	//temp				  
+		//temp				  
 	echo "<div class='darkskywindgust'>"; 				  
-	if($tempunit=='F' && $wuskydayTempHigh<44.6){echo "<div class=valuehi><bluet>".number_format($wuskydayTempHigh,0);}
-	else if($tempunit=='F' && $wuskydayTempHigh>80.6){echo "<div class=valuehi><redt>".number_format($wuskydayTempHigh,0);}
-	else if($tempunit=='F' && $wuskydayTempHigh>64.4){echo "<div class=valuehi><oranget>".number_format($wuskydayTempHigh,0);}
-	else if($tempunit=='F' && $wuskydayTempHigh>55){echo "<div class=valuehi><yellowt>".number_format($wuskydayTempHigh,0);}
-	else if($tempunit=='F' && $wuskydayTempHigh>=44.6){echo "<div class=valuehi><greent>".number_format($wuskydayTempHigh,0);}
-	else if($wuskydayTempHigh<7){echo "<div class=valuehi><bluet>".number_format($wuskydayTempHigh,0);}
-	else if($wuskydayTempHigh>27){echo "<div class=valuehi><redt>".number_format($wuskydayTempHigh1,0);}
-	else if($wuskydayTempHigh>18){echo "<div class=valuehi><oranget>".number_format($wuskydayTempHigh,0);}
-	else if($wuskydayTempHigh>12.7){echo "<div class=valuehi><yellowt>".number_format($wuskydayTempHigh,0);}			  
-	else if($wuskydayTempHigh>=7){echo "<div class=valuehi><greent>".number_format($wuskydayTempHigh,0);}
+	if($tempunit=='F' && $wuskydayTempHigh<44.6){echo "<div class=\"valuehi\"><bluet>".number_format($wuskydayTempHigh,0);}
+	else if($tempunit=='F' && $wuskydayTempHigh>80.6){echo "<div class=\"valuehi\"><redt>".number_format($wuskydayTempHigh,0);}
+	else if($tempunit=='F' && $wuskydayTempHigh>64.4){echo "<div class=\"valuehi\"><oranget>".number_format($wuskydayTempHigh,0);}
+	else if($tempunit=='F' && $wuskydayTempHigh>55){echo "<div class=\"valuehi\"><yellowt>".number_format($wuskydayTempHigh,0);}
+	else if($tempunit=='F' && $wuskydayTempHigh>=44.6){echo "<div class=\"valuehi\"><greent>".number_format($wuskydayTempHigh,0);}
+	else if($wuskydayTempHigh<7){echo "<div class=\"valuehi\"><bluet>".number_format($wuskydayTempHigh,0);}
+	else if($wuskydayTempHigh>27){echo "<div class=\"valuehi\"><redt>".number_format($wuskydayTempHigh1,0);}
+	else if($wuskydayTempHigh>18){echo "<div class=\"valuehi\"><oranget>".number_format($wuskydayTempHigh,0);}
+	else if($wuskydayTempHigh>12.7){echo "<div class=\"valuehi\"><yellowt>".number_format($wuskydayTempHigh,0);}			  
+	else if($wuskydayTempHigh>=7){echo "<div class=\"valuehi\"><greent>".number_format($wuskydayTempHigh,0);}
 		echo "°<spantemp>" .$tempunit. "</spantemp></div></div>";
+
+	
+	echo '  <div class=greydesc>'. $wuskydesc.'</div><br>';	
+	//uvi	+ tstorm		  
+	echo '  <div class="darkskytemplohome greydesc"> '.$sunlight.' UVI ';				 
+	if ($wuskydayUV>=10){echo 	"<purpleu>".$wuskydayUV. '</purpleu></grey> '.$wuskydayUVdesc;}
+	else if ($wuskydayUV>7){echo 	"<redu>".$wuskydayUV. '</redu></grey> '.$wuskydayUVdesc;}
+	else if ($wuskydayUV>5){echo 	"<orangeu>".$wuskydayUV. '</orangeu></grey> '.$wuskydayUVdesc;}
+	else if ($wuskydayUV>2){echo 	"<yellowu>".$wuskydayUV. '</yellowu></grey> '.$wuskydayUVdesc;}
+	else if ($wuskydayUV>0){echo 	"<greenu>".$wuskydayUV. '</greenu></grey> '.$wuskydayUVdesc;}
+	else if ($wuskydayUV==0){echo 	"<zerou>".$wuskydayUV. '</zerou></grey>';}				  
+	if ( $wuskydayacumm>0){ echo " ".$snowflakesvg." <blueu> ".$wuskydayacumm."cm</blueu><br>";}	
+	 else echo " ".$rainsvg." <blueu>" . 
+	    number_format($wuskydayprecipIntensity,2)." ". $rainunit." </blueu><br>";				   			 
+	 echo $lightningalert4;
+	 if ($wuskythunder=="No thunder"){ 
+	 echo ' <thunder>'.$wuskythunder.'</thunder> </div><!-- end darkskytemplohome -->';}
+	 else echo ' <thunder><orange1>'.$wuskythunder.'</orange1></thunder></div><!-- end darkskytemplohome -->';      
 	//text summary
 	echo '<darkskytempwindhome><span>'.$wuskydaysummary.' </darkskywindhome></span>';					  
-	echo  '</div>';	
+	echo  '</div><!-- end darkskyforecastinghome --> ';	
 	$idx++;			  
 				              
 } // end foreach loop over periods        
