@@ -40,7 +40,7 @@ $weather34wuurl=file_get_contents($jsonfile);
 $parsed_weather34wujson = json_decode($weather34wuurl,false);
 
 $idx = 0;
-for ($k=0;$k<=4;$k++) {
+for ($k=0;$k<=3;$k++) {
 	 if(empty($parsed_weather34wujson->{'daypart'}[0]->{'iconCode'}[$k])) { continue; }
 	 if($idx > 3) {break; }
 	 $wuskydayIcon=$parsed_weather34wujson->{'daypart'}[0]->{'iconCode'}[$k];	 
@@ -59,11 +59,12 @@ for ($k=0;$k<=4;$k++) {
 	 $wuskydaysnow = $parsed_weather34wujson->{'daypart'}[0]->{'qpfSnow'}[$k];
 	 $wuskydaysummary = $parsed_weather34wujson->{'daypart'}[0]->{'narrative'}[$k];
 	 $wuskydaynight = $parsed_weather34wujson->{'daypart'}[0]->{'dayOrNight'}[$k];
-	 $wuskydesc = $parsed_weather34wujson->{'daypart'}[0]->{'wxPhraseShort'}[1];
-//	 if(strlen($wuskydesc) < 1) {
-//	   $wuskydesc = $parsed_weather34wujson->{'daypart'}[0]->{'wxPhraseLong'}[1];
-//	 }
-	 $wuskydesc = $parsed_weather34wujson->{'daypart'}[0]->{'wxPhraseLong'}[$k];
+	 $wuskydesc = $parsed_weather34wujson->{'daypart'}[0]->{'wxPhraseShort'}[$k];
+	 if(strlen($wuskydesc) < 1) {
+	   $wuskydesc = $parsed_weather34wujson->{'daypart'}[0]->{'wxPhraseLong'}[$k];
+	 }
+//	 $wuskydesc = $parsed_weather34wujson->{'daypart'}[0]->{'wxPhraseLong'}[$k];
+   if(strlen($wuskydesc) > 13) {$wuskydesc = wordwrap($wuskydesc,13,'<br/>'); }
 	 if(!empty($parsed_weather34wujson->{'daypart'}[0]->{'thunderCategory'}[$k])) {
 		 $wuskythunder = $parsed_weather34wujson->{'daypart'}[0]->{'thunderCategory'}[$k];
 	 } else {
