@@ -1,5 +1,5 @@
 <?php
-$Version = "diags.php Version 1.00 - 08-Jan-2019";
+$Version = "diags.php Version 1.01 - 11-Apr-2019";
 /*
 Utility diagnostic script to support the CU-HWS template sets.
 
@@ -211,6 +211,7 @@ if(isset($_REQUEST['show']) and strtolower($_REQUEST['show']) == 'info') {
   'css/rain' => 'CU-HWS SVG images for rain gauge display',
   'css/windicons' => 'CU-HWS SVG images for wind direction',
   'css/windspeed' => 'CU-HWS SVG images for wind speed',
+	'css/wuicons' => 'CU-HWS SVG images for WU/TWC forecasts',
 	'curl' => 'CU-HWS update weather conds. utilities',
   'demodata' => 'CU-HWS demodata',
   'img' => 'CU-HWS images',
