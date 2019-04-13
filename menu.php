@@ -1,4 +1,4 @@
-<!-- begin menu.php 30-Mar-2019 -->
+<!-- begin menu.php 13-Apr-2019 -->
 <header style="z-index:auto">
 <h1><ogreyh1><?php echo $stationName;?>&nbsp; Home &#8226; Weather &#8226; Station </ogreyh1></h1>
 <button class="button right"></button><div class='w34logo'>
@@ -34,8 +34,14 @@ else echo' <a class="menucolor" href="./?units=metric">Units</a>';?></div>
 <?php if($weatherflowoption=="yes"){ echo "<li><a href=https://staging.smartweather.weatherflow.com/map/".$lat."/".$lon."/".$weatherflowmapzoom." data-featherlight=iframe>". $locationinfo." Weatherflow Map </a></li>" ;}
 ?>
 <li><!-- webcam --> <a href="webcam.php" data-featherlight="iframe" title="WEATHERSTATION WEBCAM"> <?php echo $webcam34icon;?> Web Cam </a></li>  
-<li><!-- info --> <a href="bio.php" data-featherlight="iframe" title="Contact WEATHERSTATION Info"> <?php echo $svgmailmenu;?> Contact Info</a></li>  
-
+<li><!-- info --> <a href="bio.php" data-featherlight="iframe" title="Contact WEATHERSTATION Info"> <?php echo $svgmailmenu;?> Contact Info</a></li> 
+<?php 
+if (file_exists('menu-extras.php')) {
+	include_once('menu-extras.php');
+} else if(file_exists('menu-extras-template.php')) {
+	copy('menu-extras-template.php','menu-extras.php');
+}
+?>
 <!-- languages --> 
 <?php if($languages=="yes") echo '<li><a href="">
    
