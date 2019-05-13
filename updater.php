@@ -120,8 +120,45 @@ foreach ($days as $n => $abbr) {
 	print "\"$abbr\"";
 }
 print "]; //using $language day names\n";
+print "var useAMPM = ";
+print preg_match('|g|',$timeFormat)?' true':' false';
+print " // time format\n";
+print "var ampmLegend = '".date('a')."';\n";
 ?>
-var tzDifference=yourTimeZoneFrom*60+d.getTimezoneOffset();var offset=tzDifference*60*1000;function UpdateClock(){var e=new Date(new Date().getTime()+offset);var c=e.getHours();var a=e.getMinutes();var g=e.getSeconds();var f=e.getFullYear();var h=months[e.getMonth()];var b=e.getDate();var i=weekdays[e.getDay()];if(a<10){a="0"+a}if(g<10){g="0"+g}if(c<10){c="0"+c}document.getElementById("theTime").innerHTML="<div class='weatherclock34'> "+i+" "+b+" "+h+" "+f+"<div class='orangeclock'>"+c+":"+a+":"+g}function StartClock(){clockID=setInterval(UpdateClock,500)}function KillClock(){clearTimeout(clockID)}window.onload=function(){StartClock()};
+var tzDifference = yourTimeZoneFrom * 60 + d.getTimezoneOffset();
+var offset = tzDifference * 60 * 1000;
+function UpdateClock() {
+	var e = new Date(new Date().getTime() + offset);
+	var c = e.getHours();
+	var a = e.getMinutes();
+	var g = e.getSeconds();
+	var f = e.getFullYear();
+	var h = months[e.getMonth()];
+	var b = e.getDate();
+	var i = weekdays[e.getDay()];
+	if (a < 10) {
+		a = "0" + a
+	}
+	if (g < 10) {
+		g = "0" + g
+	}
+	if (!useAMPM & c < 10) {
+		c = "0" + c
+	}
+	var c2 = c;
+	if (c > 12) {c2 = c - 12; ampm = 'pm'} else {c2 = c; ampm='am';}
+	if(useAMPM) {c = c2;} else {ampm = '';}
+	document.getElementById("theTime").innerHTML = "<div class='weatherclock34'> " + i + " " + b + " " + h + " " + f + "<div class='orangeclock'>" + c + ":" + a + ":" + g + ampm
+}
+function StartClock() {
+	clockID = setInterval(UpdateClock, 500)
+}
+function KillClock() {
+	clearTimeout(clockID)
+}
+window.onload = function () {
+	StartClock()
+};
 </script>
 <?php }?>
 <!-- end updater.php -->
