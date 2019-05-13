@@ -147,8 +147,9 @@ function UpdateClock() {
 	}
 	var c2 = c;
 	if (useAMPM) {
-	  if (c > 12) {c2 = c - 12; ampm = 'pm'} else { ampm = 'am' }
-	  if (c < 1 ) {c2 = c+12;}
+	  if (c > 12)  {c2 = c - 12; ampm = 'pm'} else { ampm = 'am' } // afternoon v.s. morning
+		if (c == 12) { ampm='pm' } // noon
+	  if (c < 1 )  {c2 = c+12;} // midnight
 	}
 	
 	if(useAMPM) {c = c2;} else {ampm = '';}
