@@ -146,7 +146,11 @@ function UpdateClock() {
 		c = "0" + c
 	}
 	var c2 = c;
-	if (c > 12) {c2 = c - 12; ampm = 'pm'} else {c2 = c; ampm='am';}
+	if (useAMPM) {
+	  if (c > 12) {c2 = c - 12; ampm = 'pm'} else { ampm = 'am' }
+	  if (c = 0)  {c2 = c+12;}
+	}
+	
 	if(useAMPM) {c = c2;} else {ampm = '';}
 	document.getElementById("theTime").innerHTML = "<div class='weatherclock34'> " + i + " " + b + " " + h + " " + f + "<div class='orangeclock'>" + c + ":" + a + ":" + g + ampm
 }
