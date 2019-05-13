@@ -148,7 +148,7 @@ function UpdateClock() {
 	var c2 = c;
 	if (useAMPM) {
 	  if (c > 12) {c2 = c - 12; ampm = 'pm'} else { ampm = 'am' }
-	  if (c = 0)  {c2 = c+12;}
+	  if (c < 1 ) {c2 = c+12;}
 	}
 	
 	if(useAMPM) {c = c2;} else {ampm = '';}
