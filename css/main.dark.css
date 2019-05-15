@@ -12100,7 +12100,7 @@ trendmovementsteadyx {
 .indoortrendhouse1 {
     position: absolute;
     margin-left: 143px;
-    margin-top: 67px;
+    margin-top: 56px;
     font-size: .55rem;
     z-index: 1;
     color: #fff
@@ -12661,7 +12661,6 @@ topblue1 {
 .indoorhomesvg1 {
     margin-top: -12px;
     left: 0;
-    margin-left: -86px;
     color: #38383c
 }
 
