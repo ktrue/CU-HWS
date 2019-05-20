@@ -101,6 +101,8 @@ if($purpleairhardware=='yes' and !empty($purpleairID)) {
   }
 
 }
+/*
+following code no longer works as WU discontinued the WXDailyHistory.asp page 18-May-2018
 
 // fetch WU historical datat for charts
 $filename = '../chartswudata/'.date('dmY').'.txt';
@@ -139,6 +141,7 @@ if(!file_exists($filename2) or file_exists($filename2)&&time()- filemtime($filen
 } else {
 	$Status .= "<!-- $filename2 is current -->\n";
 }
+*/
 
 if($weatherflowoption=='yes'){
   $filename8 = 'weatherflow.txt';
