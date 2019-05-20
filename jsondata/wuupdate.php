@@ -143,6 +143,38 @@ if(!file_exists($filename2) or file_exists($filename2)&&time()- filemtime($filen
 }
 */
 
+// NEW WU fetch functions
+
+// fetch WU historical datat for charts
+$filename = '../chartswudata/'.date('dmY').'.txt';
+if(!file_exists($filename) or file_exists($filename)&&time()- filemtime($filename)>300){
+
+ //day
+	$url = 'https://api.weather.com/v2/pws/history/all?stationId='.$id.'&format=json&units='.$wuapiunit.'&date='.date('Ymd').'&apiKey='.$wuapikey;
+	 
+  $data = HWS_fetchUrlWithoutHanging($url);
+	$outdata = HWS_WUJSON_decode('daily',$data,$wuapiunit);
+	if(strlen($data) > 0) {
+		file_put_contents($filename,$outdata);
+	}
+} else {
+	$Status .= "<!-- $filename is current -->\n";
+}
+
+// 7-day (formerly month)
+$filename1 = '../chartswudata/'.date('mY').'.txt';
+if(!file_exists($filename1) or file_exists($filename1)&&time()- filemtime($filename1)>300){
+	$url = 'https://api.weather.com/v2/pws/observations/hourly/7day?stationId='.$id.'&format=json&units='.$wuapiunit.  '&apiKey='.$wuapikey;
+  $data = HWS_fetchUrlWithoutHanging($url);
+	$outdata = HWS_WUJSON_decode('7day',$data,$wuapiunit);
+	if(strlen($outdata) > 0) {
+		file_put_contents($filename1,$outdata);
+	}
+} else {
+	$Status .= "<!-- $filename1 is current -->\n";
+}
+
+
 if($weatherflowoption=='yes'){
   $filename8 = 'weatherflow.txt';
 	if(!file_exists($filename2) or file_exists($filename2)&&time()- filemtime($filename2)>300){
@@ -330,4 +362,210 @@ function HWS_fetch_microtime()
    
 // ----------------------------------------------------------
 
+function HWS_WUJSON_decode($type,$json,$unit) {
+	// try to make a CVS-style data file from the WU/TWC API return
+	$J = json_decode($json,true);
+	$compass = array('N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW');
+	
+	if($type == 'daily') { // create a daily-formatted file 
+	  if(!isset($J['observations'])) {
+			return ('');
+		}
+/* make it look like:
+
+Time,TemperatureF,DewpointF,PressureIn,WindDirection,WindDirectionDegrees,WindSpeedMPH,WindSpeedGustMPH,Humidity,HourlyPrecipIn,Conditions,Clouds,dailyrainin,SolarRadiationWatts/m^2,SoftwareType,DateUTC<br>
+2019-03-05 00:04:48,50.4,47.0,30.01,NNW,330,0.0,0.0,88,0.00,OVC,,0.00,0.00,WeatherDisplay:10.37,2019-03-05 08:04:48,
+<br>
+2019-03-05 00:09:49,50.4,47.0,30.01,NNW,330,0.0,0.0,88,0.00,OVC,,0.00,0.00,WeatherDisplay:10.37,2019-03-05 08:09:49,
+<br>
+
+from entries like:
+
+{
+  "observations": [{
+      "stationID": "KCASARAT1",
+      "tz": "America/Los_Angeles",
+      "obsTimeUtc": "2019-05-20T07:04:57Z",
+      "obsTimeLocal": "2019-05-20 00:04:57",
+      "epoch": 1558335897,
+      "lat": 37.27470016,
+      "lon": -122.02295685,
+      "solarRadiationHigh": 0.0,
+      "uvHigh": 0.0,
+      "winddirAvg": 233,
+      "humidityHigh": 93,
+      "humidityLow": 92,
+      "humidityAvg": 92,
+      "qcStatus": 1,
+      "imperial": {
+        "tempHigh": 52,
+        "tempLow": 52,
+        "tempAvg": 52,
+        "windspeedHigh": 0,
+        "windspeedLow": 0,
+        "windspeedAvg": 0,
+        "windgustHigh": 0,
+        "windgustLow": 0,
+        "windgustAvg": 0,
+        "dewptHigh": 50,
+        "dewptLow": 50,
+        "dewptAvg": 50,
+        "windchillHigh": 52,
+        "windchillLow": 52,
+        "windchillAvg": 52,
+        "heatindexHigh": 52,
+        "heatindexLow": 52,
+        "heatindexAvg": 52,
+        "pressureMax": 29.89,
+        "pressureMin": 29.89,
+        "pressureTrend": -0.01,
+        "precipRate": 0.00,
+        "precipTotal": 0.00
+      }
+    }, {
+
+*/
+    if($unit == 'e') {
+		  $headingDaily = 'Time,TemperatureF,DewpointF,PressureIn,WindDirection,WindDirectionDegrees,WindSpeedMPH,WindSpeedGustMPH,Humidity,HourlyPrecipIn,Conditions,Clouds,dailyrainin,SolarRadiationWatts/m^2,SoftwareType,DateUTC<br>
+';  
+	    $U = 'imperial';
+		} else {
+			$headingDaily = 
+'Time,TemperatureC,DewpointC,PressurehPa,WindDirection,WindDirectionDegrees,WindSpeedKMH,WindSpeedGustKMH,Humidity,HourlyPrecipMM,Conditions,Clouds,dailyrainMM,SoftwareType,DateUTC<br>
+';
+      $U = 'metric';
+		}
+	
+    $doneHeader = false;
+		$outrecs = '';
+		foreach ($J['observations'] as $i => $obs) {
+		  $rec = array();
+			$rec[] = $obs['obsTimeLocal'];
+			$rec[] = $obs[$U]['tempAvg'];
+			$rec[] = $obs[$U]['dewptAvg'];
+			$rec[] = $obs[$U]['pressureMax']; // yes, no pressureAvg to use
+			
+			$rec[] = $compass[round($obs['winddirAvg'] / 22.5) % 16];
+			$rec[] = $obs['winddirAvg'];
+			$rec[] = $obs[$U]['windspeedAvg'];
+			$rec[] = $obs[$U]['windgustHigh'];
+			$rec[] = $obs['humidityAvg'];
+			$rec[] = $obs[$U]['precipRate']; // this may not be correct...
+			$rec[] = 'n/a'; // no conditions available
+			$rec[] = 'n/a'; // no Clouds available
+			$rec[] = $obs[$U]['precipTotal'];
+			$rec[] = isset($obs['solarRadiationHigh'])?$obs['solarRadiationHigh']:'';
+			$rec[] = 'n/a';
+			$rec[] = $obs['obsTimeUtc'];
+			if(!$doneHeader) {
+			  $outrecs .= $headingDaily;
+				$doneHeader = true;
+			}
+			$outrecs .= join(',',$rec)."\n<br>\n";
+		} // end observations loop
+	   return($outrecs);
+	} // end daily processing
+
+	if($type == '7day') { // create a daily-formatted file 
+	  if(!isset($J['observations'])) {
+			return ('');
+		}
+    if($unit == 'e') {
+		  $heading = 'Date,TemperatureHighF,TemperatureAvgF,TemperatureLowF,DewpointHighF,DewpointAvgF,DewpointLowF,HumidityHigh,HumidityAvg,HumidityLow,PressureMaxIn,PressureMinIn,WindSpeedMaxMPH,WindSpeedAvgMPH,GustSpeedMaxMPH,PrecipitationSumIn<br>
+';  
+	    $U = 'imperial';
+		} else {
+			$heading = 
+'Date,TemperatureHighC,TemperatureAvgC,TemperatureLowC,DewpointHighC,DewpointAvgC,DewpointLowC,HumidityHigh,HumidityAvg,HumidityLow,PressureMaxhPa,PressureMinhPa,WindSpeedMaxKMH,WindSpeedAvgKMH,GustSpeedMaxKMH,PrecipitationSumCM<br>
+<br>
+';
+      $U = 'metric';
+		}
+/*
+{
+  "observations": [
+    {
+      "stationID": "KCASARAT1",
+      "tz": "America/Los_Angeles",
+      "obsTimeUtc": "2019-05-14T07:59:58Z",
+      "obsTimeLocal": "2019-05-14 00:59:58",
+      "epoch": 1557820798,
+      "lat": 37.27470016,
+      "lon": -122.02295685,
+      "solarRadiationHigh": 0,
+      "uvHigh": 0,
+      "winddirAvg": 101,
+      "humidityHigh": 80,
+      "humidityLow": 79,
+      "humidityAvg": 79,
+      "qcStatus": 1,
+      "imperial": {
+        "tempHigh": 58,
+        "tempLow": 58,
+        "tempAvg": 58,
+        "windspeedHigh": 0,
+        "windspeedLow": 0,
+        "windspeedAvg": 0,
+        "windgustHigh": 2,
+        "windgustLow": 0,
+        "windgustAvg": 0,
+        "dewptHigh": 52,
+        "dewptLow": 52,
+        "dewptAvg": 52,
+        "windchillHigh": 58,
+        "windchillLow": 58,
+        "windchillAvg": 58,
+        "heatindexHigh": 58,
+        "heatindexLow": 58,
+        "heatindexAvg": 58,
+        "pressureMax": 30.04,
+        "pressureMin": 30.04,
+        "pressureTrend": 0,
+        "precipRate": 0,
+        "precipTotal": 0
+      }
+    },
+to
+'Date,TemperatureHighF,TemperatureAvgF,TemperatureLowF,DewpointHighF,DewpointAvgF,DewpointLowF,HumidityHigh,HumidityAvg,HumidityLow,PressureMaxIn,PressureMinIn,WindSpeedMaxMPH,WindSpeedAvgMPH,GustSpeedMaxMPH,PrecipitationSumIn<br>
+';  
+
+*/	
+    $doneHeader = false;
+		$outrecs = '';
+		foreach ($J['observations'] as $i => $obs) {
+		  $rec = array();
+			$rec[] = $obs['obsTimeLocal'];
+			$rec[] = $obs[$U]['tempHigh'];
+			$rec[] = $obs[$U]['tempAvg'];
+			$rec[] = $obs[$U]['tempLow'];
+			$rec[] = $obs[$U]['dewptHigh'];
+			$rec[] = $obs[$U]['dewptAvg'];
+			$rec[] = $obs[$U]['dewptLow'];
+			$rec[] = $obs['humidityHigh'];
+			$rec[] = $obs['humidityAvg'];
+			$rec[] = $obs['humidityLow'];
+			$rec[] = $obs[$U]['pressureMax']; 
+			$rec[] = $obs[$U]['pressureMin'];
+			$rec[] = $obs[$U]['windspeedHigh'];
+			$rec[] = $obs[$U]['windspeedAvg'];
+			$rec[] = $obs[$U]['windgustHigh'];
+//			$rec[] = $compass[round($obs['winddirAvg'] / 22.5) % 16];
+//			$rec[] = $obs['winddirAvg'];
+//			$rec[] = $obs[$U]['precipRate']; // this may not be correct...
+//			$rec[] = 'n/a'; // no conditions available
+//			$rec[] = 'n/a'; // no Clouds available
+			$rec[] = $obs[$U]['precipTotal'];
+			$rec[] = isset($obs['solarRadiationHigh'])?$obs['solarRadiationHigh']:'';
+			$rec[] = 'n/a';
+			$rec[] = $obs['obsTimeUtc'];
+			if(!$doneHeader) {
+			  $outrecs .= $heading;
+				$doneHeader = true;
+			}
+			$outrecs .= join(',',$rec)."\n<br>\n";
+		} // end observations loop
+	   return($outrecs);
+	} // end 7-day processing
+	
+}
 ?>
