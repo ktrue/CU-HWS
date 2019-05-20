@@ -1,5 +1,16 @@
 # Home Weather Station weather website template for Cumulus/Cumulus MX
 
+# NOTE - Graphs are partially operational - 19-May-2019
+
+On 18-May-2019, weatherunderground.com discontinued the data query for CSV data for day/month/year that is used by
+the graphs for temperature/humidity, barometer, wind, solar/uv, and rain.  
+I've coded a shim to get the PWS WU/TWC API to provide daily (today) and last-7-days JSON data and save in the CSV format expected by the graph programs.  New weekly*.php graphs are now linked on the index page, along with the today*.php
+graphs.  The yearly graphs are no longer available as the WU/TWC API does not provide that data as a query.
+
+**YOU MUST have a valid WU/TWC API Key to use the graph displays**
+
+# Introduction
+
 This repository contains the current version of Brian Underdown's Home Weather Station weather website template set.
 Brian's main website is https://weather34.com/homeweatherstation/index.html
 In January, 2019, Brian has asked others to distribute/maintain his code for other weather station software,
