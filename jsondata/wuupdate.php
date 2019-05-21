@@ -166,7 +166,6 @@ if(!file_exists($filename) or file_exists($filename)&&time()- filemtime($filenam
 
 if(!empty($wuapikey)) {
 // month data
-//https://api.weather.com/v2/pws/history/daily?stationId=KCASARAT1&format=json&units=e&startDate=20190501&endDate=20190531&apiKey=f00d461fe89740948d461fe897a094c3
 $filename1 = '../chartswudata/'.date('mY').'.txt';
 if(!file_exists($filename1) or file_exists($filename1)&&time()- filemtime($filename1)>300){
 	$sDate = date('Ymd',strtotime('first day of'));
