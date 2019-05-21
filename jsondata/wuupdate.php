@@ -1,6 +1,7 @@
 <?php
 // 31-Jan-2019 DarkSky multilanguage support added - ktrue
 // 13-Mar-2019 complete rewrite to have curl reporting and code simplification
+// 21-May-2019 added WU/TWC API calls for today/month data for graphs
 //
 chdir(dirname(__FILE__));
 include_once('../settings.php');
@@ -144,6 +145,7 @@ if(!file_exists($filename2) or file_exists($filename2)&&time()- filemtime($filen
 */
 
 // NEW WU fetch functions
+if(!empty($wuapikey)) {
 
 // fetch WU historical datat for charts
 $filename = '../chartswudata/'.date('dmY').'.txt';
@@ -160,11 +162,17 @@ if(!file_exists($filename) or file_exists($filename)&&time()- filemtime($filenam
 } else {
 	$Status .= "<!-- $filename is current -->\n";
 }
+} // only if wuapikey is present
 
-// 7-day (formerly month)
+if(!empty($wuapikey)) {
+// month data
+//https://api.weather.com/v2/pws/history/daily?stationId=KCASARAT1&format=json&units=e&startDate=20190501&endDate=20190531&apiKey=f00d461fe89740948d461fe897a094c3
 $filename1 = '../chartswudata/'.date('mY').'.txt';
 if(!file_exists($filename1) or file_exists($filename1)&&time()- filemtime($filename1)>300){
-	$url = 'https://api.weather.com/v2/pws/observations/hourly/7day?stationId='.$id.'&format=json&units='.$wuapiunit.  '&apiKey='.$wuapikey;
+	$sDate = date('Ymd',strtotime('first day of'));
+	$eDate = date('Ymd',strtotime('last day of'));
+	$url = 'https://api.weather.com/v2/pws/history/daily?stationId='.$id.'&format=json&units='.$wuapiunit.
+	'&startDate='.$sDate.'&endDate='.$eDate.  '&apiKey='.$wuapikey;
   $data = HWS_fetchUrlWithoutHanging($url);
 	$outdata = HWS_WUJSON_decode('7day',$data,$wuapiunit);
 	if(strlen($outdata) > 0) {
@@ -173,7 +181,7 @@ if(!file_exists($filename1) or file_exists($filename1)&&time()- filemtime($filen
 } else {
 	$Status .= "<!-- $filename1 is current -->\n";
 }
-
+} // only if wuapikey is present
 
 if($weatherflowoption=='yes'){
   $filename8 = 'weatherflow.txt';

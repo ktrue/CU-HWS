@@ -87,7 +87,7 @@ date_default_timezone_set($TZ);
     <?php if(false) { // WU discontinued the data source 18-Mar-2019 ?>
       <span class="yearpopup">  <a href="chartswu/yearlytemperature.php" data-featherlight="iframe" > <?php echo $menucharticonpage?> <?php echo date('Y');?> </a></span>
        <?php } // end of no graphs ?>
-      <span class="monthpopup"> <a href="chartswu/weeklytemperature.php" data-featherlight="iframe" > <?php echo $menucharticonpage?> 7-Day </a></span>
+      <span class="monthpopup"> <a href="chartswu/monthlytemperature.php" data-featherlight="iframe" > <?php echo $menucharticonpage?> <?php echo strftime(" %b") ;?> </a></span>
      <span class="todaypopup"> <a href="chartswu/todaytemperature.php" data-featherlight="iframe" >  <?php echo $menucharticonpage?> <?php echo $lang['Today']; ?> </a></span>
     </div>
     <span class='moduletitle'> <?php echo $lang['Temperature']; ?> <span class="fgcontrast"><?php echo "&deg;" . $weather["temp_units"] . " \n";?></span><br /></span>   
@@ -137,7 +137,7 @@ date_default_timezone_set($TZ);
     <?php if(false) { // WU discontinued the data source 18-Mar-2019 ?>
       <span class="yearpopup">  <a href="chartswu/yearlywindspeedgust.php" data-featherlight="iframe" ><?php echo $menucharticonpage?> <?php echo date('Y');?></a></span>
       <?php } // end graphs unavailable ?>
-      <span class="monthpopup"> <a href="chartswu/weeklywindspeedgust.php" data-featherlight="iframe"><?php echo $menucharticonpage?> 7-Day </a></span>
+      <span class="monthpopup"> <a href="chartswu/monthlywindspeedgust.php" data-featherlight="iframe"><?php echo $menucharticonpage?> <?php echo strftime(" %b") ;?> </a></span>
       <span class="todaypopup"> <a href="chartswu/todaywindspeedgust.php" data-featherlight="iframe" ><?php echo $menucharticonpage?> <?php echo $lang['Today']; ?> </a></span>
     </div>
    <span class='moduletitle'><?php echo $lang['Windspeed'] ;?> | <?php echo $lang['Gust'] ;?></span><br />          
@@ -149,7 +149,7 @@ date_default_timezone_set($TZ);
     <?php if(false) { // WU discontinued the data source 18-Mar-2019 ?>
       <span class="yearpopup">  <a href="chartswu/yearlybarometer.php" data-featherlight="iframe" ><?php echo $menucharticonpage?> <?php echo date('Y');?> </a></span>
       <?php } // end graphs unavailable ?>
-      <span class="monthpopup"> <a href="chartswu/weeklybarometer.php" data-featherlight="iframe" ><?php echo $menucharticonpage?> 7-Day </a></span>
+      <span class="monthpopup"> <a href="chartswu/monthlybarometer.php" data-featherlight="iframe" ><?php echo $menucharticonpage?> <?php echo strftime(" %b") ;?> </a></span>
       <span class="todaypopup"> <a href="chartswu/todaybarometer.php" data-featherlight="iframe" ><?php echo $menucharticonpage?> <?php echo $lang['Today']; ?></a></span>
     </div>
     <span class='moduletitle'><?php echo $lang['Barometer']; ?>   </span><br />
@@ -182,7 +182,7 @@ date_default_timezone_set($TZ);
     <?php if(false) { // WU discontinued the data source 18-Mar-2019 ?>
       <span class="yearpopup">  <a href="chartswu/yearlyrainfall.php" data-featherlight="iframe" ><?php echo $menucharticonpage?> <?php echo date('Y');?> </a></span>
       <?php } // end graphs unavailable ?>
-      <span class="monthpopup"> <a href="chartswu/weeklyrainfall.php" data-featherlight="iframe" ><?php echo $menucharticonpage?> 7-Day </a></span>
+      <span class="monthpopup"> <a href="chartswu/weeklyrainfall.php" data-featherlight="iframe" ><?php echo $menucharticonpage?> <?php echo strftime(" %b") ;?> </a></span>
       <span class="todaypopup"> <a href="chartswu/todayrainfall.php" data-featherlight="iframe" ><?php echo $menucharticonpage?> <?php echo $lang['Today']; ?> </a></span>
     </div>
     <span class='moduletitle'><?php echo $lang['Rainfalltoday']; ?></span><br />   
