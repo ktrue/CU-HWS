@@ -27,27 +27,27 @@ chdir(dirname(__FILE__));
 if ($uk == true & $units == '' ) {
 	
 $pressureconv='1';$temperatureconvhi='parseFloat(rowData[1]';$temperatureconvlo='parseFloat(rowData[3]';$temperatureconv='parseFloat(rowData[1]';
-$dewpointconv='parseFloat(rowData[2]';$windconv = "0.621371";$rainfallconv='10';$pressureinterval= "0.5";  $rainfallconvmm='10';
+$dewpointconv='parseFloat(rowData[2]';$windconv = "0.621371";$rainfallconv='1';$pressureinterval= "0.5";  $rainfallconvmm='1';
 }
 
 if ($uk == true & $units == 'uk' ) {
 	
 $pressureconv='1';$temperatureconvhi='parseFloat(rowData[1]';$temperatureconvlo='parseFloat(rowData[3]';$temperatureconv='parseFloat(rowData[1]';
-$dewpointconv='parseFloat(rowData[2]';$windconv = "0.621371";$rainfallconv='1';$pressureinterval= "0.5";  $rainfallconvmm='10';
+$dewpointconv='parseFloat(rowData[2]';$windconv = "0.621371";$rainfallconv='1';$pressureinterval= "0.5";  $rainfallconvmm='1';
 }
 
 
 if ($uk == true & $units == 'scandinavia' ) {
 	
 $pressureconv='1';$temperatureconvhi='parseFloat(rowData[1]';$temperatureconvlo='parseFloat(rowData[3]';$temperatureconv='parseFloat(rowData[1]';$dewpointconv='parseFloat(rowData[2]';
-$windconv = "0.44704";$rainfallconv='10';$pressureinterval= "0.5"; $rainfallconvmm='10';
+$windconv = "0.44704";$rainfallconv='1';$pressureinterval= "0.5"; $rainfallconvmm='1';
 
 }
 
 if ($uk == true & $units == 'metric' ) {
 	
 $pressureconv='1';$temperatureconvhi='parseFloat(rowData[1]';$temperatureconvlo='parseFloat(rowData[3]';$temperatureconv='parseFloat(rowData[1]';$dewpointconv='parseFloat(rowData[2]';
-$windconv = "0.621371";$rainfallconv='10';$pressureinterval= "0.5";  $rainfallconvmm='10';
+$windconv = "0.621371";$rainfallconv='1';$pressureinterval= "0.5";  $rainfallconvmm='1';
 
 }
 
@@ -68,27 +68,27 @@ $dewpointconv='parseFloat((rowData[2] *1.8) +32';$windconv = "1";$rainfallconv='
 if ($scandinavia == true & $units == '' ) {
 	
 $pressureconv='1';$temperatureconvhi='parseFloat(rowData[1]';$temperatureconvlo='parseFloat(rowData[3]';$temperatureconv='parseFloat(rowData[1]';
-$dewpointconv='parseFloat(rowData[2]';$windconv = "0.277778";$rainfallconv='10';$pressureinterval= "0.5";  $rainfallconvmm='10';
+$dewpointconv='parseFloat(rowData[2]';$windconv = "0.277778";$rainfallconv='1';$pressureinterval= "0.5";  $rainfallconvmm='1';
 }
 
 if ($scandinavia == true & $units == 'uk' ) {
 	
 $pressureconv='1';$temperatureconvhi='parseFloat(rowData[1]';$temperatureconvlo='parseFloat(rowData[3]';$temperatureconv='parseFloat(rowData[1]';
-$dewpointconv='parseFloat(rowData[2]';$windconv = "0.277778";$rainfallconv='1';$pressureinterval= "0.5";  $rainfallconvmm='10';
+$dewpointconv='parseFloat(rowData[2]';$windconv = "0.277778";$rainfallconv='1';$pressureinterval= "0.5";  $rainfallconvmm='1';
 }
 
 
 if ($scandinavia == true & $units == 'scandinavia' ) {
 	
 $pressureconv='1';$temperatureconvhi='parseFloat(rowData[1]';$temperatureconvlo='parseFloat(rowData[3]';$temperatureconv='parseFloat(rowData[1]';$dewpointconv='parseFloat(rowData[2]';
-$windconv = "0.277778";$rainfallconv='10';$pressureinterval= "0.5";  $rainfallconvmm='10';
+$windconv = "0.277778";$rainfallconv='1';$pressureinterval= "0.5";  $rainfallconvmm='1';
 
 }
 
 if ($scandinavia == true & $units == 'metric' ) {
 	
 $pressureconv='1';$temperatureconvhi='parseFloat(rowData[1]';$temperatureconvlo='parseFloat(rowData[3]';$temperatureconv='parseFloat(rowData[1]';$dewpointconv='parseFloat(rowData[2]';
-$windconv = "0.277778";$rainfallconv='10';$pressureinterval= "0.5";  $rainfallconvmm='10';
+$windconv = "0.277778";$rainfallconv='1';$pressureinterval= "0.5";  $rainfallconvmm='1';
 
 }
 
@@ -161,7 +161,7 @@ $windconv = "1";$rainfallconv='25.4';$pressureinterval= "0.5";    $rainfallconvm
 if ($restoftheworld == true & $units == '' ) {
 	
 $pressureconv='1';$temperatureconvhi='parseFloat(rowData[1]';$temperatureconvlo='parseFloat(rowData[3]';$temperatureconv='parseFloat(rowData[1]';$dewpointconv='parseFloat(rowData[2]';
-$windconv = "1";$rainfallconv='10';$pressureinterval= "0.5";  $rainfallconvmm='10';
+$windconv = "1";$rainfallconv='1';$pressureinterval= "0.5";  $rainfallconvmm='1';
 }
 
 
@@ -175,19 +175,19 @@ $dewpointconv='parseFloat((rowData[2] *1.8) +32';$windconv = "0.621371";$rainfal
 if ($restoftheworld == true & $units == 'uk' ) {
 	
 $pressureconv='1';$temperatureconvhi='parseFloat(rowData[1]';$temperatureconvlo='parseFloat(rowData[3]';$temperatureconv='parseFloat(rowData[1]';$dewpointconv='parseFloat(rowData[2]';
-$windconv = "0.621371";$rainfallconv='10';$pressureinterval= "0.5"; $rainfallconvmm='10';
+$windconv = "0.621371";$rainfallconv='1';$pressureinterval= "0.5"; $rainfallconvmm='1';
 }
 
 if ($restoftheworld == true & $units == 'scandinavia' ) {
 	
 $pressureconv='1';$temperatureconvhi='parseFloat(rowData[1]';$temperatureconvlo='parseFloat(rowData[3]';$temperatureconv='parseFloat(rowData[1]';$dewpointconv='parseFloat(rowData[2]';
-$windconv = "0.277778";$rainfallconv='10';$pressureinterval= "0.5";$rainfallconvmm='10';
+$windconv = "0.277778";$rainfallconv='1';$pressureinterval= "0.5";$rainfallconvmm='1';
 }
 
 if ($restoftheworld == true & $units == 'metric' ) {
 	
 $pressureconv='1';$temperatureconvhi='parseFloat(rowData[1]';$temperatureconvlo='parseFloat(rowData[3]';$temperatureconv='parseFloat(rowData[1]';$dewpointconv='parseFloat(rowData[2]';
-$windconv = "1";$rainfallconv='10';$pressureinterval= "0.5";  $rainfallconvmm='10';
+$windconv = "1";$rainfallconv='1';$pressureinterval= "0.5";  $rainfallconvmm='1';
 }
 
 ####################################################################################################
