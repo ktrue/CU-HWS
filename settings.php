@@ -79,4 +79,56 @@ $designedfor='<br>For realtime.txt Users';
 $chartversion='(WUDATACHARTS version 17)';
 $somethinggoeshere ='d4586dec-e7a2-47ae-99b6-25527b2563c9';
 $chartversionmysql  =  '(DATACHARTS version 19 MYSQL-Cumulus)';
-if (array_key_exists('theme', $_GET) && ($_GET['theme'] == 'dark' || $_GET['theme'] == 'light')) { SetCookie('theme', $_GET['theme'], time()+15552000); $theme = $_GET['theme']; } else if (array_key_exists('theme', $_COOKIE) && ($_COOKIE['theme'] == 'dark' || $_COOKIE['theme'] == 'light' )) { $theme = $_COOKIE['theme']; } $units = ""; if (array_key_exists('units', $_COOKIE)) { $units = $_COOKIE['units']; } ini_set('session.use_cookies', '0'); if (array_key_exists('units', $_GET) && ($_GET['units'] == 'us' || $_GET['units'] == 'uk' || $_GET['units'] == 'metric' || $_GET['units'] == 'scandinavia')) { SetCookie('units', $_GET['units'], time()+15552000); $units = $_GET['units']; } if ($units == 'uk') { $windunit = 'mph'; $tempunit = 'C'; $rainunit = 'mm'; $pressureunit = "mb"; $windconv = "0.621371"; $rainfallconv='10'; $pressureinterval= "0.5"; $rainfallconvmm='10'; } else if ($units == 'scandinavia') { $windunit = 'm/s'; $tempunit = 'C'; $rainunit = 'mm'; $pressureunit = "hPa"; $windconv = "0.277778"; $rainfallconv='10'; $pressureinterval= "0.5"; $rainfallconvmm='10'; } else if ($units == 'metric') { $windunit = 'km/h'; $tempunit = 'C'; $rainunit = 'mm'; $pressureunit = "hPa"; $windconv = "1"; $rainfallconv='10'; $pressureinterval= "0.5"; $rainfallconvmm='10'; } else if ($units == 'us') { $windunit = 'mph'; $tempunit = 'F'; $rainunit = 'in'; $pressureunit = "inHg"; $windconv = "1"; $rainfallconv='1'; $pressureinterval= "0.5"; $rainfallconvmm='1'; }; ?>
+if (array_key_exists('theme', $_GET) && ($_GET['theme'] == 'dark' || $_GET['theme'] == 'light')) {
+	SetCookie('theme', $_GET['theme'], time() + 15552000);
+	$theme = $_GET['theme'];
+} else if (array_key_exists('theme', $_COOKIE) && ($_COOKIE['theme'] == 'dark' || $_COOKIE['theme'] == 'light')) {
+	$theme = $_COOKIE['theme'];
+}
+$units = "";
+if (array_key_exists('units', $_COOKIE)) {
+	$units = $_COOKIE['units'];
+}
+ini_set('session.use_cookies', '0');
+if (array_key_exists('units', $_GET) && ($_GET['units'] == 'us' || $_GET['units'] == 'uk' || $_GET['units'] == 'metric' || $_GET['units'] == 'scandinavia')) {
+	SetCookie('units', $_GET['units'], time() + 15552000);
+	$units = $_GET['units'];
+}
+if ($units == 'uk') {
+	$windunit = 'mph';
+	$tempunit = 'C';
+	$rainunit = 'mm';
+	$pressureunit = "mb";
+	$windconv = "0.621371";
+	$rainfallconv = '1';
+	$pressureinterval = "0.5";
+	$rainfallconvmm = '1';
+} else if ($units == 'scandinavia') {
+	$windunit = 'm/s';
+	$tempunit = 'C';
+	$rainunit = 'mm';
+	$pressureunit = "hPa";
+	$windconv = "0.277778";
+	$rainfallconv = '1';
+	$pressureinterval = "0.5";
+	$rainfallconvmm = '1';
+} else if ($units == 'metric') {
+	$windunit = 'km/h';
+	$tempunit = 'C';
+	$rainunit = 'mm';
+	$pressureunit = "hPa";
+	$windconv = "1";
+	$rainfallconv = '1';
+	$pressureinterval = "0.5";
+	$rainfallconvmm = '1';
+} else if ($units == 'us') {
+	$windunit = 'mph';
+	$tempunit = 'F';
+	$rainunit = 'in';
+	$pressureunit = "inHg";
+	$windconv = "1";
+	$rainfallconv = '1';
+	$pressureinterval = "0.5";
+	$rainfallconvmm = '1';
+};
+?>
