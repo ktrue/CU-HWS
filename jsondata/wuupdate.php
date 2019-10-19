@@ -152,7 +152,7 @@ $filename = '../chartswudata/'.date('dmY').'.txt';
 if(!file_exists($filename) or file_exists($filename)&&time()- filemtime($filename)>300){
 
  //day
-	$url = 'https://api.weather.com/v2/pws/history/all?stationId='.$id.'&format=json&units='.$wuapiunit.'&date='.date('Ymd').'&apiKey='.$wuapikey;
+	$url = 'https://api.weather.com/v2/pws/observations/all/1day?stationId='.$id.'&format=json&units='.$wuapiunit.'&apiKey='.$wuapikey.'&numericPrecision=decimal';
 	 
   $data = HWS_fetchUrlWithoutHanging($url);
 	$outdata = HWS_WUJSON_decode('daily',$data,$wuapiunit);
@@ -171,7 +171,7 @@ if(!file_exists($filename1) or file_exists($filename1)&&time()- filemtime($filen
 	$sDate = date('Ymd',strtotime('first day of'));
 	$eDate = date('Ymd',strtotime('last day of'));
 	$url = 'https://api.weather.com/v2/pws/history/daily?stationId='.$id.'&format=json&units='.$wuapiunit.
-	'&startDate='.$sDate.'&endDate='.$eDate.  '&apiKey='.$wuapikey;
+	'&startDate='.$sDate.'&endDate='.$eDate.  '&apiKey='.$wuapikey.'&numericPrecision=decimal';
   $data = HWS_fetchUrlWithoutHanging($url);
 	$outdata = HWS_WUJSON_decode('7day',$data,$wuapiunit);
 	if(strlen($outdata) > 0) {
