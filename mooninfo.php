@@ -189,25 +189,25 @@ body,section{padding:10px}.weather34card,.weather34cards{display:-webkit-box;dis
 .daylight{margin-left:80px;margin-top:10px;z-index:auto}
 .daylightoutput{position:absolute;width:105px;height:105px;border-radius:50%;border:0px;margin-top:-110px;margin-left:0;-webkit-transform-origin:50% 48%;-moz-transform-origin:50% 48%;-o-transform-origin:50% 48%;-ms-transform-origin:50% 48%;transform-origin:50% 48%;
 -webkit-transform:rotate(<?php $dark1=$now<$sunr2;$sunrotate =$hours2;
-if ($sunrotate < 1 ) echo "${sunrotate} . ${minutesagosunrise} " -25;else if ($sunrotate < 2 ) echo "${sunrotate} . ${minutesagosunrise} " -10;else if ($sunrotate < 3 ) echo "${sunrotate} . ${minutesagosunrise} " ;
-else if ($sunrotate < 4 ) echo "${sunrotate} . ${minutesagosunrise} " *8;else if ($sunrotate < 7.01 ) echo "${sunrotate} . ${minutesagosunrise} " *10;else if ($sunrotate < 9.01 ) echo "${sunrotate} . ${minutesagosunrise} " *12;
-else if  ($sunrotate <17.01 ) echo "${sunrotate} . ${minutesagosunrise} " *13;else if  ($sunrotate >17 ) echo "${sunrotate} . ${minutesagosunrise} " *14;?>deg);?>deg);
+if ($sunrotate < 1 ) echo "${sunrotate}.${minutesagosunrise}" -25;else if ($sunrotate < 2 ) echo "${sunrotate}.${minutesagosunrise}" -10;else if ($sunrotate < 3 ) echo "${sunrotate}.${minutesagosunrise}" ;
+else if ($sunrotate < 4 ) echo "${sunrotate}.${minutesagosunrise}" *8;else if ($sunrotate < 7.01 ) echo "${sunrotate}.${minutesagosunrise}" *10;else if ($sunrotate < 9.01 ) echo "${sunrotate}.${minutesagosunrise}" *12;
+else if  ($sunrotate <17.01 ) echo "${sunrotate}.${minutesagosunrise}" *13;else if  ($sunrotate >17 ) echo "${sunrotate}.${minutesagosunrise}" *14;?>deg);?>deg);
 -moz-transform:rotate(<?php $dark1=$now<$sunr2;$sunrotate =$hours2;
-if ($sunrotate < 1 ) echo "${sunrotate} . ${minutesagosunrise} " -25;else if ($sunrotate < 2 ) echo "${sunrotate} . ${minutesagosunrise} " -10;else if ($sunrotate < 3 ) echo "${sunrotate} . ${minutesagosunrise} " ;
-else if ($sunrotate < 4 ) echo "${sunrotate} . ${minutesagosunrise} " *8;else if ($sunrotate < 7.01 ) echo "${sunrotate} . ${minutesagosunrise} " *10;else if ($sunrotate < 9.01 ) echo "${sunrotate} . ${minutesagosunrise} " *12;
-else if  ($sunrotate <17.01 ) echo "${sunrotate} . ${minutesagosunrise} " *13;else if  ($sunrotate >17 ) echo "${sunrotate} . ${minutesagosunrise} " *14;?>deg);
+if ($sunrotate < 1 ) echo "${sunrotate}.${minutesagosunrise}" -25;else if ($sunrotate < 2 ) echo "${sunrotate}.${minutesagosunrise}" -10;else if ($sunrotate < 3 ) echo "${sunrotate}.${minutesagosunrise}" ;
+else if ($sunrotate < 4 ) echo "${sunrotate}.${minutesagosunrise}" *8;else if ($sunrotate < 7.01 ) echo "${sunrotate}.${minutesagosunrise}" *10;else if ($sunrotate < 9.01 ) echo "${sunrotate}.${minutesagosunrise}" *12;
+else if  ($sunrotate <17.01 ) echo "${sunrotate}.${minutesagosunrise}" *13;else if  ($sunrotate >17 ) echo "${sunrotate}.${minutesagosunrise}" *14;?>deg);
 -o-transform:rotate(<?php $dark1=$now<$sunr2;$sunrotate =$hours2;
-if ($sunrotate < 1 ) echo "${sunrotate} . ${minutesagosunrise} " -25;else if ($sunrotate < 2 ) echo "${sunrotate} . ${minutesagosunrise} " -10;else if ($sunrotate < 3 ) echo "${sunrotate} . ${minutesagosunrise} " ;
-else if ($sunrotate < 4 ) echo "${sunrotate} . ${minutesagosunrise} " *8;else if ($sunrotate < 7.01 ) echo "${sunrotate} . ${minutesagosunrise} " *10;else if ($sunrotate < 9.01 ) echo "${sunrotate} . ${minutesagosunrise} " *12;
-else if  ($sunrotate <17.01 ) echo "${sunrotate} . ${minutesagosunrise} " *13;else if  ($sunrotate >17 ) echo "${sunrotate} . ${minutesagosunrise} " *14;?>deg);
+if ($sunrotate < 1 ) echo "${sunrotate}.${minutesagosunrise}" -25;else if ($sunrotate < 2 ) echo "${sunrotate}.${minutesagosunrise}" -10;else if ($sunrotate < 3 ) echo "${sunrotate}.${minutesagosunrise}" ;
+else if ($sunrotate < 4 ) echo "${sunrotate}.${minutesagosunrise}" *8;else if ($sunrotate < 7.01 ) echo "${sunrotate}.${minutesagosunrise}" *10;else if ($sunrotate < 9.01 ) echo "${sunrotate}.${minutesagosunrise}" *12;
+else if  ($sunrotate <17.01 ) echo "${sunrotate}.${minutesagosunrise}" *13;else if  ($sunrotate >17 ) echo "${sunrotate}.${minutesagosunrise}" *14;?>deg);
 -ms-transform:rotate(<?php $dark1=$now<$sunr2;$sunrotate =$hours2;
-if ($sunrotate < 1 ) echo "${sunrotate} . ${minutesagosunrise} " -25;else if ($sunrotate < 2 ) echo "${sunrotate} . ${minutesagosunrise} " -10;else if ($sunrotate < 3 ) echo "${sunrotate} . ${minutesagosunrise} " ;
-else if ($sunrotate < 4 ) echo "${sunrotate} . ${minutesagosunrise} " *8;else if ($sunrotate < 7.01 ) echo "${sunrotate} . ${minutesagosunrise} " *10;else if ($sunrotate < 9.01 ) echo "${sunrotate} . ${minutesagosunrise} " *12;
-else if  ($sunrotate <17.01 ) echo "${sunrotate} . ${minutesagosunrise} " *13;else if  ($sunrotate >17 ) echo "${sunrotate} . ${minutesagosunrise} " *14;?>deg);
+if ($sunrotate < 1 ) echo "${sunrotate}.${minutesagosunrise}" -25;else if ($sunrotate < 2 ) echo "${sunrotate}.${minutesagosunrise}" -10;else if ($sunrotate < 3 ) echo "${sunrotate}.${minutesagosunrise}" ;
+else if ($sunrotate < 4 ) echo "${sunrotate}.${minutesagosunrise}" *8;else if ($sunrotate < 7.01 ) echo "${sunrotate}.${minutesagosunrise}" *10;else if ($sunrotate < 9.01 ) echo "${sunrotate}.${minutesagosunrise}" *12;
+else if  ($sunrotate <17.01 ) echo "${sunrotate}.${minutesagosunrise}" *13;else if  ($sunrotate >17 ) echo "${sunrotate}.${minutesagosunrise}" *14;?>deg);
 transform:rotate(<?php $dark1=$now<$sunr2;$sunrotate =$hours2;
-if ($sunrotate < 1 ) echo "${sunrotate} . ${minutesagosunrise} " -25;else if ($sunrotate < 2 ) echo "${sunrotate} . ${minutesagosunrise} " -10;else if ($sunrotate < 3 ) echo "${sunrotate} . ${minutesagosunrise} " ;
-else if ($sunrotate < 4 ) echo "${sunrotate} . ${minutesagosunrise} " *8;else if ($sunrotate < 7.01 ) echo "${sunrotate} . ${minutesagosunrise} " *10;else if ($sunrotate < 9.01 ) echo "${sunrotate} . ${minutesagosunrise} " *12;
-else if  ($sunrotate <17.01 ) echo "${sunrotate} . ${minutesagosunrise} " *13;else if  ($sunrotate >17 ) echo "${sunrotate} . ${minutesagosunrise} " *14;?>deg);?>deg);}
+if ($sunrotate < 1 ) echo "${sunrotate}.${minutesagosunrise}" -25;else if ($sunrotate < 2 ) echo "${sunrotate}.${minutesagosunrise}" -10;else if ($sunrotate < 3 ) echo "${sunrotate}.${minutesagosunrise}" ;
+else if ($sunrotate < 4 ) echo "${sunrotate}.${minutesagosunrise}" *8;else if ($sunrotate < 7.01 ) echo "${sunrotate}.${minutesagosunrise}" *10;else if ($sunrotate < 9.01 ) echo "${sunrotate}.${minutesagosunrise}" *12;
+else if  ($sunrotate <17.01 ) echo "${sunrotate}.${minutesagosunrise}" *13;else if  ($sunrotate >17 ) echo "${sunrotate}.${minutesagosunrise}" *14;?>deg);?>deg);}
 .daylightoutput:after{content:"";font-size:0;position:absolute;z-index:10;right:20px;width:9px;height:9px;-webkit-border-radius:50%;border-radius:50%;background:<?php if ($elev<=0 && $elev>-4){echo "rgba(255, 112, 50, 0.5)";}else if ($elev<=0){echo "rgba(86, 95, 103, 0.7)";}else echo "rgba(255, 124, 57,0.8)";?>;border:0}
 sup{color:#f8f8f8}red{color:#FF6F61;opacity:0.6}
 </style>
