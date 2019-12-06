@@ -2,8 +2,8 @@
 <?php     
 //WEATHER34 lightning
 if ($weather["lightningtimeago"]>1 && $weather["lightningtimeago"]<0){echo "<div class=\"alertcircle\"><orange>", number_format($weather["lightningkm"],0) ,"</orange><suplight>km</suplight>"; 
- echo "<spanelightning> Lightning Strike Nearby <br><span style='margin-top:-25px;display:block;font-size:11px;'>Possible Storm Approaching</span>
-  <div class='orangealerticon'> ".$newalert." </spanelightning></div></div>" ;}     
+ echo "<spanelightning> Lightning Strike Nearby <br>Possible Storm Approaching
+  <div class='orangealerticon'> ".$newalert."</div> </spanelightning></div>" ;}     
   ///WEATHER34 freezing //celsius
  else if ($weather["temp_units"]=='C' && $weather["temp"]<=0 && $weather["dewpoint"]<=0){echo "<div class=\"alertcircle\"><oblue>", number_format($weather["dewpoint"],1),"<smallicon><oblue> ", $weatherunitc ,"</oblue></smallicon>";  
  echo "<spanefreezing> Caution <span>Dewpoint</<spanefreezing><heatindex>Below Freezing</heatindex> <div class='orangealerticonheatindex'>".$newalert." </div></spanelightning>"; "</div></div> " ;} 

@@ -5821,7 +5821,7 @@ spanelightning {
     font-size: 12px;
     color: #aaa;
     font-family: Arial, system;
-    top: -1px;
+    top: -10px;
     width: 200px;
     left: 20px;
     font-weight: 400
@@ -9792,7 +9792,7 @@ heatindex {
 
 .orangealerticonheatindex {
     margin-top: -35px;
-    margin-left: 160px;
+    margin-left: 120px;
     padding: 4px;
     line-height: 20px;
     position: relative
@@ -12769,11 +12769,10 @@ alertvalue {
     margin-top: 10px
 }
 
-spanefreezing,
-spanelightning {
+spanefreezing {
     font-size: 12px;
     font-family: Arial, system;
-    top: 33px;
+    top: 0px;
     width: 120px;
     position: absolute;
     font-weight: 400;
