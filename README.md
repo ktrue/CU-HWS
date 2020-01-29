@@ -67,7 +67,7 @@ Attribution-NonCommercial 4.0 International based on a work at https://weather34
 Alternative versions listed below are not maintained by weather34 in any way -- only the Cumulus version receives css updates
 
 * **Weewx Version** available via  download and more info supported by Ian Millard ( https://www.claydonsweather.org.uk/ )
-https://github.com/steepleian/WX-HWS-master
+https://github.com/steepleian/weewx-Weather34
 
 * **Weatherflow API Version** **Discontinued** Please use meteobridge version if you have a meteobridge product, it offers more versatile options over the API and faster updates and better history/chart outputs or alternatively try the version for Weather Display below by Wim van der Kuil
 
