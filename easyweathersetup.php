@@ -401,6 +401,7 @@ Choose the default Language to display and use..</div>
            <option>nl</option>   
            <option>no</option>  
            <option>pl</option> 
+           <option>pt</option> 
            <option>sk</option>
            <option>sp</option>                        
            <option>sw</option> 
@@ -440,6 +441,7 @@ Choose the default Language to display and use..</div>
            <option>nl</option>
            <option>nz</option>  
            <option>pl</option> 
+           <option>pt</option> 
            <option>sa</option>
            <option>scot</option>
            <option>sk</option>
@@ -474,6 +476,7 @@ Choose the default Language to display and use..</div>
            <option>it</option>
            <option>nl</option>
            <option>pl</option>          
+           <option>pt</option>          
            <option>sv</option>
            <option>tr</option> 
           

@@ -66,6 +66,8 @@ $LanguageList = array(
    'sw' => 'lang.sw.php|sv|sv|sv|swedish.UTF-8,sv_SE.UTF-8',
 //Suomi (finnish) 
    'fi' => 'lang.fi.php|fi|fi|fi|finnish.UTF-8,fi_FI.UTF-8,suomi.UTF-8',
+//Portuguese
+   'pt' => 'lang.pt.php|pt|pt|pt|portuguese.UTF-8,pt_PT.UTF-8',
 
 );
 

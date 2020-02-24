@@ -60,9 +60,10 @@ if (file_exists('menu-extras.php')) {
   <a href="index.php?lang=nl"><img src="img/flags/nl.svg"  alt="Dutch" title="Dutch" width="25" height="25">&nbsp</a>&nbsp; 
   <a href="index.php?lang=cat"><img src="img/flags/cat.svg" alt="Catalan" title="Catalan" width="25" height="25">&nbsp</a>&nbsp;
   <a href="index.php?lang=sp"><img src="img/flags/sp.svg"  alt="Spanish" title="Spanish" width="25" height="25">&nbsp</a>&nbsp;
-  <a href="index.php?lang=tr"><img src="img/flags/tr.svg"  alt="Turkish" title="Turkish" width="25" height="25">&nbsp</a>&nbsp;
+  <a href="index.php?lang=pt"><img src="img/flags/pt.png"  alt="Portuguese" title="Portuguese" width="25" height="25">&nbsp</a>&nbsp;
   </span>
   <span class="languages34">    
+  <a href="index.php?lang=tr"><img src="img/flags/tr.svg"  alt="Turkish" title="Turkish" width="25" height="25">&nbsp</a>&nbsp;
   <a href="index.php?lang=pl"><img src="img/flags/pl.svg"  alt="Polish" title="Polish" width="25" height="25">&nbsp</a>&nbsp;
   <a href="index.php?lang=mi"><img src="img/flags/mi.svg"  alt="Maori" title="Maori" width="25" height="25">&nbsp</a>&nbsp; 
   <a href="index.php?lang=fi"><img src="img/flags/fi.svg"  alt="Finnish" title="Finnish" width="25" height="25">&nbsp</a>&nbsp; 
