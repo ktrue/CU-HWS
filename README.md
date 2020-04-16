@@ -19,8 +19,8 @@ and is only supporting Meteobridge/Meteobridge NANO-SD versions of the HWS templ
 Brian has produced an interesting design timeline of Historic (2014-2019) Weather34 template set at
 https://weather34.com/homeweatherstation/weather34timeline/weather34timeline.html.
 
-This version requires Cumulus software (either Cumulus 1.9.4 Windows or Cumulus MX) for data feeds for the conditions 
-from your personal weather station.  Cumulus and Cumulus MX software is available from the Cumulus Wiki at https://cumuluswiki.wxforum.net/a/Software  Cumulus 1.9.4 is *not maintained* but still functional on Windows systems.
+**This version requires Cumulus software** (either Cumulus 1.9.4 Windows or Cumulus MX) for data feeds for the conditions 
+from your personal weather station.  Cumulus and Cumulus MX software is available from the Cumulus Wiki at https://cumuluswiki.org/a/Software  Cumulus 1.9.4 is *not maintained* but still functional on Windows systems.
 Cumulus MX is supported and maintained by Mark Crossley at https://github.com/mcrossley/CumulusMX
 
 Any weather software that produces a Cumulus-style **realtime.txt** formatted conditions file can also use this template.
