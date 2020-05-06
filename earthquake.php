@@ -1,34 +1,35 @@
 <?php include('livedata.php');include('common.php');date_default_timezone_set($TZ);$json_string=file_get_contents('jsondata/eqnotification.txt');$parsed_json=json_decode($json_string,true);
+// fixed deprecated curly brace array address issue  5-May-2020
 $software    = 'Cumulus <span>Software</span>';
 $designedfor    = '<br>For Cumulus';
-$magnitude=number_format($parsed_json{0}{'magnitude'},1);
-$eqtitle=$parsed_json{0}['location'];
-$time=$parsed_json{0}['date_time'];
-$lati=$parsed_json{0}['latitude'];
-$longi=$parsed_json{0}['longitude'];
-$time=$parsed_json{0}['date_time'];
+$magnitude=number_format($parsed_json[0]['magnitude'],1);
+$eqtitle=$parsed_json[0]['location'];
+$time=$parsed_json[0]['date_time'];
+$lati=$parsed_json[0]['latitude'];
+$longi=$parsed_json[0]['longitude'];
+$time=$parsed_json[0]['date_time'];
 $eventime=date($timeFormatShort,strtotime("$time"));
 
-$magnitude1=number_format($parsed_json{1}{'magnitude'},1);
-$eqtitle1=$parsed_json{1}['location'];
-$lati1=$parsed_json{1}['latitude'];
-$longi1=$parsed_json{1}['longitude'];
-$time1=$parsed_json{1}['date_time'];
+$magnitude1=number_format($parsed_json[1]['magnitude'],1);
+$eqtitle1=$parsed_json[1]['location'];
+$lati1=$parsed_json[1]['latitude'];
+$longi1=$parsed_json[1]['longitude'];
+$time1=$parsed_json[1]['date_time'];
 $eventime1=date($timeFormatShort,strtotime("$time1"));
 
-$magnitude2=number_format($parsed_json{2}{'magnitude'},1);
-$eqtitle2=$parsed_json{2}['location'];
-$lati2=$parsed_json{2}['latitude'];
-$longi2=$parsed_json{2}['longitude'];
-$time2=$parsed_json{2}['date_time'];
+$magnitude2=number_format($parsed_json[2]['magnitude'],1);
+$eqtitle2=$parsed_json[2]['location'];
+$lati2=$parsed_json[2]['latitude'];
+$longi2=$parsed_json[2]['longitude'];
+$time2=$parsed_json[2]['date_time'];
 $eventime2=date($timeFormatShort,strtotime("$time2"));
 
 
-$magnitude3=number_format($parsed_json{3}{'magnitude'},1);
-$eqtitle3=$parsed_json{3}['location'];
-$lati3=$parsed_json{3}['latitude'];
-$longi3=$parsed_json{3}['longitude'];
-$time3=$parsed_json{3}['date_time'];
+$magnitude3=number_format($parsed_json[3]['magnitude'],1);
+$eqtitle3=$parsed_json[3]['location'];
+$lati3=$parsed_json[3]['latitude'];
+$longi3=$parsed_json[3]['longitude'];
+$time3=$parsed_json[3]['date_time'];
 $eventime3=date($timeFormatShort,strtotime("$time3"));?>
 
 

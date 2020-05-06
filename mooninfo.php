@@ -1,4 +1,5 @@
 <?php
+# Fix malformed number from "${sunrotate} . ${minutesagosunrise}" to "${sunrotate}.${minutesagosunrise}" 6-May-2020 
 include_once('settings.php');
 include_once('common.php');
 include_once('livedata.php');
