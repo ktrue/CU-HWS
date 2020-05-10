@@ -1,5 +1,5 @@
 <?php
-$Version = "diags.php Version 1.01 - 11-Apr-2019";
+$Version = "diags.php Version 1.02 - 09-May-2020";
 /*
 Utility diagnostic script to support the CU-HWS template sets.
 
@@ -41,17 +41,19 @@ if(isset($_REQUEST['show']) and preg_match('|settings|i',$_REQUEST['show'])) {
 		  print "<h3>$showFilename</h3>\n";
 		  print "<pre style=\"border: 1px solid black;\">\n";
 		  if($doHighlight) { 
-		    highlight_file_num($showFilename,array('password','db_user','db_pass'));
+		    highlight_file_num($showFilename,
+				  array('password','db_user','db_pass','wuapikey','awapikey','awapisecret','metarapikey','apikey'));
 		  } else {
 			$flines = file($showFilename);
 			$num = 1;
 			foreach ($flines as $n => $line) {
 				$line = preg_replace('|<\?php|i','<&#63;php',$line);
-				foreach (array('password','db_user','db_pass') as $tofind) {
-			    $searchstring = '!('.$tofind.'\s*=\s*"[^"]*";)!Uis';
+				foreach (
+				array('password','db_user','db_pass') as $tofind) {
+			    $searchstring = '!(\$'.$tofind.'\s*=\s*"[^"]*";)!Uis';
 			    // print "Note: Replacing $tofind by ".$searchstring." for security.\n";
 			    $line = preg_replace($searchstring,
-			  "$tofind = \"******\"; // suppressed listing",$line);
+			  "\$$tofind = \"******\"; // suppressed listing",$line);
 		    }
 				$pnum = sprintf('%6d',$num);
 				print "$pnum:\t$line";
@@ -538,12 +540,12 @@ function highlight_file_num($file,$suppress=array())
 	if(count($suppress) > 0) {
     $rawfile = file_get_contents($file);
 		foreach ($suppress as $tofind) {
-			$searchstring = '!('.$tofind.'\s*=\s*"[^"]*";)!Uis';
+			$searchstring = '!(\$'.$tofind.'\s*=\s*"[^"]*";)!Uis';
 			// print "Note: Replacing $tofind by ".$searchstring." for security.\n";
 			$rawfile = preg_replace($searchstring,
-			  "$tofind = \"******\"; // suppressed listing",$rawfile);
+			  "\$$tofind = \"******\"; // suppressed listing",$rawfile);
 		}
-		$lines = implode(range(1, count(explode("\n",$rawfile))), "<br />");
+		$lines = implode("<br />",range(1, count(explode("\n",$rawfile))));
 		$content = highlight_string($rawfile,true);
 	} else {
 		$rawrecs = file($file);
@@ -636,7 +638,7 @@ function printInfo() {
 	print in_array('https',$streams)?'is available':'is <b>NOT available but REQUIRED.</b>';
 	print "<br/>\n";
 	sort($streams,SORT_STRING);
-	print "Streams supported: <strong>".join($streams,', ')."</strong></p>\n";
+	print "Streams supported: <strong>".join(', ',$streams)."</strong></p>\n";
 
 }
 

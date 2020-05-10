@@ -2,6 +2,7 @@
 // 31-Jan-2019 DarkSky multilanguage support added - ktrue
 // 13-Mar-2019 complete rewrite to have curl reporting and code simplification
 // 21-May-2019 added WU/TWC API calls for today/month data for graphs
+// 17-Apr-2020 added Aerisweather forecast support - ktrue
 //
 chdir(dirname(__FILE__));
 include_once('../settings.php');
@@ -28,6 +29,25 @@ if(!empty($metarapikey)) {
 }
 // end metar fetch
 
+// Aerisweather forecast
+if(!empty($awapikey) and !empty($awapisecret)) {
+$AWfile = 'aerisweather.txt';
+	if(!file_exists($AWfile) or 
+		(file_exists($AWfile) and  time()- filemtime($AWfile)>3600)){
+	// weather34 darksky  curl based
+//		$AWurl = 'https://api.forecast.io/forecast/'.$apikey.'/'.$lat.','.$lon.'?lang='.$language.'&units='.$darkskyunit ;
+    $AWurl = "https://api.aerisapi.com/forecasts/?p=$lat,$lon" .
+      "&format=json&filter=daynight,precise&limit=14&client_id=$awapikey&client_secret=$awapisecret";
+	
+		$data = HWS_fetchUrlWithoutHanging($AWurl);
+		if(strlen($data) > 0) {
+			file_put_contents($AWfile,$data);
+		}
+	
+	} else {
+		$Status .= "<!-- $AWfile is current -->\n";
+	}
+}
 // DarkSky forecast
 if(!empty($apikey)) {
 $filename4 = 'darksky-'.$language.'.txt';
@@ -152,7 +172,7 @@ $filename = '../chartswudata/'.date('dmY').'.txt';
 if(!file_exists($filename) or file_exists($filename)&&time()- filemtime($filename)>300){
 
  //day
-	$url = 'https://api.weather.com/v2/pws/observations/all/1day?stationId='.$id.'&format=json&units='.$wuapiunit.'&apiKey='.$wuapikey.'&numericPrecision=decimal';
+	$url = 'https://api.weather.com/v2/pws/history/all?stationId='.$id.'&format=json&units='.$wuapiunit.'&date='.date('Ymd').'&apiKey='.$wuapikey;
 	 
   $data = HWS_fetchUrlWithoutHanging($url);
 	$outdata = HWS_WUJSON_decode('daily',$data,$wuapiunit);
@@ -171,7 +191,7 @@ if(!file_exists($filename1) or file_exists($filename1)&&time()- filemtime($filen
 	$sDate = date('Ymd',strtotime('first day of'));
 	$eDate = date('Ymd',strtotime('last day of'));
 	$url = 'https://api.weather.com/v2/pws/history/daily?stationId='.$id.'&format=json&units='.$wuapiunit.
-	'&startDate='.$sDate.'&endDate='.$eDate.  '&apiKey='.$wuapikey.'&numericPrecision=decimal';
+	'&startDate='.$sDate.'&endDate='.$eDate.  '&apiKey='.$wuapikey;
   $data = HWS_fetchUrlWithoutHanging($url);
 	$outdata = HWS_WUJSON_decode('7day',$data,$wuapiunit);
 	if(strlen($outdata) > 0) {

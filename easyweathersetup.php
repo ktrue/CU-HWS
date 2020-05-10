@@ -8,6 +8,9 @@ include('settings1.php');
  // CU //
 if(!isset($wuapikey))  { $wuapikey = ''; }  // handle Notice errata on first use
 if(!isset($wuapiunit)) { $wuapiunit = 'e';} // handle Notice errata on first use
+if(!isset($awapikey))  { $awapikey = ''; }  // handle Notice errata on first use
+if(!isset($awapisecret))  { $awapisecret = ''; }  // handle Notice errata on first use
+if(!isset($awunit))  { $awunit = 'ca'; }  // handle Notice errata on first use
 
 IF (ISSET($_POST["Submit"])) {
  
@@ -15,6 +18,9 @@ $string = '<?php
 $apikey = "'. $_POST["wuapi"]. '";
 $wuapikey = "'. $_POST["wuapikey"]. '";
 $wuapiunit   = "'. $_POST["wuapiunit"]. '";
+$awapikey  = "'. $_POST["awapikey"]. '";
+$awapisecret  = "'. $_POST["awapisecret"]. '";
+$awunit  = "'. $_POST["awunit"]. '";
 $weatherflowID = "'. $_POST["wfid"]. '";
 $weatherflowdairID = "'. $_POST["wfairid"]. '";
 $weatherflowdskyID = "'. $_POST["wfskyid"]. '";
@@ -103,8 +109,8 @@ $position4title   = "'. $_POST["position4title"]. '";
 //$position6title   = "'. $_POST["position6title"]. '";
 
 if(empty($position6) or !isset($_POST['position6'])) { // convert from old index.php
-	$position16 = 'forecast3ds.php';
-	$position16title = 'DarkSky Forecast';
+	$position16 = 'forecast3aw.php';
+	$position16title = 'Aerisweather Forecast';
 	$_POST['position6'] = $position16;
 	$_POST['position6title'] = $position16title;
 
@@ -428,6 +434,7 @@ Choose the default Language to display and use..</div>
            <option>en</option>
            <option>can</option>  
            <option>cat</option>             
+           <option>ch</option>
            <option>dk</option>
            <option>dl</option>
            <option>fi</option>  
@@ -530,6 +537,7 @@ Weather Software Path to Data file</div><p>
         <select id="livedataFormat" name="livedataFormat" class="choose1">
            <option ><?php echo $livedataFormat ;?></option>  
             <option>cumulus</option>
+            <option>cumulusmx</option>
             <option>weewx</option>
             <option>weathercat</option>
         </select>
@@ -671,7 +679,7 @@ Which Weather Station Hardware</div><p>
      <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg> <span style="color:rgba(0, 154, 171, 1.000);">currentconditionsmetar34.php</span> uses Nearby Metar Aviation Weather Options must get API key and insert into option near bottom of this setup screen<BR>
      <br>
      <svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="#01a4b4" stroke="#01a4b4" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
-     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg> <span style="color:rgba(0, 154, 171, 1.000);">currentconditionsds.php</span> uses DarkSky must get API key and insert into option near bottom of this setup screen<BR></strong></span></span>
+     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg> <span style="color:rgba(0, 154, 171, 1.000);">currentconditionsds.php</span> uses DarkSky must HAVE API key and insert into option near bottom of this setup screen<BR></strong></span></span>
      
 <p>
   
@@ -1294,8 +1302,8 @@ Options for Top Row 4 Modules, Position 6 (Forecast) and last bottom right modul
         <br>
 <?php
   if(!isset($position6)) {
-		$position6 = 'forecast3ds.php';
-		$position6title = 'DarkSky Forecast';
+		$position6 = 'forecast3aw.php';
+		$position6title = 'Aerisweather Forecast';
 	}
 ?>
         
@@ -1308,6 +1316,7 @@ Options for Top Row 4 Modules, Position 6 (Forecast) and last bottom right modul
         <label name="position6"></label>
         <select id="position6" name="position6" class="choose">  
             <option><?php echo $position6 ;?></option> 
+            <option>forecast3aw.php</option> 
             <option>forecast3ds.php</option> 
             <option>forecast3wu.php</option>   
                      </select>
@@ -1442,6 +1451,10 @@ advisory.php</span> Station <span style="color:rgba(67, 58, 80, 1.000)">WEATHER<
         <br></span></span>
         <br><br>
         <strong> <span style="color:rgba(86, 95, 103, 1.000);">options Position 6</span></strong><br>
+     <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(24, 25, 27, 0.8)" stroke="rgba(24, 25, 27, 0.8)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
+     <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> forecast3aw.php</span> <orange>display 3 day forecast from Aerisweather.com (set Aerisweather API keys below)</orange>   <br>    
+     </span>
+
      <span style="color:#777;"><svg id="i-info" viewBox="0 0 32 32" width="10" height="10" fill="rgba(24, 25, 27, 0.8)" stroke="rgba(24, 25, 27, 0.8)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16.25%">
      <path d="M16 14 L16 23 M16 8 L16 10" /><circle cx="16" cy="16" r="14" /></svg><span style="color:#777;"> forecast3ds.php</span> <orange>display 3 day forecast from DarkSky.net (set DarkSky API key below)</orange>   <br>    
      </span>
@@ -1840,7 +1853,8 @@ Set a short personal message that appears in the footer </div>
     <div class="seperator"></div>
     
     
-     <span style="color:#F75C46;"> <img src="img/wunderground1.svg" width="100" /> <img src="img/darksky.svg" width="100" /> options</span> <br> 
+     <span style="color:#F75C46;"> <img src="img/wunderground1.svg" width="100" /> <img src="img/darksky.svg" height="20" /> 
+     <img src="img/aerisweather.svg" height="20" />options</span> <br> 
      <div class= "stationvalue"> <img src="img/wunderground.svg" width="100" /> STATION ID  for PWS Historical Charts</div> 
     <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="#F05E40" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M12 30 L24 16 12 2" />
@@ -1885,12 +1899,13 @@ Set a short personal message that appears in the footer </div>
     
     
         <div class= "stationvalue">
-<img src="img/darksky.svg" width="100" /> DarkSky API Key  for forecast Data </div>
+<img src="img/darksky.svg" width="100" /> DarkSky API Key for forecast Data </div>
  <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="#F05E40" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
     <path d="M12 30 L24 16 12 2" />
 </svg>
     <input name="wuapi" type="text" id="wuapi" value="<?php echo $apikey ;?>" class="chooseapi">
-<br> <span style="color:#777;">enter your <strong>DarkSky</strong> <strong>API key</strong> this is the most common mistake made be careful when cut and paste often an hidden space is either inserted before or after causing the <strong>API key</strong> to fail. </span>
+<br> <span style="color:#777;">enter your <strong>DarkSky</strong> <strong>API key</strong><br/>
+<strong>NOTE:</strong>DarkSky stopped issuing API keys in March 2020.  If you have a key, you can use it until the end of 2021 when the API will be turned off.</span>
 <P>
 
     <div class= "stationvalue">
@@ -1915,10 +1930,57 @@ Set a short personal message that appears in the footer </div>
     <path d="M16 14 L16 23 M16 8 L16 10" />    <circle cx="16" cy="16" r="14" /></svg> <span style="color:#777;"><green>US</green> Imperial units (NON METRIC)</span>
 <br> <svg id="i-info" viewBox="0 0 32 32" width="12" height="12" fill="none" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
     <path d="M16 14 L16 23 M16 8 L16 10" />    <circle cx="16" cy="16" r="14" /></svg> <span style="color:#777;"><green>SI</green> units</span>
- <center> <span style="color:rgba(0, 154, 171, 1.000);">*IMPORTANT</span> NEW DARKSKY API (uses old script originally used in  2016) requires personal API KEY(MAY 30TH 2018) available via 
-     <a href="https://darksky.net/dev/docs" title="https://darksky.net/dev/docs" target="_blank"> https://darksky.net/dev/docs</a></center>  
+  
 <P>
 
+<!--  begin aeris -->
+        <div class= "stationvalue">
+<img src="img/aerisweather.svg" width="100" /> Aerisweather API ID  for forecast Data </div>
+ <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="#F05E40" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M12 30 L24 16 12 2" />
+</svg>
+    <input name="awapikey" type="text" id="awapikey" value="<?php echo $awapikey ;?>" class="chooseapi">
+<br> <span style="color:#777;">enter your <strong>Aerisweather</strong> <strong>API ID key</strong><br/>
+To get an API key/API Secret, submit weather data to <a href="https://pwsweather.com/" target="_blank">pwsweather.com</a>,<br/>
+then browse to <strong><a href="https://www.aerisweather.com/signup/pws/">https://www.aerisweather.com/signup/pws/</a></strong> and associate your pwsweather.com User ID to get your Access ID and Secret Key.<br>
+<strong>Aerisweather forecasts are English only.</strong> Use WU or DarkSky for non-English forecast capability.</span>
+<P>
+    <div class= "stationvalue">
+
+<img src="img/aerisweather.svg" width="100" /> Aerisweather API Secret  for forecast Data </div>
+ <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="#F05E40" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M12 30 L24 16 12 2" />
+</svg>
+    <input name="awapisecret" type="text" id="awapisecret" value="<?php echo $awapisecret ;?>" class="chooseapi">
+<br> <span style="color:#777;">enter your <strong>Aerisweather</strong> <strong>API Secret</strong> </span>
+<P>
+
+    <div class= "stationvalue">
+<img src="img/aerisweather.svg" width="100" /> Aerisweather API UNITS *important</div>
+ <svg id="i-chevron-right" viewBox="0 0 32 32" width="14" height="14" fill="none" stroke="#F05E40" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+    <path d="M12 30 L24 16 12 2" />
+</svg>
+    <label name="awunit"></label>
+        <select id="awunit" name="awunit" value="<?php echo $awunit ;?>" class="choose1" >
+          <option><?php echo $awunit ;?></option>
+            <option>ca</option> 
+            <option>uk2</option>
+             <option>us</option>
+             <option>si</option>
+            </select>
+
+<br> <svg id="i-info" viewBox="0 0 32 32" width="12" height="12" fill="none" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+    <path d="M16 14 L16 23 M16 8 L16 10" />    <circle cx="16" cy="16" r="14" /></svg> <span style="color:#777;"><green>CA</green> same as si, windSpeed km/h</span>
+<br> <svg id="i-info" viewBox="0 0 32 32" width="12" height="12" fill="none" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+    <path d="M16 14 L16 23 M16 8 L16 10" />    <circle cx="16" cy="16" r="14" /></svg> <span style="color:#777;"><green>UK2</green>  same as si,windSpeed mph</span>
+<br> <svg id="i-info" viewBox="0 0 32 32" width="12" height="12" fill="none" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+    <path d="M16 14 L16 23 M16 8 L16 10" />    <circle cx="16" cy="16" r="14" /></svg> <span style="color:#777;"><green>US</green> Imperial units (NON METRIC)</span>
+<br> <svg id="i-info" viewBox="0 0 32 32" width="12" height="12" fill="none" stroke="#777" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+    <path d="M16 14 L16 23 M16 8 L16 10" />    <circle cx="16" cy="16" r="14" /></svg> <span style="color:#777;"><green>SI</green> units</span>
+ 
+<P>
+
+<!--  end aeris   -->
        
          <div class="seperator"></div>
     

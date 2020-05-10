@@ -63,7 +63,8 @@ foreach($json['obs'] as $item)
 //Cumulus-Meteobridge(Sararoga Method)
 // Cumulus and Meteobridge(Sararoga Method) are virtually identical, so handle them together
 if (
-	($livedataFormat == 'cumulus' || 
+	($livedataFormat == 'cumulus' ||
+	$livedataFormat == 'cumulusmx' || 
 	$livedataFormat == 'meteobridge' ||
 	$livedataFormat == 'weewx' || 
 	$livedataFormat == 'weathercat') && $livedata) {
