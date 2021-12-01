@@ -47,7 +47,7 @@ if ($weather["wind_units"] == 'mph') {
 <div class="updatedtimecurrent">
 <span><?php 
 $updated=filemtime('jsondata/eqnotification.txt');
-echo  $online, " ",date($dateFormat, $updated);?></span>
+echo  $online, " ",date($timeFormat, $updated);?></span>
  </div>
 
 <br /><br /><div style="height:10px;"></div>
@@ -57,28 +57,28 @@ echo  $online, " ",date($dateFormat, $updated);?></span>
 echo " \n";
 // EQ Latest earthquake 
 if ($magnitude <= 0) {
-    echo "<div class=\"eq03\">${magnitude}<uvi></uvi></div><div class=\"eqtext\">  $eqtitle <br><color>$eventime</color><br>
+    echo "<div class=\"eq03\">${magnitude}<uvi></uvi></div><div class=\"eqtext\">  $eqtitle <br><color>$eventime</color><br><depth>Depth:$depth km</depth><br>
 	Epicenter: <color>$eqdist</color>  from  $stationlocation</div>";
 } else if ($magnitude <= 1) {
-    echo "<div class=\"eq03\">${magnitude}<uvi></uvi></div><div class=\"eqtext\"> $eqtitle <br><color>$eventime</color><br>
+    echo "<div class=\"eq03\">${magnitude}<uvi></uvi></div><div class=\"eqtext\"> $eqtitle <br><color>$eventime</color><br><depth>Depth:$depth km</depth><br>
 	Epicenter: <color>$eqdist</color>  from  $stationlocation</div>";
 } else if ($magnitude <= 2) {
-    echo "<div class=\"eq03\">${magnitude}<uvi></uvi></div><div class=\"eqtext\"> $eqtitle <br><color>$eventime</color><br>
+    echo "<div class=\"eq03\">${magnitude}<uvi></uvi></div><div class=\"eqtext\"> $eqtitle <br><color>$eventime</color><br><depth>Depth:$depth km</depth><br>
 	Epicenter: <color>$eqdist</color>  from  $stationlocation</div>";
 } else if ($magnitude <= 3) {
-    echo "<div class=\"eq03\">${magnitude}<uvi></uvi></div><div class=\"eqtext\"> $eqtitle <br><color>$eventime</color><br>
+    echo "<div class=\"eq03\">${magnitude}<uvi></uvi></div><div class=\"eqtext\"> $eqtitle <br><color>$eventime</color><br><depth>Depth:$depth km</depth><br>
 	Epicenter: <color>$eqdist</color>  from  $stationlocation</div>";
 } else if ($magnitude <= 4.2) {
-    echo "<div class=\"eq03\">${magnitude}<uvi></uvi></div><div class=\"eqtext\"> $eqtitle <br><color>$eventime</color><br>
+    echo "<div class=\"eq03\">${magnitude}<uvi></uvi></div><div class=\"eqtext\"> $eqtitle <br><color>$eventime</color><br><depth>Depth:$depth km</depth><br>
 	Epicenter: <color>$eqdist</color>  from $stationlocation</div>";
 } else if ($magnitude <= 5) {
-    echo "<div class=\"eq45\">${magnitude}<uvi></uvi></div><div class=\"eqtext\"> $eqtitle <br><color>$eventime</color><br>
+    echo "<div class=\"eq45\">${magnitude}<uvi></uvi></div><div class=\"eqtext\"> $eqtitle <br><color>$eventime</color><br><depth>Depth:$depth km</depth><br>
 	Epicenter: <color>$eqdist</color>  from  $stationlocation</div>";
 } else if ($magnitude<= 6) {
-    echo "<div class=\"eq5\">${magnitude}<uvi></uvi></div><div class=\"eqtext\"> $eqtitle <br><color>$eventime</color><br>
+    echo "<div class=\"eq5\">${magnitude}<uvi></uvi></div><div class=\"eqtext\"> $eqtitle <br><color>$eventime</color><br><depth>Depth:$depth km</depth><br>
 	Epicenter: <color>$eqdist</color>  from  $stationlocation</div>";
 } else if ($magnitude <= 10) {
-    echo "<div class=\"eq08\">${magnitude}<uvi></uvi></div><div class=\"eqtext\"> $eqtitle <br><color>$eventime</color><br><depth>depth:$depth km</depth><br>
+    echo "<div class=\"eq08\">${magnitude}<uvi></uvi></div><div class=\"eqtext\"> $eqtitle <br><color>$eventime</color><br><depth>Depth:$depth km</depth><br>
 	Epicenter: <color>$eqdist</color>  from  $stationlocation</div>";
 }
 
@@ -87,11 +87,11 @@ if ($magnitude <= 0) {
 <?php echo "";
 //eq2 previous earthquake
 if ($magnitude1 <1){echo "";}
-else if ($magnitude1 <=4.5){echo "<div class=\"eqcircle1\">${magnitude1}<br><span>magnitude</span></div><div class=\"eqtext1\"> $eqtitle1 <br><colortext>$eventime1</colortext>
+else if ($magnitude1 <=4.5){echo "<div class=\"eqcircle1\">${magnitude1}<br><span><green>MINOR</green></span></div><div class=\"eqtext1\"> $eqtitle1 <br><colortext>$eventime1</colortext>
  Epicenter: <color>$eqdist2</color><br>
  $stationlocation</div>";}
-else if ($magnitude1 <=6){echo "<div class=\"eqcircle2\">${magnitude1}<br><span>magnitude</span></div><div class=\"eqtext1\"> $eqtitle1 <br><colortext>$eventime1</colortext> Epicenter: <color>$eqdist2</color><br>
+else if ($magnitude1 <=6){echo "<div class=\"eqcircle2\">${magnitude1}<br><span><orange>MODERATE</orange></span></div><div class=\"eqtext1\"> $eqtitle1 <br><colortext>$eventime1</colortext> Epicenter: <color>$eqdist2</color><br>
  $stationlocation</div>";}
-else if ($magnitude1 <=10){echo "<div class=\"eqcircle3\">${magnitude1}<br><span>magnitude</span></div><div class=\"eqtext1\"> $eqtitle1 <br><colortext>$eventime1</colortext> Epicenter: <color>$eqdist2</color><br>
+else if ($magnitude1 <=10){echo "<div class=\"eqcircle3\">${magnitude1}<br><span><red>MAJOR</red></span></div><div class=\"eqtext1\"> $eqtitle1 <br><colortext>$eventime1</colortext> Epicenter: <color>$eqdist2</color><br>
  $stationlocation</div>";}
 ?>
