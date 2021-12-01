@@ -3,6 +3,7 @@
 // 13-Mar-2019 complete rewrite to have curl reporting and code simplification
 // 21-May-2019 added WU/TWC API calls for today/month data for graphs
 // 17-Apr-2020 added Aerisweather forecast support - ktrue
+// 30-Nov-2021 added eqlist from USGS instead of defunct earthquake-report.com - ktrue
 //
 chdir(dirname(__FILE__));
 include_once('../settings.php');
@@ -82,6 +83,7 @@ $filename4c = 'wuforecast-'.$wuapiunit.'-'.$language.'.txt';
 		$Status .= "<!-- $filename4c is current -->\n";
 	}
 }
+/* old earthquakes 
 // weather34 earthquakes curl based
 $filename1a = 'eqnotification.txt';
 if(!file_exists($filename1a) or file_exists($filename1a)&&time()- filemtime($filename1a)>1800){
@@ -93,6 +95,8 @@ if(!file_exists($filename1a) or file_exists($filename1a)&&time()- filemtime($fil
 } else {
 	$Status .= "<!-- $filename1a is current -->\n";
 }
+*/
+if(file_exists('make-eqlist.php')) { include_once('make-eqlist.php'); }
 
 $filename2a = 'kindex.txt';
 if(!file_exists($filename2a) or file_exists($filename2a)&&time()- filemtime($filename2a)>1800){
