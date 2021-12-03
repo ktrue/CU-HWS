@@ -101,7 +101,7 @@ if(file_exists('make-eqlist.php')) { include_once('make-eqlist.php'); }
 $filename2a = 'kindex.txt';
 if(!file_exists($filename2a) or file_exists($filename2a)&&time()- filemtime($filename2a)>1800){
  //k-index curl based
-  $url2a = 'https://services.swpc.noaa.gov/products/geospace/planetary-k-index-dst.json'; 
+  $url2a = 'https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json'; 
   $data = HWS_fetchUrlWithoutHanging($url2a);
 	if(strlen($data) > 0) {
 		file_put_contents($filename2a,$data);

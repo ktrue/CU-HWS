@@ -1,3 +1,7 @@
+<?php 
+include_once('settings1.php');
+include_once('common.php');
+include_once('shared.php'); ?>
 <!-- begin menu.php 13-Apr-2019 -->
 <header style="z-index:auto">
 <h1><ogreyh1><?php echo $stationName;?>&nbsp; Home &#8226; Weather &#8226; Station </ogreyh1></h1>

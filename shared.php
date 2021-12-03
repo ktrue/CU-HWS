@@ -249,7 +249,7 @@ Source: Norms of apparent temperature in Australia, Aust. Met. Mag., 1994, Vol 4
 	}
 		
 	$e = $hum/100*6.105*exp(17.27*$Ta/(237.7+$Ta));
-	$rfeel = round(($Ta + 0.33*$e - 0.70*$w - 4.00),1);
+	$rfeel = round(($Ta + 0.33*$e - 0.70*$ws - 4.00),1);
 	
 	if($weather['temp_units'] =='F') {
   	$rfeel = number_format((float)$rfeel*1.8 +32,1);

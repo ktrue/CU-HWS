@@ -212,6 +212,10 @@ $malt = rad2deg(asin(sin(deg2rad($decmoon1))*sin(deg2rad($stationlat))+cos(deg2r
 
 $moonpos[] = $malt;
 }
+//convert degrees to compass points
+if(!function_exists('getDir')) {
+function getDir($b) { $dirs = array('N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW',  'NW', 'NNW', 'N'); return $dirs[round($b/22.5)]; }
+}
 
 $sundir = getDir(round($sunazi[25],2));
 
@@ -225,4 +229,6 @@ if ((time() >= $tsrise) && (time() <= $tsset)) {
 }
 print ' -->';  ## adapted for HWS-template
 //convert degrees to compass points
+if(!function_exists('getDir')) {
 function getDir($b) { $dirs = array('N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW',  'NW', 'NNW', 'N'); return $dirs[round($b/22.5)]; }
+}

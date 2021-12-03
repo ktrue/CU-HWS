@@ -11,6 +11,7 @@
 	#   https://www.weather34.com 	                                                                   #
 	####################################################################################################
  include_once('settings.php');
+ include_once('settings1.php');
  include_once('shared.php');
  error_reporting(0); 
  
@@ -175,7 +176,7 @@ if ($weather["heat_index"] == null)
 	$weather["heat_index"] = heatIndex($weather["temp"], $weather["humidity"]);
 }
 
-if (!$uvhardware) {
+if (isset($uvhardware) and !$uvhardware) {
 	// add actual UV forecast value from Wunderground hourly forecast for those who don't have UV sensor. 
 	// This forecast value has great accuracy when compared to a real UV sensor value (usually within +/- 1 IUV)
 	$forecast = file_get_contents('jsondata/wuweatherupdate.txt'); 
@@ -565,6 +566,17 @@ $wetbulbx =number_format($wetbulbcalc,1);
 $software    = 'Cumulus <span>Software</span>';
 $designedfor    = '<br>For Cumulus';
 // K-INDEX & SOLAR DATA FOR WEATHER34 HOMEWEATHERSTATION TEMPLATE RADIO HAMS REJOICE :-) //
-$str = file_get_contents('jsondata/kindex.txt');$json = array_reverse(json_decode($str,false));$kp =  $json[1][1];
+if(file_exists('jsondata/kindex.txt')) {
+  $str = file_get_contents('jsondata/kindex.txt');
+	$json = json_decode($str,false);
+	if(is_array($json)) {
+    $json = array_reverse($json);
+    $kp =  $json[1][1];
+	} else {
+		$kp = 'n/a';
+	}
+} else {
+	$kp = 'n/a';
+}
 
 $file = $_SERVER["SCRIPT_NAME"];$break = Explode('/', $file);$mod34file = $break[count($break) - 1];

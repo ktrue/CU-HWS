@@ -112,7 +112,7 @@ else {  $time   = $secondrise - $now;
 
 function get_azimuth ()
     {   global $lat, $lon, $TZ,$azimuth,$elevation ;
-        include 'azimuth.php';
+        include_once('azimuth.php');
         $azimuth        = round($sunazi[25],2);
         $elevation      = round($sunpos[25],2); }
         
