@@ -228,7 +228,3 @@ if ((time() >= $tsrise) && (time() <= $tsset)) {
 	echo "At ".date("H:i",time())." the sun has set"."<hr br/>".PHP_EOL;
 }
 print ' -->';  ## adapted for HWS-template
-//convert degrees to compass points
-if(!function_exists('getDir')) {
-function getDir($b) { $dirs = array('N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW',  'NW', 'NNW', 'N'); return $dirs[round($b/22.5)]; }
-}
