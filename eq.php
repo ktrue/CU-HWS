@@ -5,7 +5,7 @@ date_default_timezone_set($TZ);
 //$json_string=file_get_contents('http://earthquake-report.com/feeds/recent-eq?json');
 $json_string=file_get_contents('jsondata/eqnotification.txt');
 $parsed_json=json_decode($json_string,true);
-$magnitude=$parsed_json[0)['magnitude'];
+$magnitude=$parsed_json[0]['magnitude'];
 $title=$parsed_json[0]['title'];
 $eqtitle=$parsed_json[0]['location'];
 $depth=$parsed_json[0]['depth'];
