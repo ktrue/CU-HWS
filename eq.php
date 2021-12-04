@@ -5,21 +5,21 @@ date_default_timezone_set($TZ);
 //$json_string=file_get_contents('http://earthquake-report.com/feeds/recent-eq?json');
 $json_string=file_get_contents('jsondata/eqnotification.txt');
 $parsed_json=json_decode($json_string,true);
-$magnitude=$parsed_json{0}{'magnitude'};
-$title=$parsed_json{0}['title'];
-$eqtitle=$parsed_json{0}['location'];
-$depth=$parsed_json{0}['depth'];
-$time1=$parsed_json{0}['date_time'];
-$lati=$parsed_json{0}['latitude'];
-$longi=$parsed_json{0}['longitude'];
+$magnitude=$parsed_json[0]['magnitude'];
+$title=$parsed_json[0]['title'];
+$eqtitle=$parsed_json[0]['location'];
+$depth=$parsed_json[0]['depth'];
+$time1=$parsed_json[0]['date_time'];
+$lati=$parsed_json[0]['latitude'];
+$longi=$parsed_json[0]['longitude'];
 $eventime=date( $dateFormat . " " . $timeFormatShort, strtotime("$time1") );
 $shorttime=date( $timeFormatShort, strtotime("$time1") );
-$magnitude1=$parsed_json{1}{'magnitude'};
-$eqtitle1=$parsed_json{1}['location'];
-$depth1=$parsed_json{1}['depth'];
-$time2=$parsed_json{1}['date_time'];
-$lati2=$parsed_json{1}['latitude'];
-$longi2=$parsed_json{1}['longitude'];
+$magnitude1=$parsed_json[1]['magnitude'];
+$eqtitle1=$parsed_json[1]['location'];
+$depth1=$parsed_json[1]['depth'];
+$time2=$parsed_json[1]['date_time'];
+$lati2=$parsed_json[1]['latitude'];
+$longi2=$parsed_json[1]['longitude'];
 $eventime1=date( $dateFormat . " " . $timeFormatShort, strtotime("$time2") );
 ?>
 <?php
@@ -87,11 +87,10 @@ if ($magnitude <= 0) {
 <?php echo "";
 //eq2 previous earthquake
 if ($magnitude1 <1){echo "";}
-else if ($magnitude1 <=4.5){echo "<div class=\"eqcircle1\">${magnitude1}<br><span><green>MINOR</green></span></div><div class=\"eqtext1\"> $eqtitle1 <br><colortext>$eventime1</colortext>
- Epicenter: <color>$eqdist2</color><br>
- $stationlocation</div>";}
-else if ($magnitude1 <=6){echo "<div class=\"eqcircle2\">${magnitude1}<br><span><orange>MODERATE</orange></span></div><div class=\"eqtext1\"> $eqtitle1 <br><colortext>$eventime1</colortext> Epicenter: <color>$eqdist2</color><br>
- $stationlocation</div>";}
-else if ($magnitude1 <=10){echo "<div class=\"eqcircle3\">${magnitude1}<br><span><red>MAJOR</red></span></div><div class=\"eqtext1\"> $eqtitle1 <br><colortext>$eventime1</colortext> Epicenter: <color>$eqdist2</color><br>
- $stationlocation</div>";}
+else if ($magnitude1 <=4.5){echo "<div class=\"eqcircle1\">${magnitude1}<br><span><green>MINOR</green></span></div><div class=\"eqtext1\"> $eqtitle1 <br><colortext>$eventime1</colortext> 
+Epicenter: <color>$eqdist2</color><br> from $stationlocation</div>";}
+else if ($magnitude1 <=6){echo "<div class=\"eqcircle2\">${magnitude1}<br><span><orange>MODERATE</orange></span></div><div class=\"eqtext1\"> $eqtitle1 <br><colortext>$eventime1</colortext> 
+Epicenter: <color>$eqdist2</color><br> from $stationlocation</div>";}
+else if ($magnitude1 <=10){echo "<div class=\"eqcircle3\">${magnitude1}<br><span><red>MAJOR</red></span></div><div class=\"eqtext1\"> $eqtitle1 <br><colortext>$eventime1</colortext>
+Epicenter: <color>$eqdist2</color><br> from $stationlocation</div>";}
 ?>
