@@ -26,12 +26,12 @@ $lati = array();
 $longi = array();
 $eventime = array();
 for ($i = 0; $i < 100; $i++) {
-	$magnitude[$i]=$parsed_json{$i}{'magnitude'};
-	$eqtitle[$i]=$parsed_json{$i}['title'];
-	$depth[$i]=$parsed_json{$i}['depth'];
-	$time[$i]=$parsed_json{$i}['date_time'];
-	$lati[$i]=$parsed_json{$i}['latitude'];
-	$longi[$i]=$parsed_json{$i}['longitude'];
+	$magnitude[$i]=$parsed_json[$i]['magnitude'];
+	$eqtitle[$i]=$parsed_json[$i]['title'];
+	$depth[$i]=$parsed_json[$i]['depth'];
+	$time[$i]=$parsed_json[$i]['date_time'];
+	$lati[$i]=$parsed_json[$i]['latitude'];
+	$longi[$i]=$parsed_json[$i]['longitude'];
 	$eventime[$i]=date($timeFormatShort, strtotime($time[$i]) );
 	$eqdist[$i] = round(distance($lat, $lon, $lati[$i], $longi[$i])) ;
 }
@@ -78,7 +78,7 @@ a{color:#aaa;font-size:11px;top:5px;margin-top:10px;text-decoration:none;}.provi
 				else if($magnitude[0]>=5){echo "<red>",$magnitude[0],"</red>";}
 				else if($magnitude[0]>=4){echo "<orange>",$magnitude[0],"</orange>";}
 				else if($magnitude[0]>=2){echo "<green>",$magnitude[0],"</orange>";}				
-				?></span> magnitude
+				?></span> Magnitude
             </div>
         </div>
         <div class="weather34card__count-container">
@@ -160,7 +160,7 @@ else if ($windunit == 'mph') {
 				else if($magnitude[1]>=4){echo "<orange>",$magnitude[1],"</orange>";}
 				else if($magnitude[1]>=2){echo "<green>",$magnitude[1],"</orange>";}
 				
-				?></span> magnitude
+				?></span> Magnitude
             </div>
         </div>
         <div class="weather34card__count-container">
@@ -246,7 +246,7 @@ else if ($windunit == 'mph') {
 				else if($magnitude[2]>=4){echo "<orange>",$magnitude[2],"</orange>";}
 				else if($magnitude[2]>=2){echo "<green>",$magnitude[2],"</orange>";}
 				
-				?></span> magnitude
+				?></span> Magnitude
             </div>
         </div>
         <div class="weather34card__count-container">
@@ -338,7 +338,7 @@ else if ($windunit == 'mph') {
 				else if($magnitude[3]>=4){echo "<orange>",$magnitude[3],"</orange>";}
 				else if($magnitude[3]>=2){echo "<green>",$magnitude[3],"</orange>";}
 				
-				?></span> magnitude
+				?></span> Magnitude
             </div>
         </div>
         <div class="weather34card__count-container">
@@ -424,7 +424,7 @@ else if ($windunit == 'mph') {
 				else if($magnitude[4]>=4){echo "<orange>",$magnitude[4],"</orange>";}
 				else if($magnitude[4]>=2){echo "<green>",$magnitude[4],"</orange>";}
 				
-				?></span> magnitude
+				?></span> Magnitude
             </div>
         </div>
         <div class="weather34card__count-container">
@@ -1016,9 +1016,9 @@ echo $eqalert;
     </div>
 </section> 
 <div class="provided">   
-<a href="http://earthquake-report.com" title="Earthquake-Report.com" target="_blank">Data © <?php echo date('Y');?> Earthquake-Report.com</a>
+<a href="https://earthquake.usgs.gov/earthquakes/map/" title="USGS" target="_blank"><?php echo $chartinfo."&nbsp;"."Data USGS.gov";?></a>
 &nbsp;
-PHP scripts by <a href="https://weather34.com" title="weather34.com" target="_blank">weather34.com  &copy;<?php echo date('Y');?></a>
+PHP scripts by <a href="https://weather34.com" title="weather34.com" target="_blank">weather34.com  &copy;<?php echo date('Y');?></a> and Saratoga-weather.org
 <updated>               
  <?php echo '<svg viewBox="0 0 32 32" width=7 height=7 fill=#9aba2f stroke=#9aba2f stroke-linecap=round stroke-linejoin=round stroke-width=6.25%><path d="M16 14 L16 23 M16 8 L16 10" /><circle cx=16 cy=16 r=14 /></svg>';
 ; echo " Last Updated: ".date("H:i:s",filemtime('jsondata/kindex.txt'));?>
