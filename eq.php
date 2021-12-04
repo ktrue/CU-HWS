@@ -87,11 +87,10 @@ if ($magnitude <= 0) {
 <?php echo "";
 //eq2 previous earthquake
 if ($magnitude1 <1){echo "";}
-else if ($magnitude1 <=4.5){echo "<div class=\"eqcircle1\">${magnitude1}<br><span><green>MINOR</green></span></div><div class=\"eqtext1\"> $eqtitle1 <br><colortext>$eventime1</colortext>
- Epicenter: <color>$eqdist2</color><br>
- $stationlocation</div>";}
-else if ($magnitude1 <=6){echo "<div class=\"eqcircle2\">${magnitude1}<br><span><orange>MODERATE</orange></span></div><div class=\"eqtext1\"> $eqtitle1 <br><colortext>$eventime1</colortext> Epicenter: <color>$eqdist2</color><br>
- $stationlocation</div>";}
-else if ($magnitude1 <=10){echo "<div class=\"eqcircle3\">${magnitude1}<br><span><red>MAJOR</red></span></div><div class=\"eqtext1\"> $eqtitle1 <br><colortext>$eventime1</colortext> Epicenter: <color>$eqdist2</color><br>
- $stationlocation</div>";}
+else if ($magnitude1 <=4.5){echo "<div class=\"eqcircle1\">${magnitude1}<br><span><green>MINOR</green></span></div><div class=\"eqtext1\"> $eqtitle1 <br><colortext>$eventime1</colortext> 
+Epicenter: <color>$eqdist2</color><br> from $stationlocation</div>";}
+else if ($magnitude1 <=6){echo "<div class=\"eqcircle2\">${magnitude1}<br><span><orange>MODERATE</orange></span></div><div class=\"eqtext1\"> $eqtitle1 <br><colortext>$eventime1</colortext> 
+Epicenter: <color>$eqdist2</color><br> from $stationlocation</div>";}
+else if ($magnitude1 <=10){echo "<div class=\"eqcircle3\">${magnitude1}<br><span><red>MAJOR</red></span></div><div class=\"eqtext1\"> $eqtitle1 <br><colortext>$eventime1</colortext>
+Epicenter: <color>$eqdist2</color><br> from $stationlocation</div>";}
 ?>
