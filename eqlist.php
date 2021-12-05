@@ -27,13 +27,15 @@ $longi = array();
 $eventime = array();
 for ($i = 0; $i < 100; $i++) {
 	$magnitude[$i]=$parsed_json[$i]['magnitude'];
-	$eqtitle[$i]=$parsed_json[$i]['title'];
+	// $eqtitle[$i]=$parsed_json[$i]['title'];
+	$eqtitle[$i]=$parsed_json[$i]['location'];
 	$depth[$i]=$parsed_json[$i]['depth'];
 	$time[$i]=$parsed_json[$i]['date_time'];
 	$lati[$i]=$parsed_json[$i]['latitude'];
 	$longi[$i]=$parsed_json[$i]['longitude'];
-	$eventime[$i]=date($timeFormatShort, strtotime($time[$i]) );
+	// $eventime[$i]=date($timeFormatShort, strtotime($time[$i]) );
 	$eqdist[$i] = round(distance($lat, $lon, $lati[$i], $longi[$i])) ;
+	$link[$i]=$parsed_json[$i]['link'];
 }
 $eqalert='<svg id="i-activity" viewBox="0 0 32 32" width="52" height="52" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
     <path d="M4 16 L11 16 14 29 18 3 21 16 28 16" />
@@ -78,7 +80,8 @@ a{color:#aaa;font-size:11px;top:5px;margin-top:10px;text-decoration:none;}.provi
 				else if($magnitude[0]>=5){echo "<red>",$magnitude[0],"</red>";}
 				else if($magnitude[0]>=4){echo "<orange>",$magnitude[0],"</orange>";}
 				else if($magnitude[0]>=2){echo "<green>",$magnitude[0],"</orange>";}				
-				?></span> Magnitude
+				?></span>
+		    		<?php echo "Magnitude "."<a href=\"".$link[0]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";?>
             </div>
         </div>
         <div class="weather34card__count-container">
@@ -160,7 +163,8 @@ else if ($windunit == 'mph') {
 				else if($magnitude[1]>=4){echo "<orange>",$magnitude[1],"</orange>";}
 				else if($magnitude[1]>=2){echo "<green>",$magnitude[1],"</orange>";}
 				
-				?></span> Magnitude
+				?></span>
+		    		<?php echo "Magnitude "."<a href=\"".$link[1]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";?>
             </div>
         </div>
         <div class="weather34card__count-container">
@@ -246,7 +250,8 @@ else if ($windunit == 'mph') {
 				else if($magnitude[2]>=4){echo "<orange>",$magnitude[2],"</orange>";}
 				else if($magnitude[2]>=2){echo "<green>",$magnitude[2],"</orange>";}
 				
-				?></span> Magnitude
+				?></span>
+		    		<?php echo "Magnitude "."<a href=\"".$link[2]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";?>
             </div>
         </div>
         <div class="weather34card__count-container">
@@ -338,7 +343,8 @@ else if ($windunit == 'mph') {
 				else if($magnitude[3]>=4){echo "<orange>",$magnitude[3],"</orange>";}
 				else if($magnitude[3]>=2){echo "<green>",$magnitude[3],"</orange>";}
 				
-				?></span> Magnitude
+				?></span>
+		    		<?php echo "Magnitude "."<a href=\"".$link[3]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";?>
             </div>
         </div>
         <div class="weather34card__count-container">
@@ -424,7 +430,8 @@ else if ($windunit == 'mph') {
 				else if($magnitude[4]>=4){echo "<orange>",$magnitude[4],"</orange>";}
 				else if($magnitude[4]>=2){echo "<green>",$magnitude[4],"</orange>";}
 				
-				?></span> Magnitude
+				?></span>
+		    		<?php echo "Magnitude "."<a href=\"".$link[4]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";?>
             </div>
         </div>
         <div class="weather34card__count-container">
@@ -504,105 +511,202 @@ else if ($windunit == 'mph') {
         <div class="weather34card_weather34-container">
             <div class="weather34card_weather34-wrapper"><span class="weather34card__count-text--big">
 <?php //weather34 last 100 of greater than 6 if exist
-if($magnitude[100]>=5.7){echo "<red>",$magnitude[100],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[99]>=5.7){echo "<red>",$magnitude[99],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[98]>=5.7){echo "<red>",$magnitude[98],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[97]>=5.7){echo "<red>",$magnitude[97],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[96]>=5.7){echo "<red>",$magnitude[96],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[95]>=5.7){echo "<red>",$magnitude[95],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[94]>=5.7){echo "<red>",$magnitude[94],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[93]>=5.7){echo "<red>",$magnitude[93],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[92]>=5.7){echo "<red>",$magnitude[92],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[91]>=5.7){echo "<red>",$magnitude[91],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[90]>=5.7){echo "<red>",$magnitude[90],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[89]>=5.7){echo "<red>",$magnitude[89],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[88]>=5.7){echo "<red>",$magnitude[88],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[87]>=5.7){echo "<red>",$magnitude[87],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[86]>=5.7){echo "<red>",$magnitude[86],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[85]>=5.7){echo "<red>",$magnitude[85],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[84]>=5.7){echo "<red>",$magnitude[84],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[83]>=5.7){echo "<red>",$magnitude[83],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[82]>=5.7){echo "<red>",$magnitude[82],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[81]>=5.7){echo "<red>",$magnitude[81],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[80]>=5.7){echo "<red>",$magnitude[80],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[79]>=5.7){echo "<red>",$magnitude[79],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[78]>=5.7){echo "<red>",$magnitude[78],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[77]>=5.7){echo "<red>",$magnitude[77],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[76]>=5.7){echo "<red>",$magnitude[76],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[75]>=5.7){echo "<red>",$magnitude[75],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[74]>=5.7){echo "<red>",$magnitude[74],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[73]>=5.7){echo "<red>",$magnitude[73],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[72]>=5.7){echo "<red>",$magnitude[72],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[71]>=5.7){echo "<red>",$magnitude[71],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[70]>=5.7){echo "<red>",$magnitude[70],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[69]>=5.7){echo "<red>",$magnitude[69],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[68]>=5.7){echo "<red>",$magnitude[68],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[67]>=5.7){echo "<red>",$magnitude[67],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[66]>=5.7){echo "<red>",$magnitude[66],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[65]>=5.7){echo "<red>",$magnitude[65],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[64]>=5.7){echo "<red>",$magnitude[64],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[63]>=5.7){echo "<red>",$magnitude[63],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[62]>=5.7){echo "<red>",$magnitude[62],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[61]>=5.7){echo "<red>",$magnitude[61],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[60]>=5.7){echo "<red>",$magnitude[60],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[59]>=5.7){echo "<red>",$magnitude[59],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[58]>=5.7){echo "<red>",$magnitude[58],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[57]>=5.7){echo "<red>",$magnitude[57],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[56]>=5.7){echo "<red>",$magnitude[56],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[55]>=5.7){echo "<red>",$magnitude[55],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[54]>=5.7){echo "<red>",$magnitude[54],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[53]>=5.7){echo "<red>",$magnitude[53],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[52]>=5.7){echo "<red>",$magnitude[52],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[51]>=5.7){echo "<red>",$magnitude[51],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[50]>=5.7){echo "<red>",$magnitude[50],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[49]>=5.7){echo "<red>",$magnitude[49],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[48]>=5.7){echo "<red>",$magnitude[48],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[47]>=5.7){echo "<red>",$magnitude[47],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[46]>=5.7){echo "<red>",$magnitude[46],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[45]>=5.7){echo "<red>",$magnitude[45],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[44]>=5.7){echo "<red>",$magnitude[44],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[43]>=5.7){echo "<red>",$magnitude[43],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[42]>=5.7){echo "<red>",$magnitude[42],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[41]>=5.7){echo "<red>",$magnitude[41],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[40]>=5.7){echo "<red>",$magnitude[40],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[39]>=5.7){echo "<red>",$magnitude[39],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[38]>=5.7){echo "<red>",$magnitude[38],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[37]>=5.7){echo "<red>",$magnitude[37],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[36]>=5.7){echo "<red>",$magnitude[36],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[35]>=5.7){echo "<red>",$magnitude[35],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[34]>=5.7){echo "<red>",$magnitude[34],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[33]>=5.7){echo "<red>",$magnitude[33],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[32]>=5.7){echo "<red>",$magnitude[32],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[31]>=5.7){echo "<red>",$magnitude[31],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[30]>=5.7){echo "<red>",$magnitude[30],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[29]>=5.7){echo "<red>",$magnitude[29],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[28]>=5.7){echo "<red>",$magnitude[28],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[27]>=5.7){echo "<red>",$magnitude[27],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[26]>=5.7){echo "<red>",$magnitude[26],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[25]>=5.7){echo "<red>",$magnitude[25],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[24]>=5.7){echo "<red>",$magnitude[24],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[23]>=5.7){echo "<red>",$magnitude[23],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[22]>=5.7){echo "<red>",$magnitude[22],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[21]>=5.7){echo "<red>",$magnitude[21],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[20]>=5.7){echo "<red>",$magnitude[20],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[19]>=5.7){echo "<red>",$magnitude[19],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[18]>=5.7){echo "<red>",$magnitude[18],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[17]>=5.7){echo "<red>",$magnitude[17],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[16]>=5.7){echo "<red>",$magnitude[16],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[15]>=5.7){echo "<red>",$magnitude[15],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[14]>=5.7){echo "<red>",$magnitude[14],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[12]>=5.7){echo "<red>",$magnitude[13],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[11]>=5.7){echo "<red>",$magnitude[11],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[10]>=5.7){echo "<red>",$magnitude[10],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[9]>=5.7){echo "<red>",$magnitude[9],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[8]>=5.7){echo "<red>",$magnitude[8],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[7]>=5.7){echo "<red>",$magnitude[7],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[6]>=5.7){echo "<red>",$magnitude[6],"</red><magnitude> ".$eqalert6."</magnitude>";}
-else if($magnitude[5]>=5.7){echo "<red>",$magnitude[5],"</red><magnitude> ".$eqalert6."</magnitude>";}
+if($magnitude[100]>=5.7){echo "<red>",$magnitude[100],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[100]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[99]>=5.7){echo "<red>",$magnitude[99],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[99]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[98]>=5.7){echo "<red>",$magnitude[98],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[98]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[97]>=5.7){echo "<red>",$magnitude[97],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[97]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[96]>=5.7){echo "<red>",$magnitude[96],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[96]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[95]>=5.7){echo "<red>",$magnitude[95],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[95]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[94]>=5.7){echo "<red>",$magnitude[94],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[94]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[93]>=5.7){echo "<red>",$magnitude[93],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[93]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[92]>=5.7){echo "<red>",$magnitude[92],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[92]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[91]>=5.7){echo "<red>",$magnitude[91],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[91]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[90]>=5.7){echo "<red>",$magnitude[90],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[90]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[89]>=5.7){echo "<red>",$magnitude[89],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[89]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[88]>=5.7){echo "<red>",$magnitude[88],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[88]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[87]>=5.7){echo "<red>",$magnitude[87],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[87]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[86]>=5.7){echo "<red>",$magnitude[86],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[86]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[85]>=5.7){echo "<red>",$magnitude[85],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[85]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[84]>=5.7){echo "<red>",$magnitude[84],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[84]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[83]>=5.7){echo "<red>",$magnitude[83],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[83]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[82]>=5.7){echo "<red>",$magnitude[82],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[82]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[81]>=5.7){echo "<red>",$magnitude[81],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[81]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[80]>=5.7){echo "<red>",$magnitude[80],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[80]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[79]>=5.7){echo "<red>",$magnitude[79],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[79]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[78]>=5.7){echo "<red>",$magnitude[78],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[78]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[77]>=5.7){echo "<red>",$magnitude[77],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[77]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[76]>=5.7){echo "<red>",$magnitude[76],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[76]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[75]>=5.7){echo "<red>",$magnitude[75],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[75]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[74]>=5.7){echo "<red>",$magnitude[74],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[74]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[73]>=5.7){echo "<red>",$magnitude[73],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[73]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[72]>=5.7){echo "<red>",$magnitude[72],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[72]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[71]>=5.7){echo "<red>",$magnitude[71],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[71]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[70]>=5.7){echo "<red>",$magnitude[70],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[70]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[69]>=5.7){echo "<red>",$magnitude[69],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[69]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[68]>=5.7){echo "<red>",$magnitude[68],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[68]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[67]>=5.7){echo "<red>",$magnitude[67],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[67]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[66]>=5.7){echo "<red>",$magnitude[66],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[66]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[65]>=5.7){echo "<red>",$magnitude[65],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[65]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[64]>=5.7){echo "<red>",$magnitude[64],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[64]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[63]>=5.7){echo "<red>",$magnitude[63],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[63]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[62]>=5.7){echo "<red>",$magnitude[62],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[62]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[61]>=5.7){echo "<red>",$magnitude[61],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[61]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[60]>=5.7){echo "<red>",$magnitude[60],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[60]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[59]>=5.7){echo "<red>",$magnitude[59],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[59]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[58]>=5.7){echo "<red>",$magnitude[58],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[58]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[57]>=5.7){echo "<red>",$magnitude[57],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[57]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[56]>=5.7){echo "<red>",$magnitude[56],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[56]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[55]>=5.7){echo "<red>",$magnitude[55],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[55]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[54]>=5.7){echo "<red>",$magnitude[54],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[54]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[53]>=5.7){echo "<red>",$magnitude[53],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[53]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[52]>=5.7){echo "<red>",$magnitude[52],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[52]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[51]>=5.7){echo "<red>",$magnitude[51],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[51]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[50]>=5.7){echo "<red>",$magnitude[50],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[50]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[49]>=5.7){echo "<red>",$magnitude[49],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[49]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[48]>=5.7){echo "<red>",$magnitude[48],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[48]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[47]>=5.7){echo "<red>",$magnitude[47],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[47]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[46]>=5.7){echo "<red>",$magnitude[46],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[46]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[45]>=5.7){echo "<red>",$magnitude[45],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[45]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[44]>=5.7){echo "<red>",$magnitude[44],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[44]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[43]>=5.7){echo "<red>",$magnitude[43],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[43]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[42]>=5.7){echo "<red>",$magnitude[42],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[42]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[41]>=5.7){echo "<red>",$magnitude[41],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[41]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[40]>=5.7){echo "<red>",$magnitude[40],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[40]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[39]>=5.7){echo "<red>",$magnitude[39],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[39]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[38]>=5.7){echo "<red>",$magnitude[38],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[38]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[37]>=5.7){echo "<red>",$magnitude[37],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[37]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[36]>=5.7){echo "<red>",$magnitude[36],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[36]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[35]>=5.7){echo "<red>",$magnitude[35],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[35]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[34]>=5.7){echo "<red>",$magnitude[34],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[34]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[33]>=5.7){echo "<red>",$magnitude[33],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[33]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[32]>=5.7){echo "<red>",$magnitude[32],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[32]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[31]>=5.7){echo "<red>",$magnitude[31],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[31]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[30]>=5.7){echo "<red>",$magnitude[30],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[30]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[29]>=5.7){echo "<red>",$magnitude[29],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[29]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[28]>=5.7){echo "<red>",$magnitude[28],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[28]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[27]>=5.7){echo "<red>",$magnitude[27],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[27]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[26]>=5.7){echo "<red>",$magnitude[26],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[26]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[25]>=5.7){echo "<red>",$magnitude[25],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[25]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[24]>=5.7){echo "<red>",$magnitude[24],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[24]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[23]>=5.7){echo "<red>",$magnitude[23],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[23]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[22]>=5.7){echo "<red>",$magnitude[22],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[22]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[21]>=5.7){echo "<red>",$magnitude[21],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[21]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[20]>=5.7){echo "<red>",$magnitude[20],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[20]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[19]>=5.7){echo "<red>",$magnitude[19],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[19]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[18]>=5.7){echo "<red>",$magnitude[18],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[18]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[17]>=5.7){echo "<red>",$magnitude[17],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[17]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[16]>=5.7){echo "<red>",$magnitude[16],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[16]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[15]>=5.7){echo "<red>",$magnitude[15],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[15]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[14]>=5.7){echo "<red>",$magnitude[14],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[14]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[13]>=5.7){echo "<red>",$magnitude[13],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[13]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[12]>=5.7){echo "<red>",$magnitude[12],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[12]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[11]>=5.7){echo "<red>",$magnitude[11],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[11]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[10]>=5.7){echo "<red>",$magnitude[10],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[10]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[9]>=5.7){echo "<red>",$magnitude[9],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[9]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[8]>=5.7){echo "<red>",$magnitude[8],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[8]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[7]>=5.7){echo "<red>",$magnitude[7],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[7]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[6]>=5.7){echo "<red>",$magnitude[6],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[6]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
+else if($magnitude[5]>=5.7){echo "<red>",$magnitude[5],"</red></span>";
+	echo "Magnitude "."<a href=\"".$link[5]."\" title=\"EQ details\" target=\"_blank\">".$chartinfo."&nbsp;"."<green>Link</green></a>";}
 				else {
 	echo "<div class=nosig>No Additional Major or Earlier <red6>Significant</red6> Events 
 	</div>";	
-	} //end last 100 ?></span> 
+	} //end last 100 ?>
             </div>
         </div>
         <div class="weather34card__count-container">
@@ -1016,7 +1120,7 @@ echo $eqalert;
     </div>
 </section> 
 <div class="provided">   
-<a href="https://earthquake.usgs.gov/earthquakes/map/" title="USGS" target="_blank"><?php echo $chartinfo."&nbsp;"."Data USGS.gov";?></a>
+<a href="https://earthquake.usgs.gov/earthquakes/map/" title="USGS" target="_blank"><?php echo $chartinfo."&nbsp;"."<green>Data USGS.gov</green>";?></a>
 &nbsp;
 PHP scripts by <a href="https://weather34.com" title="weather34.com" target="_blank">weather34.com  &copy;<?php echo date('Y');?></a> and Saratoga-weather.org
 <updated>               
