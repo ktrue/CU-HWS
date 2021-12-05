@@ -34,6 +34,7 @@ for ($i = 0; $i < 100; $i++) {
 	$lati[$i]=$parsed_json[$i]['latitude'];
 	$longi[$i]=$parsed_json[$i]['longitude'];
 	// $eventime[$i]=date($timeFormatShort, strtotime($time[$i]) );
+	$eventime[$i]=date($dateFormat . " " . $timeFormatShort, strtotime($time[$i]));
 	$eqdist[$i] = round(distance($lat, $lon, $lati[$i], $longi[$i])) ;
 	$link[$i]=$parsed_json[$i]['link'];
 }
