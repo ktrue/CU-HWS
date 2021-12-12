@@ -4,6 +4,7 @@
 // 21-May-2019 added WU/TWC API calls for today/month data for graphs
 // 17-Apr-2020 added Aerisweather forecast support - ktrue
 // 30-Nov-2021 added eqlist from USGS instead of defunct earthquake-report.com - ktrue
+// 12-Dec-2021 changed WU/TWC request for today to use https://api.weather.com/v2/pws/observations/all/1day? matsA/ktrue
 //
 chdir(dirname(__FILE__));
 include_once('../settings.php');
@@ -176,7 +177,8 @@ $filename = '../chartswudata/'.date('dmY').'.txt';
 if(!file_exists($filename) or file_exists($filename)&&time()- filemtime($filename)>300){
 
  //day
-	$url = 'https://api.weather.com/v2/pws/history/all?stationId='.$id.'&format=json&units='.$wuapiunit.'&date='.date('Ymd').'&apiKey='.$wuapikey;
+#	$url = 'https://api.weather.com/v2/pws/history/all?stationId='.$id.'&format=json&units='.$wuapiunit.'&date='.date('Ymd').'&apiKey='.$wuapikey;
+	$url = 'https://api.weather.com/v2/pws/observations/all/1day?stationId='.$id.'&format=json&units='.$wuapiunit.'&apiKey='.$wuapikey;
 	 
   $data = HWS_fetchUrlWithoutHanging($url);
 	$outdata = HWS_WUJSON_decode('daily',$data,$wuapiunit);
