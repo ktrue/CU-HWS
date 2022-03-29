@@ -75,7 +75,8 @@ https://github.com/steepleian/weewx-Weather34
 https://github.com/peted-davis/WeatherFlow_PiConsole
 
 * **Davis WeatherLink version** by Mats Ahlklo supports WL 2.0 details here
-http://pysselilivet.blogspot.com/2017/01/install-weather34-with-weatherlink.html
+https://pysselilivet.blogspot.com/2017/01/install-weather34-with-weatherlink.html
+An updated post for the latest WL API v2 is found here https://pysselilivet.blogspot.com/2022/02/install-weather34-with-weatherlink-v2.html
 
 * **ATMOCOM Version** for Ambient WS-2902 Osprey,Ventus W830, MiSol, ChiliTec, PanTech, Froggit WH3000, Ambient WS-8478 Falcon, Bresser,FOSHK HP-3500 series info here
 https://atmocom.com/Demo-weather-data

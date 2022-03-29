@@ -5,6 +5,7 @@
 // 17-Apr-2020 added Aerisweather forecast support - ktrue
 // 30-Nov-2021 added eqlist from USGS instead of defunct earthquake-report.com - ktrue
 // 12-Dec-2021 changed WU/TWC request for today to use https://api.weather.com/v2/pws/observations/all/1day? matsA/ktrue
+// 29-Mar-2022 changed WU/TWC request for today to use decimals. Added '&numericPrecision=decimal' to URL MatsA
 //
 chdir(dirname(__FILE__));
 include_once('../settings.php');
@@ -178,7 +179,8 @@ if(!file_exists($filename) or file_exists($filename)&&time()- filemtime($filenam
 
  //day
 #	$url = 'https://api.weather.com/v2/pws/history/all?stationId='.$id.'&format=json&units='.$wuapiunit.'&date='.date('Ymd').'&apiKey='.$wuapikey;
-	$url = 'https://api.weather.com/v2/pws/observations/all/1day?stationId='.$id.'&format=json&units='.$wuapiunit.'&apiKey='.$wuapikey;
+//	$url = 'https://api.weather.com/v2/pws/observations/all/1day?stationId='.$id.'&format=json&units='.$wuapiunit.'&apiKey='.$wuapikey;
+	$url = 'https://api.weather.com/v2/pws/observations/all/1day?stationId='.$id.'&format=json&units='.$wuapiunit.'&apiKey='.$wuapikey.'&numericPrecision=decimal';
 	 
   $data = HWS_fetchUrlWithoutHanging($url);
 	$outdata = HWS_WUJSON_decode('daily',$data,$wuapiunit);
