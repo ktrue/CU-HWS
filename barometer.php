@@ -54,121 +54,78 @@ else if ($weather["barometer_units"]=='inHg'){echo "<div class=barometerconverte
 <div class="barometerlimits"><div class='weather34-barometerruler'>
 <?php if ($weather["barometer_units"]=='mb' OR $weather["barometer_units"]=="hPa"){echo "<weather34-barometerlimitmin>950</weather34-barometerlimitmin><weather34-barometerlimitmax>1050</weather34-barometerlimitmax>";}
 else echo "<weather34-barometerlimitminf>28</barometerlimitminf><weather34-barometerlimitmaxf>31</weather34-barometerlimitmaxf>";?></div></div>
-<?php //WEATHER34 pure css UV-Index above 8  pop up alert 
- if ($notifications=='yes' && $weather["uv"]>=8){?><div id="weather34lightningdialog-notify">  <div class="weather34lightningdialog-box">
-<div class="weather34lightningbackground-alert"></div><div class="header"> <div class="weather34lightningbackground-alert"></div>
-<div class="weather34lightningcontents"><div class="left"><?php echo $notification ?> Notification</div>
-<div class="right"><?php echo date ("D H:i")?></div></div></div>
-<div class="weather34lightningcontents weather34lightningmain-content">     
-<?php echo "UV-Index Caution<br>Reduce Sun Exposure <notifyorange>" .$weather["uv"],"</notifyorange>",$uvisvg?>
-<?php ;}?></div></div>
-<?php //WEATHER34 pure css temperature heat index above 30c/84F  pop up alert 
- if($notifications=='yes' && anyToC($weather["heat_index"])>=30){?><div id="weather34lightningdialog-notify">  <div class="weather34lightningdialog-box">
-<div class="weather34lightningbackground-alert"></div><div class="header"> <div class="weather34lightningbackground-alert"></div>
-<div class="weather34lightningcontents"><div class="left"><?php echo $notification ?> Notification</div>
-<div class="right"><?php echo date ("D H:i")?></div></div></div>
-<div class="weather34lightningcontents weather34lightningmain-content">     
-<?php echo "Heat Index Caution<br>Heat Exhaustion <notifyorange>" .$weather["heat_index"],"&deg;",$weather["temp_units"]?>
-<?php ;}?></notifyorange></div></div>
-<?php //WEATHER34 pure css wind gusts of 40kmh to Gale Force pop up alert 
- if($notifications=='yes' && $weather["wind_speed"]*$toKnots>23){?><div id="weather34lightningdialog-notify">  <div class="weather34lightningdialog-box">
-<div class="weather34lightningbackground-alert"></div><div class="header"> <div class="weather34lightningbackground-alert"></div>
-<div class="weather34lightningcontents"><div class="left"><?php echo $notification ?> Notification</div>
-<div class="right"><?php echo date ("D H:i")?></div></div></div>
-<div class="weather34lightningcontents weather34lightningmain-content">     
-<?php if($notifications=='yes' && $weather["wind_gust_speed"]*$toKnots>34) {echo "Wind Gusts Reaching <br>Gale Force  <notifyorange>" .$weather["wind_gust_speed"],"</notifyorange> ", $weather["wind_units"];}
-else if( $notifications=='yes' && $weather["wind_speed"]*$toKnots>34) {echo "Wind Gusts Reaching <br>Gale Force  <notifyorange>" .$weather["wind_speed"],"</notifyorange> ", $weather["wind_units"];}
-else echo "Wind Gusts Becoming Strong Caution Required <notifyorange>" .$weather["wind_speed"],"</notifyorange> ", $weather["wind_units"]?>
-<?php ;}?></div></div>
 
-<?php //WEATHER34 pure css temperature  below 0c/32F  pop up alert 
- if($notifications=='yes' && anyToC($weather["temp"])<0){?><div id="weather34lightningdialog-notify">  <div class="weather34lightningdialog-box">
-<div class="weather34lightningbackground-alert"></div><div class="header"> <div class="weather34lightningbackground-alert"></div>
-<div class="weather34lightningcontents"><div class="left"><?php echo $notification ?> Notification</div>
-<div class="right"><?php echo date ("D H:i")?></div></div></div>
-<div class="weather34lightningcontents weather34lightningmain-content"><?php echo $freezing."Temperature Caution<br>Below Freezing <notifyblue>" .$weather["temp"],"&deg;",$weather["temp_units"]?>
-<?php ;}?></notifyblue></div></div>
+<?php // Pop up Notification 
 
-<?php //WEATHER34 pure css near freezing dewpoint below 0c/32F  pop up alert 
- if($notifications=='yes' && anyToC($weather["dewpoint"])<0){?><div id="weather34lightningdialog-notify">  <div class="weather34lightningdialog-box">
-<div class="weather34lightningbackground-alert"></div><div class="header"> <div class="weather34lightningbackground-alert"></div>
-<div class="weather34lightningcontents"><div class="left"><?php echo $notification ?> Notification</div>
-<div class="right"><?php echo date ("D H:i")?></div></div></div>
-<div class="weather34lightningcontents weather34lightningmain-content"><?php echo $freezing."Dewpoint Caution<br>Below Freezing <notifyblue>" .$weather["dewpoint"],"&deg;",$weather["temp_units"]?>
-<?php ;}?></notifyblue></div></div>
+    if ($notifications == 'yes') {
 
-<?php //WEATHER34 pure css temperature freezing dewpoint below 0c/32F  pop up alert 
- if($notifications=='yes' && anyToC($weather["dewpoint"])<1){?><div id="weather34lightningdialog-notify">  <div class="weather34lightningdialog-box">
-<div class="weather34lightningbackground-alert"></div><div class="header"> <div class="weather34lightningbackground-alert"></div>
-<div class="weather34lightningcontents"><div class="left"><?php echo $notification ?> Notification</div>
-<div class="right"><?php echo date ("D H:i")?></div></div></div>
-<div class="weather34lightningcontents weather34lightningmain-content"><?php echo $freezing."Dewpoint Caution<br>Near Freezing <notifyblue>" .$weather["dewpoint"],"&deg;",$weather["temp_units"]?>
-<?php ;}?></notifyblue></div></div>
+        $notificationText = "";
 
+        if ($weather["uv"] >= 8) {                          //WEATHER34 pure css UV-Index above 8 pop up alert 
+            $notificationText = $notificationText."<notifyorange> UV Index </notifyorange><br>".$weather["uv"]." Reduce Sun Exposure<br>";
+        }
 
+        if (anyToC($weather["heat_index"])>=30) {           //WEATHER34 pure css temperature heat index above 30c/84F  pop up alert 
+            $notificationText = $notificationText."<notifyorange> Heat Index </notifyorange><br>Heat Exhaustion ".$weather["heat_index"]."&deg".$weather["temp_units"]."<br>";
+        }
 
-<?php //earthquakes magnitude 6+
-date_default_timezone_set($TZ);
-$json_string=file_get_contents('jsondata/eqnotification.txt');
-$parsed_json=json_decode($json_string,true);$magnitude = array();$eqtitle = array();$depth = array();$time = array();$lati = array();$longi = array();$eventime = array();
-for ($i = 0; $i < 100; $i++) {
-$magnitude[$i]=$parsed_json[$i]['magnitude'];$eqtitle[$i]=$parsed_json[$i]['title'];$depth[$i]=$parsed_json[$i]['depth'];$time[$i]=$parsed_json[$i]['date_time'];
-$lati[$i]=$parsed_json[$i]['latitude'];$longi[$i]=$parsed_json[$i]['longitude'];$eventime[$i]=date($timeFormatShort, strtotime($time[$i]) );$eqdist[$i] = round(distance($lat, $lon, $lati[$i], $longi[$i])) ;
-}
-//WEATHER34 pure css earthquake >6.5 pop up alert 
- if($notifications=='yes' && $magnitude[0]>6.5){?><div id="weather34lightningdialog-notify">  <div class="weather34lightningdialog-box">
-<div class="weather34lightningbackground-alert"></div><div class="header"> <div class="weather34lightningbackground-alert"></div>
-<div class="weather34lightningcontents"><div class="left"><?php echo $notification ?> Notification</div>
-<div class="right"><?php echo date ("D H:i")?></div></div></div>
-<div class="weather34lightningcontents weather34lightningmain-content">     
-<?php echo "Earthquake <br>Strong  <notifyorange>" .$magnitude[0],"</notifyorange> ", $eqtitle[0]," ",$eventime[0];?>
-<?php ;}?>
-<?php
-if($notifications=='yes' && $magnitude[1]>6.5){?><div id="weather34lightningdialog-notify">  <div class="weather34lightningdialog-box">
-<div class="weather34lightningbackground-alert"></div><div class="header"> <div class="weather34lightningbackground-alert"></div>
-<div class="weather34lightningcontents"><div class="left"><?php echo $notification ?> Notification</div>
-<div class="right"><?php echo date ("D H:i")?></div></div></div>
-<div class="weather34lightningcontents weather34lightningmain-content">     
-<?php echo "Earthquake <br>Strong  <notifyorange>" .$magnitude[1],"</notifyorange> ", $eqtitle[1]," ",$eventime[1];?>
-<?php ;}?>
-<?php
-if($notifications=='yes' && $magnitude[2]>6.5){?><div id="weather34lightningdialog-notify">  <div class="weather34lightningdialog-box">
-<div class="weather34lightningbackground-alert"></div><div class="header"> <div class="weather34lightningbackground-alert"></div>
-<div class="weather34lightningcontents"><div class="left"><?php echo $notification ?> Notification</div>
-<div class="right"><?php echo date ("D H:i")?></div></div></div>
-<div class="weather34lightningcontents weather34lightningmain-content">     
-<?php echo "Earthquake <br>Strong  <notifyorange>" .$magnitude[2],"</notifyorange> ", $eqtitle[2]," ",$eventime[2];?>
-<?php ;}?>
-<?php
-if($notifications=='yes' && $magnitude[3]>6.5){?><div id="weather34lightningdialog-notify">  <div class="weather34lightningdialog-box">
-<div class="weather34lightningbackground-alert"></div><div class="header"> <div class="weather34lightningbackground-alert"></div>
-<div class="weather34lightningcontents"><div class="left"><?php echo $notification ?> Notification</div>
-<div class="right"><?php echo date ("D H:i")?></div></div></div>
-<div class="weather34lightningcontents weather34lightningmain-content">     
-<?php echo "Earthquake <br>Strong  <notifyorange>" .$magnitude[3],"</notifyorange> ", $eqtitle[3]," ",$eventime[3];?>
-<?php ;}?>
-<?php
-if($notifications=='yes' && $magnitude[4]>6.5){?><div id="weather34lightningdialog-notify">  <div class="weather34lightningdialog-box">
-<div class="weather34lightningbackground-alert"></div><div class="header"> <div class="weather34lightningbackground-alert"></div>
-<div class="weather34lightningcontents"><div class="left"><?php echo $notification ?> Notification</div>
-<div class="right"><?php echo date ("D H:i")?></div></div></div>
-<div class="weather34lightningcontents weather34lightningmain-content">     
-<?php echo "Earthquake <br>Strong  <notifyorange>" .$magnitude[4],"</notifyorange> ", $eqtitle[4]," ",$eventime[4];?>
-<?php ;}?>
-<?php
-if($notifications=='yes' && $magnitude[5]>6.5){?><div id="weather34lightningdialog-notify">  <div class="weather34lightningdialog-box">
-<div class="weather34lightningbackground-alert"></div><div class="header"> <div class="weather34lightningbackground-alert"></div>
-<div class="weather34lightningcontents"><div class="left"><?php echo $notification ?> Notification</div>
-<div class="right"><?php echo date ("D H:i")?></div></div></div>
-<div class="weather34lightningcontents weather34lightningmain-content">     
-<?php echo "Earthquake <br>Strong  <notifyorange>" .$magnitude[5],"</notifyorange> ", $eqtitle[5];?>
-<?php ;}?>
-<?php
-if($notifications=='yes' && $magnitude[6]>6.5){?><div id="weather34lightningdialog-notify">  <div class="weather34lightningdialog-box">
-<div class="weather34lightningbackground-alert"></div><div class="header"> <div class="weather34lightningbackground-alert"></div>
-<div class="weather34lightningcontents"><div class="left"><?php echo $notification ?> Notification</div>
-<div class="right"><?php echo date ("D H:i")?></div></div></div>
-<div class="weather34lightningcontents weather34lightningmain-content">     
-<?php echo "Earthquake <br>Strong  <notifyorange>" .$magnitude[6],"</notifyorange> ", $eqtitle[6]," ",$eventime[6];?>
-<?php ;}?>
-</div></div>
+        if ($weather["wind_gust_speed"] * $toKnots > 34) {  //WEATHER34 pure css wind gusts of 40kmh to Gale Force pop up alert 
+            $notificationText = $notificationText."<notifyorange>Wind Gusts</notifyorange><br>Strong gust ".$weather["wind_gust_speed"]." ".$weather["wind_units"]."<br>";
+        }
+
+        if (anyToC($weather["temp"]) < 0) {                 //WEATHER34 pure css temperature  below 0c/32F  pop up alert
+            $notificationText = $notificationText."<notifyorange>Temperature</notifyorange><br>Below Freezing ".$weather["temp"]." &deg".$weather["temp_units"]."<br>";
+        } else  {                                           // If not temp is below 0 check if dewpoint is near
+            if (anyToC($weather["dewpoint"]) < 1) {         //WEATHER34 pure css near freezing dewpoint below 0c/32F pop up alert 
+                if (anyToC($weather["dewpoint"]) < 0) { 
+                    $notificationText = $notificationText."<notifyorange>Dewpoint</notifyorange><br>Below Freezing ".$weather["dewpoint"]." &deg".$weather["temp_units"]."<br>";    
+                } 
+                else {
+                    $notificationText = $notificationText."<notifyorange>Dewpoint</notifyorange><br>Near Freezing ".$weather["dewpoint"]." &deg".$weather["temp_units"]."<br>";    
+                }
+            }
+        }
+
+        date_default_timezone_set($TZ);                     //earthquakes magnitude 6+
+        $json_string = file_get_contents('jsondata/eqnotification.txt');
+        $parsed_json = json_decode($json_string, true);
+        $magnitude = array();
+        $eqtitle = array();
+        $depth = array();
+        $time = array();
+        $lati = array();
+        $longi = array();
+        $eventime = array();
+        for ($i = 0; $i < 6; $i++) {                        // Just check the 6 newest measures  
+            $magnitude[$i] = $parsed_json[$i]['magnitude'];
+            $eqtitle[$i] = $parsed_json[$i]['title'];
+            $depth[$i] = $parsed_json[$i]['depth'];
+            $time[$i] = $parsed_json[$i]['date_time'];
+            $lati[$i] = $parsed_json[$i]['latitude'];
+            $longi[$i] = $parsed_json[$i]['longitude'];
+            $eventime[$i] = date($timeFormatShort, strtotime($time[$i]));
+            $eqdist[$i] = round(distance($lat, $lon, $lati[$i], $longi[$i]));
+            if ($magnitude[$i] >= 6.5){
+                $notificationText = $notificationText."<notifyorange>Earthquake</notifyorange><br>".$eqtitle[$i]." ".$eventime[$i];
+                break;
+            }
+        }
+
+        if ($notificationText != "") { ?>
+                <div id="weather34lightningdialog-notify">
+                <div class="weather34lightningdialog-box">
+                    <div class="weather34lightningbackground-alert"></div>
+                        <div class="header">
+                            <div class="weather34lightningbackground-alert"></div>
+                            <div class="weather34lightningcontents">
+                                <div class="left"><?php echo $notification ?> Notification</div>
+                                <div class="right"><?php echo date("D H:i") ?></div>
+                            </div>
+                        </div>
+                    <div class="weather34lightningcontents weather34lightningmain-content">
+                        <?php echo  $notificationText; ?>
+                    </div>
+            <?php ; 
+        }
+    } 
+?>
