@@ -1,5 +1,13 @@
 # Home Weather Station weather website template for Cumulus/Cumulus MX
 
+# NOTE - not recommended for new installs
+
+I've placed this distribution on limited future maintenance, so this is not recommended for new installations.
+For an all-in-one dashboard, I highly recommend Wim's PWSdashboard from https://pwsdashboard.com/
+It supports a variety of weather software types and is fully maintained.
+
+K. True - 17-Mar-2023
+
 # NOTE - Graphs are partially operational - 19-May-2019
 
 On 18-May-2019, weatherunderground.com discontinued the data query for CSV data for day/month/year that is used by
@@ -81,8 +89,8 @@ An updated post for the latest WL API v2 is found here https://pysselilivet.blog
 * **ATMOCOM Version** for Ambient WS-2902 Osprey,Ventus W830, MiSol, ChiliTec, PanTech, Froggit WH3000, Ambient WS-8478 Falcon, Bresser,FOSHK HP-3500 series info here
 https://atmocom.com/Demo-weather-data
 
-* **Weather Display version** by Wim van der Kuil  Now Available via 
-https://wd34.weather-template.com/
+* **Multi-software version** by Wim van der Kuil  Now Available via 
+https://pwsdashboard.com/
 
 ## Brian's note
 A note from Brian 2-Jan-2019 (quoted from [here](https://www.wxforum.net/index.php?topic=29817.msg366998#msg366998)):
