@@ -41,7 +41,7 @@ $pressureunit  = "inHg";
 $livedataFormat = "cumulus";
 $livedata   = "demodata/realtime.txt";
 
-$currentconditions   = "currentconditionsds.php";
+$currentconditions   = "currentconditionsmetar34.php";
 $boltekfile   = "demodata/NSRealtime.txt";
 
 $personalmessage   = "Testing website for Cumulus HWS template with live data.";
