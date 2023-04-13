@@ -1,8 +1,6 @@
 <?php
 include('settings.php');include('livedata.php');error_reporting(0); 
 $result = date_sun_info(time(), $lat, $lon);
-$sunr=date_sunrise(time(), SUNFUNCS_RET_STRING, $lat, $lon, $rise_zenith, $UTC);
-$suns=date_sunset(time(), SUNFUNCS_RET_STRING, $lat, $lon, $set_zenith, $UTC);
 $suns2 =date('G.i', $result['sunset']);
 $sunrs2 =date('G.i', $result['sunrise']);
 $now =date('G.i');
@@ -12,7 +10,7 @@ $parsed_json             = json_decode($json_string);
 $metar34time       = $parsed_json->{'data'}[0]->{'observed'};
 $metar34raw       = $parsed_json->{'data'}[0]->{'raw_text'};
 $metar34stationid       = $parsed_json->{'data'}[0]->{'icao'};	
-$metar34stationname       = $parsed_json->{'data'}[0]->{'name'};	
+$metar34stationname       = $parsed_json->{'data'}[0]->{'station'}->{'name'};
 $metar34pressurehg       = $parsed_json->{'data'}[0]->{'barometer'}->{'hg'};	
 $metar34pressuremb       = $parsed_json->{'data'}[0]->{'barometer'}->{'mb'};
 $metar34conditions         = $parsed_json->{'data'}[0]->{'conditions'}[0]->{'code'};
@@ -25,6 +23,7 @@ $metar34temperaturec          = $parsed_json->{'data'}[0]->{'temperature'}->{'ce
 $metar34temperaturef          = $parsed_json->{'data'}[0]->{'temperature'}->{'fahrenheit'};
 $metar34humidity          = $parsed_json->{'data'}[0]->{'humidity'}->{'percent'};
 $metar34visibility        = $parsed_json->{'data'}[0]->{'visibility'}->{'meters'};
+$metar34visibilitymiles        = $parsed_json->{'data'}[0]->{'visibility'}->{'miles'};
 $metar34windir          = $parsed_json->{'data'}[0]->{'wind'}->{'degrees'};
 $metar34windspeedmph          = $parsed_json->{'data'}[0]->{'wind'}->{'speed_mph'};
 $metar34windspeedkmh          = number_format($metar34windspeedmph*1.60934,0);//kmh
