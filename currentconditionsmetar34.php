@@ -76,6 +76,8 @@ $now = date('G.i');
 </div>
 <div class="darkskysummary"><span>
         <?php echo '';
+                
+        echo "<ored> " . $metar34stationname . "</ored><br>";
 
         //rain-weather34
         if ($weather["rain_rate"] > 0 && $weather["wind_speed_avg"] > 15) {
@@ -134,14 +136,24 @@ $now = date('G.i');
 <!-- HOME WEATHER STATION Data-->
 <div class="darkskynexthours">
     <?php //weather34 average station data
-    echo  "<br>Average <oblue>Wind Speed</oblue> last hour ";
-    if ($weather["wind_speed_avg"] >= 30) {
-        echo "<ored>" . $weather["wind_speed_avg"] . "</ored> " . $windunit;
-    } else if ($weather["wind_speed_avg"] >= 0) {
-        echo "<oorange>" . $weather["wind_speed_avg"] . "</oorange> " . $windunit;
+    
+    if ($rainunit == "mm"){
+        echo "Visibility <oblue> " . $metar34visibility . " m </oblue>";
     }
-    echo "<br><oblue>Rainfall</oblue> Last Hour <oblue> " . $weather["rain_lasthour"] . "</oblue> " . $rainunit;
-    echo "<br><oblue>Visibility</oblue> <ored> " . $metar34viskm . "</ored> km";
+    else{
+        echo "Visibility <oblue> " . $metar34visibilitymiles . " miles </oblue>";
+    }
+
+    echo "<br><ored>$stationlocation</ored>";
+    echo  "<br>Average Wind Speed last hour ";
+
+    if ($weather["wind_speed_avg"] >= 30) {
+        echo "<ored>" . $weather["wind_speed_avg"] . " " . $windunit. "</ored> ";
+    } else {
+        echo "<oblue>" . $weather["wind_speed_avg"]. " " . $windunit . "</oblue>";
+    }
+    echo "<br>Rainfall Last Hour <oblue> " . $weather["rain_lasthour"]. " " . $rainunit . "</oblue> ";
+
     ; ?> 
     </div>
 </div>
